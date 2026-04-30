@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://ccpwjdyct6syf"]
+
+[ext_resource type="Texture2D" uid="uid://cj2n52wuava5c" path="res://assets/2d/icon.svg" id="1_3inec"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fr1um"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v45ci"]
+albedo_texture = ExtResource("1_3inec")
+
+[sub_resource type="BoxMesh" id="BoxMesh_48ne7"]
+
+[node name="box" type="RigidBody3D" unique_id=2073704069]
+collision_layer = 5
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+mass = 100.0
+linear_damp = 2.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=207438645]
+shape = SubResource("BoxShape3D_fr1um")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1300859347]
+material_override = SubResource("StandardMaterial3D_v45ci")
+mesh = SubResource("BoxMesh_48ne7")
