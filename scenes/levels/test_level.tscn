@@ -8,6 +8,9 @@
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_v45ci"]
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_v45ci"]
+height = 0.24145508
+
 [sub_resource type="LabelSettings" id="LabelSettings_yautc"]
 font_size = 32
 
@@ -27,6 +30,7 @@ sky = SubResource("Sky_yautc")
 [node name="Node3D" type="Node3D" unique_id=148109880]
 
 [node name="player" type="RigidBody3D" parent="." unique_id=277394511 node_paths=PackedStringArray("camera", "object_detector", "floor_detector", "held_object_point", "flat_rotation", "label")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.342173, 0)
 collision_layer = 2
 axis_lock_angular_x = true
 axis_lock_angular_y = true
@@ -34,7 +38,7 @@ axis_lock_angular_z = true
 script = ExtResource("1_jbqir")
 camera = NodePath("flat_rotation/Camera3D")
 object_detector = NodePath("flat_rotation/Camera3D/object_detector")
-floor_detector = NodePath("floor_detector")
+floor_detector = NodePath("")
 held_object_point = NodePath("flat_rotation/Camera3D/held_object_point")
 flat_rotation = NodePath("flat_rotation")
 label = NodePath("Node2D/Label")
@@ -60,10 +64,13 @@ collision_mask = 4
 [node name="held_object_point" type="Marker3D" parent="player/flat_rotation/Camera3D" unique_id=554330634]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
 
-[node name="floor_detector" type="RayCast3D" parent="player" unique_id=235195934]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.4672573, 0)
-target_position = Vector3(0, -0.2, 0)
-hit_from_inside = true
+[node name="floor_detection" type="Area3D" parent="player" unique_id=1526668227]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6, 0)
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="player/floor_detection" unique_id=1793612169]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.017231464, 0)
+shape = SubResource("CylinderShape3D_v45ci")
 
 [node name="Node2D" type="Node2D" parent="player" unique_id=960081422]
 
@@ -84,6 +91,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=829027273]
 use_collision = true
+collision_mask = 0
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1225731089]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8522949, -2.0902314, -23.683594)
@@ -108,10 +116,6 @@ omni_attenuation = 10.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1233050560]
 environment = SubResource("Environment_fr1um")
-
-[node name="box" parent="." unique_id=2073704069 instance=ExtResource("3_fr1um")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.157646)
-mass = 30.0
 
 [node name="Node3D" type="Node3D" parent="." unique_id=146239993]
 
@@ -163,11 +167,23 @@ mesh = SubResource("BoxMesh_fr1um")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D4" unique_id=1588322248]
 shape = SubResource("BoxShape3D_v45ci")
 
-[node name="box2" parent="." unique_id=1718510400 instance=ExtResource("3_fr1um")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1182756, -0.09023094, -5.0964856)
+[node name="box" parent="." unique_id=2073704069 instance=ExtResource("3_fr1um")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 4.623181, 6.1762094, -0.09023094, -7.569215)
+mass = 20.0
+linear_damp_mode = 1
+linear_damp = 10.0
 
-[node name="box3" parent="." unique_id=1169705437 instance=ExtResource("3_fr1um")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2147636, -1.0902319, -7.832182)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2114126812]
+transform = Transform3D(0.90278053, 0.07255632, -0.42393732, -0.1709379, 0.96500623, -0.19885515, 0.39467394, 0.2519895, 0.8835914, 0, 17.80244, 0)
 
-[node name="box4" parent="." unique_id=136967812 instance=ExtResource("3_fr1um")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 7.1516476, 1.4097686, 3.3139763)
+[node name="box2" parent="." unique_id=816180411 instance=ExtResource("3_fr1um")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.729893, -0.09023094, 3.4474564)
+
+[node name="box4" parent="." unique_id=140283328 instance=ExtResource("3_fr1um")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.729893, -0.09023094, 0.4110012)
+
+[node name="box3" parent="." unique_id=1810814985 instance=ExtResource("3_fr1um")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.6072292, -0.09023094, 6.9878902)
+
+[connection signal="body_entered" from="player/floor_detection" to="player" method="_on_floor_detection_body_entered"]
+[connection signal="body_exited" from="player/floor_detection" to="player" method="_on_floor_detection_body_exited"]

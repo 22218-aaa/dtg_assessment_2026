@@ -10,6 +10,9 @@ extends RigidBody3D
 
 var held_objects: Array = []
 
+var static_stood_on: Array = []
+var rigidbody_stood_on: Array = []
+var on_floor: bool = true
 
 const MAXIMUM_HOLDING_DISTANCE = -10.0
 const MINIMUM_HOLDING_DISTANCE = -0.1
@@ -30,12 +33,14 @@ func _input(event):
 			get_tree().quit()
 		if Input.is_action_just_pressed("select"):
 			if object_detector.is_colliding():
+				var object = object_detector.get_collider()
 				if object_detector.get_collider() in held_objects:
-					object_detector.get_collider().set_gravity_scale(1)
-					held_objects.remove_at(held_objects.find(object_detector.get_collider()))
+					held_objects.remove_at(held_objects.find(object))
+					object.change_state(object.STATES.UNHELD, null)
 				else:
-					object_detector.get_collider().set_gravity_scale(0)
-					held_objects.append(object_detector.get_collider())
+					held_objects.append(object)
+					object.change_state(object.STATES.HELD, held_object_point)
+				
 		if Input.is_action_just_pressed("scroll_down"):
 			held_object_point.position.z = move_toward(held_object_point.position.z, MINIMUM_HOLDING_DISTANCE, SCROLL_SPEED)
 		
@@ -46,22 +51,18 @@ func _input(event):
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	
+
 
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
-	if not floor_detector.is_colliding():
+	if not on_floor:
 		linear_velocity += get_gravity() * delta
-	
-	# Handle jump.
-	if Input.is_action_just_pressed("jump") and floor_detector.is_colliding():
-		linear_velocity.y = JUMP_VELOCITY
 	
 	moving(delta)
 	holding_logic(delta)
 	
-	label.text = str(held_objects)
+	label.text = str(static_stood_on)
 	# + "\n" + \
 	#str(rotation_degrees) + "\n" + \
 	#str(flat_rotation.rotation_degrees) + "\n" + \
@@ -77,6 +78,7 @@ func holding_logic(delta):
 		item.linear_velocity += (held_object_point.global_position - item.global_position) * 40 * delta
 
 
+
 func moving(delta):
 	#find direction the player will move in
 	var input_dir = Input.get_vector("left", "right", "up", "down")
@@ -86,5 +88,27 @@ func moving(delta):
 	linear_velocity.x += ((direction.x * ACCELLERATION) - (linear_velocity.x * FRICTION)) * delta
 	linear_velocity.z += ((direction.z * ACCELLERATION) - (linear_velocity.z * FRICTION)) * delta
 	
+	# Handle jump.
+	if Input.is_action_just_pressed("jump") and on_floor:
+		linear_velocity.y = JUMP_VELOCITY
+	
+	
 	if position.y < -100:
 		get_tree().reload_current_scene()
+
+
+func _on_floor_detection_body_entered(body: Node3D) -> void:
+	if body is RigidBody3D:
+		rigidbody_stood_on.append(body)
+	else:
+		static_stood_on.append(body)
+	on_floor = true
+
+
+func _on_floor_detection_body_exited(body: Node3D) -> void:
+	if body is RigidBody3D:
+		rigidbody_stood_on.remove_at(rigidbody_stood_on.find(body))
+	else:
+		static_stood_on.remove_at(static_stood_on.find(body))
+	if not static_stood_on and not rigidbody_stood_on:
+		on_floor = false
