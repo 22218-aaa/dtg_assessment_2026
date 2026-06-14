@@ -1,9 +1,9 @@
 extends RigidBody3D
 
 
+@export_group("objects")
 @export var camera: Camera3D
 @export var object_detector: RayCast3D
-@export var floor_detector: RayCast3D
 @export var held_object_point: Marker3D
 @export var flat_rotation: Marker3D
 @export var label: Label
@@ -14,14 +14,20 @@ var static_stood_on: Array = []
 var rigidbody_stood_on: Array = []
 var on_floor: bool = true
 
-const MAXIMUM_HOLDING_DISTANCE = -10.0
-const MINIMUM_HOLDING_DISTANCE = -0.1
-const SCROLL_SPEED = 0.1
 
 const ACCELLERATION = 50.0
 const FRICTION = 10.0
-const JUMP_VELOCITY = 7
+const JUMP_VELOCITY = 8
 const sensitivity = 0.3
+
+@export_category("variables")
+@export_range(1.0, 100.0) var MAXIMUM_HOLDING_DISTANCE = 10.0
+@export_range(-5.0, 5.0) var MINIMUM_HOLDING_DISTANCE = 0.1
+@export_range(1, 999) var MAXIMUM_HELD_OBJECTS = 2
+
+const SCROLL_SPEED = 0.1
+
+# add player eject
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -40,12 +46,15 @@ func _input(event):
 				else:
 					held_objects.append(object)
 					object.change_state(object.STATES.HELD, held_object_point)
+					if len(held_objects) > MAXIMUM_HELD_OBJECTS:
+						held_objects[0].change_state(object.STATES.UNHELD, null)
+						held_objects.remove_at(0)
 				
 		if Input.is_action_just_pressed("scroll_down"):
-			held_object_point.position.z = move_toward(held_object_point.position.z, MINIMUM_HOLDING_DISTANCE, SCROLL_SPEED)
+			held_object_point.position.z = move_toward(held_object_point.position.z, -MINIMUM_HOLDING_DISTANCE, SCROLL_SPEED)
 		
 		if Input.is_action_just_pressed("scroll_up"):
-			held_object_point.position.z = move_toward(held_object_point.position.z, MAXIMUM_HOLDING_DISTANCE, SCROLL_SPEED)
+			held_object_point.position.z = move_toward(held_object_point.position.z,- MAXIMUM_HOLDING_DISTANCE, SCROLL_SPEED)
 
 
 
@@ -61,13 +70,33 @@ func _physics_process(delta: float) -> void:
 	
 	moving(delta)
 	holding_logic(delta)
-	
-	label.text = str(static_stood_on)
+	#pushing_logic(delta)
+	label.text = str(len(held_objects)) + "/" + str(MAXIMUM_HELD_OBJECTS)
 	# + "\n" + \
 	#str(rotation_degrees) + "\n" + \
 	#str(flat_rotation.rotation_degrees) + "\n" + \
 	#str(camera.rotation_degrees) + "\n"
 	#move_and_slide()
+
+
+
+
+#func pushing_logic(delta):
+	#if rigidbody_stood_on:
+		#if len(rigidbody_stood_on) == 1:
+			#linear_velocity = Vector3(\
+				#rigidbody_stood_on[0].linear_velocity.x, \
+				#linear_velocity.y, \
+				#rigidbody_stood_on[0].linear_velocity.z
+			#)
+			#rigidbody_stood_on[0].linear_velocity
+			#
+			#
+			#
+			#
+			#
+			#
+			#linear_velocity += rigidbody_stood_on[0].force * 4
 
 
 func holding_logic(delta):

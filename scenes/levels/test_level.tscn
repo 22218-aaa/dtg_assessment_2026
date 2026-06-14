@@ -1,18 +1,8 @@
 [gd_scene format=3 uid="uid://bkvataxlunlnp"]
 
-[ext_resource type="Script" uid="uid://dx2x0yuk4ui1b" path="res://scripts/player.gd" id="1_jbqir"]
-[ext_resource type="Texture2D" uid="uid://cj2n52wuava5c" path="res://assets/2d/icon.svg" id="2_yautc"]
-[ext_resource type="PackedScene" uid="uid://ccpwjdyct6syf" path="res://scenes/box.tscn" id="3_fr1um"]
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_fr1um"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_v45ci"]
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_v45ci"]
-height = 0.24145508
-
-[sub_resource type="LabelSettings" id="LabelSettings_yautc"]
-font_size = 32
+[ext_resource type="PackedScene" uid="uid://bcxprlld78jga" path="res://scenes/objects/player.tscn" id="1_fr1um"]
+[ext_resource type="PackedScene" uid="uid://ccpwjdyct6syf" path="res://scenes/objects/box.tscn" id="3_fr1um"]
+[ext_resource type="Script" uid="uid://doii07v1a33k6" path="res://scripts/spawner.gd" id="4_v45ci"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jbqir"]
 
@@ -27,87 +17,82 @@ sky = SubResource("Sky_yautc")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v45ci"]
 
+[sub_resource type="SphereMesh" id="SphereMesh_fr1um"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_v45ci"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_48ne7"]
+size = Vector3(2.2106934, 0.090661615, 2.1669922)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6xh4u"]
+size = Vector3(1.5, 0.2, 1.5)
+
 [node name="Node3D" type="Node3D" unique_id=148109880]
 
-[node name="player" type="RigidBody3D" parent="." unique_id=277394511 node_paths=PackedStringArray("camera", "object_detector", "floor_detector", "held_object_point", "flat_rotation", "label")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.342173, 0)
-collision_layer = 2
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true
-script = ExtResource("1_jbqir")
-camera = NodePath("flat_rotation/Camera3D")
-object_detector = NodePath("flat_rotation/Camera3D/object_detector")
-floor_detector = NodePath("")
-held_object_point = NodePath("flat_rotation/Camera3D/held_object_point")
-flat_rotation = NodePath("flat_rotation")
-label = NodePath("Node2D/Label")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="player" unique_id=989305283]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5902314, 0)
-shape = SubResource("CylinderShape3D_fr1um")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="player" unique_id=557238673]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5902314, 0)
-mesh = SubResource("CylinderMesh_v45ci")
-
-[node name="flat_rotation" type="Marker3D" parent="player" unique_id=1735829332]
-
-[node name="Camera3D" type="Camera3D" parent="player/flat_rotation" unique_id=170311947]
-fov = 90.0
-
-[node name="object_detector" type="RayCast3D" parent="player/flat_rotation/Camera3D" unique_id=779034777]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.295)
-target_position = Vector3(0, 0, -10)
-collision_mask = 4
-
-[node name="held_object_point" type="Marker3D" parent="player/flat_rotation/Camera3D" unique_id=554330634]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
-
-[node name="floor_detection" type="Area3D" parent="player" unique_id=1526668227]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6, 0)
-collision_layer = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="player/floor_detection" unique_id=1793612169]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.017231464, 0)
-shape = SubResource("CylinderShape3D_v45ci")
-
-[node name="Node2D" type="Node2D" parent="player" unique_id=960081422]
-
-[node name="Camera2D" type="Camera2D" parent="player/Node2D" unique_id=462783122]
-
-[node name="Icon" type="Sprite2D" parent="player/Node2D" unique_id=1827752549]
-modulate = Color(0, 0, 0, 1)
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("2_yautc")
-
-[node name="Label" type="Label" parent="player/Node2D" unique_id=1753025191]
-offset_left = -568.0
-offset_top = -312.0
-offset_right = -344.0
-offset_bottom = -267.0
-label_settings = SubResource("LabelSettings_yautc")
-metadata/_edit_use_anchors_ = true
+[node name="player" parent="." unique_id=1512140399 instance=ExtResource("1_fr1um")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20976853, 0)
+MAXIMUM_HOLDING_DISTANCE = 5.0
+MAXIMUM_HELD_OBJECTS = 5
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=829027273]
 use_collision = true
 collision_mask = 0
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1225731089]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8522949, -2.0902314, -23.683594)
-size = Vector3(8.29541, 1, 67.36719)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5612, -1.7202404, -23.683594)
+size = Vector3(41.712807, 0.2, 67.367)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1508423753]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8522949, -2.0902314, -88.42438)
 size = Vector3(117, 1, 67.36719)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=794000393]
-transform = Transform3D(0.75269073, 0, -0.65837425, 0, 1, 0, 0.65837425, 0, 0.75269073, -5.6832266, -2.0902314, 0.29197675)
-size = Vector3(7.4084473, 1, 20)
+transform = Transform3D(0.07915506, 0, -0.9968623, 0, 1, 0, 0.9968623, 0, 0.07915506, -8.728968, -2.0902314, 2.6106076)
+size = Vector3(7.4084473, 1, 11.875732)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1621867869]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -1.5902314, 0)
-size = Vector3(8, 2, 20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.189941, -2.5035605, -5.556885)
+size = Vector3(30.379883, 3.8266602, 31.11377)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="CSGCombiner3D" unique_id=728582097]
+transform = Transform3D(0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 0, 0, 1, -29.035278, 3.3620372, -17.185633)
+size = Vector3(56.698242, 3.8266602, 9.430664)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="CSGCombiner3D" unique_id=2009937788]
+transform = Transform3D(0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 0, 0, 1, -43.177574, 10.78571, -17.185633)
+size = Vector3(5.841919, 3.8997803, 9.430664)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D" unique_id=2014385353]
+transform = Transform3D(28.75449, 0, 0, 0, 1, 0, 0, 0, 1, 17.133057, 3.40977, 0)
+size = Vector3(0.1, 8, 20)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1967013218]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 30.919453, 13.409772, -57.314747)
+size = Vector3(5, 30, 46)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1795389470]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.491603, 1.4097719, -84.92695)
+size = Vector3(4, 6, 18)
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="CSGCombiner3D" unique_id=481979455]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 21.056664, 3.4097738, -107.70652)
+size = Vector3(10, 10, 10)
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D13" unique_id=692741739]
+operation = 2
+size = Vector3(9, 9, 9)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="CSGCombiner3D" unique_id=31303170]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.492, 1.41, -92.24944)
+size = Vector3(4, 6, 18)
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1721301757]
+transform = Transform3D(0.92337114, 0, -0.38390857, 0, 1, 0, 0.38390857, 0, 0.92337114, -0.924407, 1.4097719, -85.92695)
+size = Vector3(4, 6, 18)
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="CSGCombiner3D" unique_id=764592181]
+transform = Transform3D(0.92337114, 0, -0.38390857, 0, 1, 0, 0.38390857, 0, 0.92337114, 17.58559, 7.031487, -85.92695)
+size = Vector3(4, 6, 18)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=253817213]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.68399, 0)
@@ -117,73 +102,116 @@ omni_attenuation = 10.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1233050560]
 environment = SubResource("Environment_fr1um")
 
-[node name="Node3D" type="Node3D" parent="." unique_id=146239993]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2114126812]
+transform = Transform3D(0.90278053, 0.07255632, -0.42393732, -0.1709379, 0.96500623, -0.19885515, 0.39467394, 0.2519895, 0.8835914, 0, 17.80244, 0)
 
-[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1629806122]
+[node name="rigidbodies" type="Node" parent="." unique_id=583867037]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="rigidbodies" unique_id=1629806122]
 transform = Transform3D(6.988372, 0, -0.40331435, 0, 7, 0, 0.40331435, 0, 6.988372, -7.1977825, 1.9097692, 0.88185453)
 mass = 1000.0
 metadata/_edit_group_ = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=2005813162]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="rigidbodies/RigidBody3D" unique_id=2005813162]
 transform = Transform3D(0.99999994, 0, -4.7683716e-07, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_fr1um")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1450894278]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rigidbodies/RigidBody3D" unique_id=1450894278]
 shape = SubResource("BoxShape3D_v45ci")
 
-[node name="RigidBody3D2" type="RigidBody3D" parent="." unique_id=1791394946]
-transform = Transform3D(6.988372, 0, -0.40331435, 0, 7, 0, 0.40331435, 0, 6.988372, 37.909645, 1.9097692, -92.34556)
+[node name="RigidBody3D5" type="RigidBody3D" parent="rigidbodies" unique_id=464262264]
+transform = Transform3D(7.0000005, 0, 0, 0, 7, 0, 0, 0, 7.0000005, -51.490173, 14.8596325, -17.863358)
+mass = 500.0
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="rigidbodies/RigidBody3D5" unique_id=1522914793]
+transform = Transform3D(0.99999994, 0, -4.7683716e-07, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("SphereMesh_fr1um")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rigidbodies/RigidBody3D5" unique_id=2037046315]
+shape = SubResource("SphereShape3D_v45ci")
+
+[node name="RigidBody3D2" type="RigidBody3D" parent="rigidbodies" unique_id=1791394946]
+transform = Transform3D(6.9883723, 0, -0.40331438, 0, 7, 0, 0.40331438, 0, 6.9883723, 37.909645, 1.9097692, -92.34556)
 mass = 1000.0
 metadata/_edit_group_ = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D2" unique_id=707314162]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="rigidbodies/RigidBody3D2" unique_id=707314162]
 transform = Transform3D(0.99999994, 0, -4.7683716e-07, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_fr1um")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2" unique_id=175399044]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rigidbodies/RigidBody3D2" unique_id=175399044]
 shape = SubResource("BoxShape3D_v45ci")
 
-[node name="RigidBody3D3" type="RigidBody3D" parent="." unique_id=1209682102]
+[node name="RigidBody3D3" type="RigidBody3D" parent="rigidbodies" unique_id=1209682102]
 transform = Transform3D(6.988372, 0, -0.40331435, 0, 7, 0, 0.40331435, 0, 6.988372, -34.71673, 1.9097692, -108.00772)
 mass = 1000.0
 metadata/_edit_group_ = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D3" unique_id=37764044]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="rigidbodies/RigidBody3D3" unique_id=37764044]
 transform = Transform3D(0.99999994, 0, -4.7683716e-07, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_fr1um")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D3" unique_id=892194370]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rigidbodies/RigidBody3D3" unique_id=892194370]
 shape = SubResource("BoxShape3D_v45ci")
 
-[node name="RigidBody3D4" type="RigidBody3D" parent="." unique_id=1264660563]
+[node name="RigidBody3D4" type="RigidBody3D" parent="rigidbodies" unique_id=1264660563]
 transform = Transform3D(6.988372, 0, -0.40331435, 0, 7, 0, 0.40331435, 0, 6.988372, -31.64003, 1.9097692, -78.559586)
 mass = 1000.0
 metadata/_edit_group_ = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D4" unique_id=1750094098]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="rigidbodies/RigidBody3D4" unique_id=1750094098]
 transform = Transform3D(0.99999994, 0, -4.7683716e-07, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_fr1um")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D4" unique_id=1588322248]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rigidbodies/RigidBody3D4" unique_id=1588322248]
 shape = SubResource("BoxShape3D_v45ci")
 
+[node name="spawner" type="Node3D" parent="." unique_id=26963375]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35355806, -1.3382299, -5.0066276)
+script = ExtResource("4_v45ci")
+metadata/_edit_group_ = true
+
+[node name="spawning_platform" parent="spawner" unique_id=591347453 instance=ExtResource("3_fr1um")]
+transform = Transform3D(2, 0, 0, 0, 0.8, 0, 0, 0, 2, 0, 0.14799988, -5.0000005)
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+angular_damp = 5.0
+
+[node name="spawn_location" type="Marker3D" parent="spawner/spawning_platform" unique_id=908915264]
+transform = Transform3D(0.5, 0, 0, 0, 1.9841272, 0, 0, 0, 0.5, 0, 0.2, 0)
+
+[node name="button_platform" parent="spawner" unique_id=1423995080 instance=ExtResource("3_fr1um")]
+transform = Transform3D(2, 0, 0, 0, 0.8, 0, 0, 0, 2, 0, 0.148, 0)
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+angular_damp = 5.0
+
+[node name="pressure_plate" type="Area3D" parent="spawner/button_platform" unique_id=309568755]
+transform = Transform3D(0.49999997, 0, 0, 0, 2.8344674, 0, 0, 0, 0.49999997, 0, 0.5000006, 0)
+collision_layer = 0
+collision_mask = 6
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="spawner/button_platform/pressure_plate" unique_id=1980507292]
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1, 0, 0.15466928, 0)
+shape = SubResource("BoxShape3D_48ne7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="spawner/button_platform/pressure_plate" unique_id=1457962399]
+mesh = SubResource("BoxMesh_6xh4u")
+
 [node name="box" parent="." unique_id=2073704069 instance=ExtResource("3_fr1um")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 4.623181, 6.1762094, -0.09023094, -7.569215)
-mass = 20.0
-linear_damp_mode = 1
-linear_damp = 10.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3719172, -0.090236664, -5.929332)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2114126812]
-transform = Transform3D(0.90278053, 0.07255632, -0.42393732, -0.1709379, 0.96500623, -0.19885515, 0.39467394, 0.2519895, 0.8835914, 0, 17.80244, 0)
+[node name="box2" parent="." unique_id=462683766 instance=ExtResource("3_fr1um")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.285889, -0.09023571, -6.3289375)
 
-[node name="box2" parent="." unique_id=816180411 instance=ExtResource("3_fr1um")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.729893, -0.09023094, 3.4474564)
+[node name="box3" parent="." unique_id=224455084 instance=ExtResource("3_fr1um")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 9.514485, 0.4097643, 4.3629875)
 
-[node name="box4" parent="." unique_id=140283328 instance=ExtResource("3_fr1um")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.729893, -0.09023094, 0.4110012)
+[node name="box4" parent="." unique_id=21622716 instance=ExtResource("3_fr1um")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3930874, -0.09023476, 8.062113)
+mass = 1000.0
 
-[node name="box3" parent="." unique_id=1810814985 instance=ExtResource("3_fr1um")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.6072292, -0.09023094, 6.9878902)
-
-[connection signal="body_entered" from="player/floor_detection" to="player" method="_on_floor_detection_body_entered"]
-[connection signal="body_exited" from="player/floor_detection" to="player" method="_on_floor_detection_body_exited"]
+[connection signal="body_entered" from="spawner/button_platform/pressure_plate" to="spawner" method="_on_pressure_plate_body_entered"]

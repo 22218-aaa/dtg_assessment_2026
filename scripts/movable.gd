@@ -1,8 +1,10 @@
 extends RigidBody3D
 
-
-@export var director: Marker3D
+var in_body: Array
 var target_location: Marker3D
+
+var old_velocity: Vector3
+var force: Vector3
 
 enum STATES {
 	UNHELD,
@@ -13,24 +15,20 @@ var state: STATES = STATES.UNHELD
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	mass = scale.x * scale.y * scale.z
+	change_state(STATES.UNHELD, null)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	eject(delta)
 	match state: 
 		STATES.HELD:
 			held(delta)
 
 
-func held(_jdelta):
+func held(_delta):
 	pass
-	#global_rotation_degrees.y += \
-	#(target_location.global_rotation_degrees.y - global_rotation_degrees.y) * 2 * delta
-	#linear_velocity += (target_location.global_position - global_position) * 10 * delta
-	#var turn_amount = target_location.global_rotation - global_rotation
-	#angular_velocity = turn_amount / 100 * delta
-
 
 
 func change_state(new_state, new_target):
@@ -38,6 +36,25 @@ func change_state(new_state, new_target):
 	target_location = new_target
 	match state:
 		STATES.HELD:
+			old_velocity = linear_velocity
+			set_linear_damp(12)
 			set_gravity_scale(0)
 		STATES.UNHELD:
-			set_gravity_scale(5)
+			old_velocity = Vector3.ZERO
+			set_linear_damp(0)
+			set_gravity_scale(2)
+
+
+func eject(delta):
+	if in_body:
+		for item in in_body:
+			item.linear_velocity += (item.global_position - global_position) * 200 * delta
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body != self:
+		in_body.append(body)
+
+
+func _on_area_3d_body_exited(body: Node3D) -> void:
+	in_body.remove_at(in_body.find(body))
