@@ -4,15 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://ccpwjdyct6syf" path="res://scenes/objects/box.tscn" id="3_fr1um"]
 [ext_resource type="Script" uid="uid://doii07v1a33k6" path="res://scripts/spawner.gd" id="4_v45ci"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jbqir"]
-
-[sub_resource type="Sky" id="Sky_yautc"]
-sky_material = SubResource("ProceduralSkyMaterial_jbqir")
-
-[sub_resource type="Environment" id="Environment_fr1um"]
-background_mode = 2
-sky = SubResource("Sky_yautc")
-
 [sub_resource type="BoxMesh" id="BoxMesh_fr1um"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v45ci"]
@@ -26,6 +17,15 @@ size = Vector3(2.2106934, 0.090661615, 2.1669922)
 
 [sub_resource type="BoxMesh" id="BoxMesh_6xh4u"]
 size = Vector3(1.5, 0.2, 1.5)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jbqir"]
+
+[sub_resource type="Sky" id="Sky_fr1um"]
+sky_material = SubResource("ProceduralSkyMaterial_jbqir")
+
+[sub_resource type="Environment" id="Environment_fr1um"]
+background_mode = 2
+sky = SubResource("Sky_fr1um")
 
 [node name="Node3D" type="Node3D" unique_id=148109880]
 
@@ -95,17 +95,6 @@ size = Vector3(4, 6, 18)
 [node name="CSGBox3D12" type="CSGBox3D" parent="CSGCombiner3D" unique_id=764592181]
 transform = Transform3D(0.92337114, 0, -0.38390857, 0, 1, 0, 0.38390857, 0, 0.92337114, 17.58559, 7.031487, -85.92695)
 size = Vector3(4, 6, 18)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=253817213]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.68399, 0)
-omni_range = 2000.0
-omni_attenuation = 10.0
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1233050560]
-environment = SubResource("Environment_fr1um")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2114126812]
-transform = Transform3D(0.90278053, 0.07255632, -0.42393732, -0.1709379, 0.96500623, -0.19885515, 0.39467394, 0.2519895, 0.8835914, 0, 17.80244, 0)
 
 [node name="rigidbodies" type="Node" parent="." unique_id=583867037]
 
@@ -214,5 +203,18 @@ mass = 100.0
 [node name="box4" parent="." unique_id=21622716 instance=ExtResource("3_fr1um")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3930874, -0.09023476, 8.062113)
 mass = 1000.0
+
+[node name="lighting" type="Node" parent="." unique_id=1752500627]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="lighting" unique_id=1233050560]
+environment = SubResource("Environment_fr1um")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="lighting" unique_id=253817213]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.68399, 0)
+omni_range = 2000.0
+omni_attenuation = 10.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="lighting" unique_id=2114126812]
+transform = Transform3D(0.9027806, 0.07255633, -0.42393735, -0.17093791, 0.96500623, -0.19885513, 0.39467397, 0.2519895, 0.8835914, 0, 17.80244, 0)
 
 [connection signal="body_entered" from="spawner/button_platform/pressure_plate" to="spawner" method="_on_pressure_plate_body_entered"]

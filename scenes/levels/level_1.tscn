@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://ctxwhxvk4rmvm"]
+
+[ext_resource type="PackedScene" uid="uid://bcxprlld78jga" path="res://scenes/objects/player.tscn" id="1_6iamk"]
+[ext_resource type="PackedScene" uid="uid://ccpwjdyct6syf" path="res://scenes/objects/box.tscn" id="2_nsrm0"]
+[ext_resource type="Script" uid="uid://cccf4eqdsoa30" path="res://scenes/levels/death_area.gd" id="3_nsrm0"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x42e6"]
+
+[sub_resource type="Sky" id="Sky_yautc"]
+sky_material = SubResource("ProceduralSkyMaterial_x42e6")
+
+[sub_resource type="Environment" id="Environment_6761a"]
+background_mode = 2
+sky = SubResource("Sky_yautc")
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_x42e6"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 0.63529414)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nsrm0"]
+material = SubResource("ORMMaterial3D_x42e6")
+
+[node name="Node3D" type="Node3D" unique_id=1250394160]
+
+[node name="lighting" type="Node" parent="." unique_id=1141342394]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="lighting" unique_id=1359735629]
+environment = SubResource("Environment_6761a")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="lighting" unique_id=909059949]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.68399, 0)
+omni_range = 2000.0
+omni_attenuation = 10.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="lighting" unique_id=583579029]
+transform = Transform3D(0.9027806, 0.07255633, -0.42393735, -0.17093791, 0.96500623, -0.19885513, 0.39467397, 0.2519895, 0.8835914, 0, 17.80244, 0)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1545069538]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1244463792]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.62857056)
+size = Vector3(11.123047, 1, 24.448792)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=727914451]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5049438, -6.2059937)
+size = Vector3(11.123047, 8.009888, 1.5576172)
+
+[node name="box" parent="CSGCombiner3D" unique_id=2073704069 instance=ExtResource("2_nsrm0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.18614, 0.9999981, 5.081418)
+
+[node name="box2" parent="CSGCombiner3D" unique_id=2084637898 instance=ExtResource("2_nsrm0")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.0844774, 1.4999989, 5.2973857)
+
+[node name="box3" parent="CSGCombiner3D" unique_id=696765251 instance=ExtResource("2_nsrm0")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -2.9177785, 1.9999989, 0.95194006)
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1499694263]
+transform = Transform3D(1, 0, 0, 0, 6.5, 0, 0, 0, 11.700001, 13.392253, 0, 0)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_nsrm0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=18317737]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D" unique_id=2074531010]
+mesh = SubResource("BoxMesh_nsrm0")
+
+[node name="player" parent="." unique_id=1512140399 instance=ExtResource("1_6iamk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9423361, 2.3000002, 9.722919)
+MAXIMUM_HOLDING_DISTANCE = 6.0
+MINIMUM_HOLDING_DISTANCE = 3.0
+MAXIMUM_HELD_OBJECTS = 1
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

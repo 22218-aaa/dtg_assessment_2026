@@ -20,26 +20,43 @@ text = "exit"
 
 [node name="Button2" parent="." unique_id=461645219 instance=ExtResource("1_pssaq")]
 layout_mode = 0
-offset_left = 280.0
-offset_top = 368.0
-offset_right = 496.0
-offset_bottom = 456.0
-text = "1"
+offset_left = 242.0
+offset_top = 186.0
+offset_right = 458.0
+offset_bottom = 282.0
+text = "level 1"
 
 [node name="Button3" parent="." unique_id=748881482 instance=ExtResource("1_pssaq")]
 layout_mode = 0
-offset_left = 768.0
-offset_top = 720.0
-offset_right = 984.0
-offset_bottom = 808.0
-text = "2"
+offset_left = 1044.0
+offset_top = 680.0
+offset_right = 1292.0
+offset_bottom = 776.0
+text = "nothing"
 
 [node name="Button4" parent="." unique_id=2052287939 instance=ExtResource("1_pssaq")]
 layout_mode = 0
-offset_left = 824.0
-offset_top = 456.0
-offset_right = 1040.0
-offset_bottom = 544.0
+offset_left = 1142.0
+offset_top = 418.0
+offset_right = 1390.0
+offset_bottom = 514.0
+text = "nothing"
+
+[node name="Button7" parent="." unique_id=830932544 instance=ExtResource("1_pssaq")]
+layout_mode = 0
+offset_left = 1473.0
+offset_top = 788.0
+offset_right = 1721.0
+offset_bottom = 884.0
+text = "nothing"
+
+[node name="Button6" parent="." unique_id=1241190304 instance=ExtResource("1_pssaq")]
+layout_mode = 0
+offset_left = 1050.0
+offset_top = 195.0
+offset_right = 1298.0
+offset_bottom = 291.0
+text = "nothing"
 
 [node name="Button5" parent="." unique_id=1218656228 instance=ExtResource("1_pssaq")]
 layout_mode = 0
@@ -47,3 +64,4 @@ offset_left = 728.0
 offset_top = 80.0
 offset_right = 944.0
 offset_bottom = 168.0
+text = "nothing"
