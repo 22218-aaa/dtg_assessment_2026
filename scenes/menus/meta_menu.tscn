@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://hqyf4yiudppw"]
+
+[ext_resource type="PackedScene" uid="uid://bnvwu4r3spj4w" path="res://scenes/menus/button.tscn" id="1_3p3lm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6qpea"]
+font_size = 128
+
+[node name="meta_menu" type="Control" unique_id=689179291]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="." unique_id=1557004156]
+layout_mode = 0
+offset_left = 504.0
+offset_top = 48.0
+offset_right = 1376.0
+offset_bottom = 223.0
+text = "game"
+label_settings = SubResource("LabelSettings_6qpea")
+horizontal_alignment = 1
+
+[node name="Button" parent="." unique_id=2020999093 instance=ExtResource("1_3p3lm")]
+layout_mode = 0
+offset_left = 520.0
+offset_top = 640.0
+offset_right = 864.0
+offset_bottom = 864.0
+text = "menu menu"
+
+[node name="Button2" parent="." unique_id=1153249032 instance=ExtResource("1_3p3lm")]
+layout_mode = 0
+offset_left = 1216.0
+offset_top = 616.0
+offset_right = 1560.0
+offset_bottom = 840.0
+text = "hub world
+menu"
+change_scene = "res://scenes/menus/level_menu.tscn"

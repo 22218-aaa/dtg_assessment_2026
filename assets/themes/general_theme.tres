@@ -1,9 +1,7 @@
 [gd_resource type="Theme" format=3 uid="uid://damet3wwd14c5"]
 
-[ext_resource type="StyleBox" uid="uid://dxwy7l4lmp2oj" path="res://assets/themes/panel_container.tres" id="1_5r36e"]
-
 [resource]
 Button/font_sizes/font_size = 16
 Button/styles/disabled = null
 Button/styles/normal = null
-PanelContainer/styles/panel = ExtResource("1_5r36e")
+PanelContainer/styles/panel = null

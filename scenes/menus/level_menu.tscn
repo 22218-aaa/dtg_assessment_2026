@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://cdq60ivq5lgha"]
+
+[ext_resource type="PackedScene" uid="uid://bnvwu4r3spj4w" path="res://scenes/menus/button.tscn" id="1_pssaq"]
+
+[node name="Control" type="Control" unique_id=188040275]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" parent="." unique_id=2020999093 instance=ExtResource("1_pssaq")]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 152.0
+offset_bottom = 56.0
+text = "exit"
+
+[node name="Button2" parent="." unique_id=461645219 instance=ExtResource("1_pssaq")]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 368.0
+offset_right = 496.0
+offset_bottom = 456.0
+text = "1"
+
+[node name="Button3" parent="." unique_id=748881482 instance=ExtResource("1_pssaq")]
+layout_mode = 0
+offset_left = 768.0
+offset_top = 720.0
+offset_right = 984.0
+offset_bottom = 808.0
+text = "2"
+
+[node name="Button4" parent="." unique_id=2052287939 instance=ExtResource("1_pssaq")]
+layout_mode = 0
+offset_left = 824.0
+offset_top = 456.0
+offset_right = 1040.0
+offset_bottom = 544.0
+
+[node name="Button5" parent="." unique_id=1218656228 instance=ExtResource("1_pssaq")]
+layout_mode = 0
+offset_left = 728.0
+offset_top = 80.0
+offset_right = 944.0
+offset_bottom = 168.0
