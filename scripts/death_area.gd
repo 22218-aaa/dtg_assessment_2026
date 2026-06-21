@@ -2,6 +2,8 @@
 
 extends Area3D
 
+
+
 @onready var collision_shape: CollisionShape3D = $CollisionShape3D
 @onready var mesh_instance: MeshInstance3D = $MeshInstance3D
 
@@ -15,7 +17,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
-		pass
+		collision_shape.scale = sizing
+		mesh_instance.scale = sizing
 
 
 func _on_body_entered(body: Node3D) -> void:

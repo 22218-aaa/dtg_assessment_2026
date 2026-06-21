@@ -25,6 +25,7 @@ offset_top = 186.0
 offset_right = 458.0
 offset_bottom = 282.0
 text = "level 1"
+change_scene = "res://scenes/levels/level_1.tscn"
 
 [node name="Button3" parent="." unique_id=748881482 instance=ExtResource("1_pssaq")]
 layout_mode = 0

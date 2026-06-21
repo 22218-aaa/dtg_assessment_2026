@@ -14,7 +14,7 @@ height = 0.4
 font_size = 32
 
 [node name="player" type="RigidBody3D" unique_id=1512140399 node_paths=PackedStringArray("camera", "object_detector", "held_object_point", "flat_rotation", "label")]
-collision_layer = 2
+collision_layer = 10
 collision_mask = 5
 axis_lock_angular_x = true
 axis_lock_angular_y = true
@@ -25,8 +25,7 @@ object_detector = NodePath("flat_rotation/Camera3D/object_detector")
 held_object_point = NodePath("flat_rotation/Camera3D/held_object_point")
 flat_rotation = NodePath("flat_rotation")
 label = NodePath("Control/Label")
-MAXIMUM_HOLDING_DISTANCE = 15
-MINIMUM_HOLDING_DISTANCE = 5.0
+MINIMUM_HOLDING_DISTANCE = 0.0
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2032296253]

@@ -17,7 +17,7 @@ var on_floor: bool = true
 
 const ACCELLERATION = 50.0
 const FRICTION = 10.0
-const JUMP_VELOCITY = 8
+const JUMP_VELOCITY = 6
 const sensitivity = 0.3
 
 @export_category("variables")
@@ -25,7 +25,7 @@ const sensitivity = 0.3
 @export_range(-5.0, 5.0) var MINIMUM_HOLDING_DISTANCE = 0.1
 @export_range(1, 999) var MAXIMUM_HELD_OBJECTS = 2
 
-const SCROLL_SPEED = 0.1
+const SCROLL_SPEED = 0.2
 
 # add player eject
 
@@ -59,6 +59,8 @@ func _input(event):
 
 
 func _ready() -> void:
+	held_object_point.position.z = -snappedf((MAXIMUM_HOLDING_DISTANCE + MINIMUM_HOLDING_DISTANCE) / 2, SCROLL_SPEED)
+	print(held_object_point.position.z)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 

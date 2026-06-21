@@ -13,9 +13,11 @@ enum STATES {
 
 var state: STATES = STATES.UNHELD
 
+@export var auto_weight = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	mass = scale.x * scale.y * scale.z 
+	if auto_weight: mass = scale.x * scale.y * scale.z
 	change_state(STATES.UNHELD, null)
 
 
