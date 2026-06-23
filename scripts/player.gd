@@ -60,7 +60,6 @@ func _input(event):
 
 func _ready() -> void:
 	held_object_point.position.z = -snappedf((MAXIMUM_HOLDING_DISTANCE + MINIMUM_HOLDING_DISTANCE) / 2, SCROLL_SPEED)
-	print(held_object_point.position.z)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 

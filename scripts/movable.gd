@@ -1,3 +1,5 @@
+@tool
+
 extends RigidBody3D
 
 var in_body: Array
@@ -6,6 +8,7 @@ var target_location: Marker3D
 var old_velocity: Vector3
 var force: Vector3
 
+
 enum STATES {
 	UNHELD,
 	HELD
@@ -13,20 +16,37 @@ enum STATES {
 
 var state: STATES = STATES.UNHELD
 
+
+@onready var collision_shape: CollisionShape3D = $CollisionShape3D
+@onready var mesh_instance: MeshInstance3D = $MeshInstance3D
+
+@export var sizing: Vector3 = Vector3(1, 1, 1)
 @export var auto_weight = true
+
+
+
+
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if auto_weight: mass = scale.x * scale.y * scale.z
+	collision_shape.scale = sizing
+	mesh_instance.scale = sizing
+	if auto_weight: mass = sizing.x * sizing.y * sizing.z
 	change_state(STATES.UNHELD, null)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	eject(delta)
-	match state: 
-		STATES.HELD:
-			held(delta)
+	if Engine.is_editor_hint():
+		collision_shape.scale = sizing
+		mesh_instance.scale = sizing
+	else:
+		eject(delta)
+		match state: 
+			STATES.HELD:
+				held(delta)
 
 
 func held(_delta):

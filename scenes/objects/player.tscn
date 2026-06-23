@@ -9,16 +9,18 @@
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_v45ci"]
 height = 0.4
+radius = 0.45
 
 [sub_resource type="LabelSettings" id="LabelSettings_yautc"]
 font_size = 32
 
 [node name="player" type="RigidBody3D" unique_id=1512140399 node_paths=PackedStringArray("camera", "object_detector", "held_object_point", "flat_rotation", "label")]
-collision_layer = 10
+collision_layer = 2
 collision_mask = 5
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
+mass = 0.01
 script = ExtResource("1_2147m")
 camera = NodePath("flat_rotation/Camera3D")
 object_detector = NodePath("flat_rotation/Camera3D/object_detector")

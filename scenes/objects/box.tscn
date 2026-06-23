@@ -18,11 +18,8 @@ size = Vector3(0.8, 0.8, 0.8)
 
 [node name="box" type="RigidBody3D" unique_id=2073704069]
 collision_layer = 5
-collision_mask = 9
-mass = 10.0
 gravity_scale = 2.0
 linear_damp_mode = 1
-linear_damp = 12.0
 angular_damp_mode = 1
 angular_damp = 0.5
 script = ExtResource("1_ks2v0")

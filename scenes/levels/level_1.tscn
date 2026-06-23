@@ -37,8 +37,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.404175)
 size = Vector3(11, 1, 32)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="terrain" unique_id=727914451]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.2634277, -6)
-size = Vector3(11, 7.5, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.9999998, -6.3867188)
+size = Vector3(11, 7, 1)
 
 [node name="interactables" type="Node" parent="." unique_id=2136838379]
 
@@ -56,7 +56,7 @@ sizing = Vector3(1, 12, 11)
 
 [node name="player" parent="interactables" unique_id=1512140399 instance=ExtResource("1_6iamk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9423361, 2.3000002, 9.722919)
-collision_layer = 2
+mass = 0.01
 MAXIMUM_HOLDING_DISTANCE = 6.0
 MAXIMUM_HELD_OBJECTS = 1
 
@@ -64,11 +64,16 @@ MAXIMUM_HELD_OBJECTS = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.18614, 0.9999981, 5.081418)
 
 [node name="box2" parent="interactables" unique_id=2084637898 instance=ExtResource("2_nsrm0")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.0844774, 1.4999989, 5.2973857)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0844774, 1.4999989, 5.2973857)
+mass = 8.0
+sizing = Vector3(2, 2, 2)
 
 [node name="box3" parent="interactables" unique_id=696765251 instance=ExtResource("2_nsrm0")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -2.9177785, 1.9999989, 0.95194006)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9177785, 1.9999989, 0.95194006)
 mass = 1000.0
+sizing = Vector3(3, 3, 3)
+auto_weight = false
 
 [node name="win_zone" parent="interactables" unique_id=15871483 instance=ExtResource("4_x42e6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -17)
+change_scene = "res://scenes/menus/meta_menu.tscn"
