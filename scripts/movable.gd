@@ -19,25 +19,21 @@ var state: STATES = STATES.UNHELD
 
 @onready var collision_shape: CollisionShape3D = $CollisionShape3D
 @onready var mesh_instance: MeshInstance3D = $MeshInstance3D
+@onready var push_off_area: CollisionShape3D = $Area3D/CollisionShape3D
 
 @export var sizing: Vector3 = Vector3(1, 1, 1)
 @export var auto_weight = true
 
 
 
-
-
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	collision_shape.scale = sizing
 	mesh_instance.scale = sizing
+	push_off_area.scale = sizing * 0.9
 	if auto_weight: mass = sizing.x * sizing.y * sizing.z
 	change_state(STATES.UNHELD, null)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		collision_shape.scale = sizing
