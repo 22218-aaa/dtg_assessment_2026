@@ -14,8 +14,8 @@ radius = 0.45
 [sub_resource type="LabelSettings" id="LabelSettings_yautc"]
 font_size = 32
 
-[node name="player" type="RigidBody3D" unique_id=1512140399 node_paths=PackedStringArray("camera", "object_detector", "held_object_point", "flat_rotation", "label")]
-collision_layer = 2
+[node name="player" type="RigidBody3D" unique_id=1512140399 node_paths=PackedStringArray("camera", "object_detector", "held_object_point", "flat_rotation", "label", "debug_label")]
+collision_layer = 10
 collision_mask = 5
 axis_lock_angular_x = true
 axis_lock_angular_y = true
@@ -26,7 +26,8 @@ camera = NodePath("flat_rotation/Camera3D")
 object_detector = NodePath("flat_rotation/Camera3D/object_detector")
 held_object_point = NodePath("flat_rotation/Camera3D/held_object_point")
 flat_rotation = NodePath("flat_rotation")
-label = NodePath("Control/Label")
+label = NodePath("Control/VBoxContainer/Label")
+debug_label = NodePath("Control/VBoxContainer/Label2")
 MINIMUM_HOLDING_DISTANCE = 0.0
 metadata/_edit_group_ = true
 
@@ -76,12 +77,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Control" unique_id=387440607]
-layout_mode = 1
-offset_left = -944.0
-offset_top = -520.0
-offset_right = -720.0
-offset_bottom = -475.0
+[node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=1146013135]
+layout_mode = 0
+offset_left = -950.0
+offset_top = -530.0
+offset_right = -667.0
+offset_bottom = -347.0
+
+[node name="Label" type="Label" parent="Control/VBoxContainer" unique_id=387440607]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_yautc")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="Control/VBoxContainer" unique_id=1321992583]
+layout_mode = 2
 label_settings = SubResource("LabelSettings_yautc")
 metadata/_edit_use_anchors_ = true
 

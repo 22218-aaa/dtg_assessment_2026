@@ -17,9 +17,13 @@ enum STATES {
 var state: STATES = STATES.UNHELD
 
 
-@onready var collision_shape: CollisionShape3D = $CollisionShape3D
-@onready var mesh_instance: MeshInstance3D = $MeshInstance3D
-@onready var push_off_area: CollisionShape3D = $Area3D/CollisionShape3D
+@export var collider: CollisionShape3D
+@export var mesh_instance: MeshInstance3D
+@export var push_off_area: CollisionShape3D
+
+@onready var collider_shape := collider.shape as BoxShape3D
+@onready var mesh_instance_shape := mesh_instance.mesh as BoxMesh
+@onready var push_off_area_shape := push_off_area.shape as BoxShape3D
 
 @export var sizing: Vector3 = Vector3(1, 1, 1)
 @export var auto_weight = true
@@ -27,17 +31,22 @@ var state: STATES = STATES.UNHELD
 
 
 func _ready() -> void:
-	collision_shape.scale = sizing
-	mesh_instance.scale = sizing
-	push_off_area.scale = sizing * 0.9
+	scale = sizing
+	
+	#collider_shape.size = sizing
+	#mesh_instance_shape.size = sizing
+	#push_off_area_shape.size = sizing * 0.9
 	if auto_weight: mass = sizing.x * sizing.y * sizing.z
 	change_state(STATES.UNHELD, null)
 
 
 func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
-		collision_shape.scale = sizing
-		mesh_instance.scale = sizing
+		scale = sizing
+		
+		#collider_shape.size = sizing
+		#mesh_instance_shape.size = sizing
+		#push_off_area_shape.size = sizing * 0.9
 	else:
 		eject(delta)
 		match state: 

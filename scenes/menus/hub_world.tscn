@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://gqggds5tu71r"]
+
+[ext_resource type="PackedScene" uid="uid://daewcgbdysr28" path="res://scenes/objects/death_zone.tscn" id="1_6fy4q"]
+[ext_resource type="PackedScene" uid="uid://bcxprlld78jga" path="res://scenes/objects/player.tscn" id="2_6060s"]
+[ext_resource type="PackedScene" uid="uid://ccpwjdyct6syf" path="res://scenes/objects/box.tscn" id="3_f0qm8"]
+[ext_resource type="PackedScene" uid="uid://cvru3qrdwbht0" path="res://scenes/objects/win_zone.tscn" id="4_6060s"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fi0dp"]
+
+[sub_resource type="Sky" id="Sky_yautc"]
+sky_material = SubResource("ProceduralSkyMaterial_fi0dp")
+
+[sub_resource type="Environment" id="Environment_3l0iv"]
+background_mode = 2
+sky = SubResource("Sky_yautc")
+
+[node name="Node3D" type="Node3D" unique_id=110924967]
+
+[node name="lighting" type="Node" parent="." unique_id=233319860]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="lighting" unique_id=1790388155]
+environment = SubResource("Environment_3l0iv")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="lighting" unique_id=637276753]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.68399, 0)
+omni_range = 2000.0
+omni_attenuation = 10.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="lighting" unique_id=1772030503]
+transform = Transform3D(0.9027806, 0.07255633, -0.42393735, -0.17093791, 0.96500623, -0.19885513, 0.39467397, 0.2519895, 0.8835914, 0, 17.80244, 0)
+
+[node name="terrain" type="CSGCombiner3D" parent="." unique_id=1588843043]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="terrain" unique_id=601596501]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.404175)
+size = Vector3(11, 1, 32)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="terrain" unique_id=1227381245]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 1.8086548, -21.25778)
+size = Vector3(11, 4.6173096, 32)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="terrain" unique_id=2127669599]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.11433, 1.8086548, -21.25778)
+size = Vector3(11, 4.6173096, 32)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="terrain" unique_id=1857173555]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 14, -32)
+size = Vector3(11, 5, 10)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="terrain" unique_id=1383826953]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.925867, 0.5071106, -13.341032)
+size = Vector3(23.343994, 2.0142212, 47.833496)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="terrain" unique_id=1705707845]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9021358, 0.5, -27.257782)
+size = Vector3(7, 2, 14)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="terrain" unique_id=244531077]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9021358, 1, -39.640694)
+size = Vector3(7, 3, 14)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="terrain" unique_id=855578503]
+transform = Transform3D(1, 0, 0, 0, 0.99947256, 0.032474868, 0, -0.032474868, 0.99947256, -4.778101, 9.145889, 13.205484)
+size = Vector3(35.944946, 19.291779, 5.2250824)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="terrain" unique_id=1698413953]
+transform = Transform3D(0.25881907, 0.03136831, -0.9654164, 0, 0.99947256, 0.032474868, 0.9659258, -0.008405115, 0.25868255, -26.00444, 9.145889, -4.0109673)
+size = Vector3(39.70752, 19.291779, 5.2250824)
+
+[node name="interactables" type="Node" parent="." unique_id=765402532]
+
+[node name="death_zone3" parent="interactables" unique_id=1153127341 instance=ExtResource("1_6fy4q")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 6, 12)
+sizing = Vector3(1, 12, 11)
+
+[node name="player" parent="interactables" unique_id=1512140399 instance=ExtResource("2_6060s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9423361, 2.3000002, 7.7652073)
+MAXIMUM_HOLDING_DISTANCE = 6.0
+MAXIMUM_HELD_OBJECTS = 5
+
+[node name="box" parent="interactables" unique_id=2073704069 instance=ExtResource("3_f0qm8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.18614, 0.9999981, 5.081418)
+
+[node name="box2" parent="interactables" unique_id=1879063158 instance=ExtResource("3_f0qm8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.508549, 5.1173053, -25.231564)
+mass = 8.0
+sizing = Vector3(2, 2, 2)
+
+[node name="box3" parent="interactables" unique_id=1718472720 instance=ExtResource("3_f0qm8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.160003, 3.0142202, -12.192787)
+mass = 1000.0
+sizing = Vector3(3, 3, 3)
+auto_weight = false
+
+[node name="win_zone" parent="." unique_id=15871483 instance=ExtResource("4_6060s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3.5, -39)
+change_scene = "res://scenes/levels/level_1.tscn"
+
+[node name="Label3D" type="Label3D" parent="win_zone" unique_id=1373379973]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
+billboard = 1
+text = "LEVEL 1"
+font_size = 256
+
+[node name="win_zone3" parent="." unique_id=2005684401 instance=ExtResource("4_6060s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.512379, 3.5, 4.99763)
+change_scene = "res://scenes/menus/meta_menu.tscn"
+
+[node name="Label3D" type="Label3D" parent="win_zone3" unique_id=1205149096]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
+billboard = 1
+text = "RETURN"
+font_size = 256
+
+[node name="win_zone2" parent="." unique_id=1992670320 instance=ExtResource("4_6060s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 17.5, -32)
+change_scene = "res://scenes/levels/level_1.tscn"
+
+[node name="Label3D" type="Label3D" parent="win_zone2" unique_id=1425796073]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
+billboard = 1
+text = "LEVEL 1
+AGAIN"
+font_size = 256

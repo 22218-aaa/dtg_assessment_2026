@@ -39,4 +39,4 @@ offset_right = 1560.0
 offset_bottom = 840.0
 text = "hub world
 menu"
-change_scene = "res://scenes/menus/level_menu.tscn"
+change_scene = "res://scenes/menus/hub_world.tscn"

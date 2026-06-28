@@ -7,6 +7,7 @@ extends RigidBody3D
 @export var held_object_point: Marker3D
 @export var flat_rotation: Marker3D
 @export var label: Label
+@export var debug_label: Label
 
 var held_objects: Array = []
 
@@ -17,7 +18,7 @@ var on_floor: bool = true
 
 const ACCELLERATION = 50.0
 const FRICTION = 10.0
-const JUMP_VELOCITY = 6
+const JUMP_VELOCITY = 7
 const sensitivity = 0.3
 
 @export_category("variables")
@@ -73,6 +74,7 @@ func _physics_process(delta: float) -> void:
 	holding_logic(delta)
 	#pushing_logic(delta)
 	label.text = str(len(held_objects)) + "/" + str(MAXIMUM_HELD_OBJECTS)
+	debug_label.text = str(linear_velocity.round())
 	# + "\n" + \
 	#str(rotation_degrees) + "\n" + \
 	#str(flat_rotation.rotation_degrees) + "\n" + \
