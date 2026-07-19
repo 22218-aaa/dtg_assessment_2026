@@ -17,6 +17,7 @@ material = SubResource("StandardMaterial3D_ks2v0")
 
 [node name="box" type="RigidBody3D" unique_id=2073704069 node_paths=PackedStringArray("collider", "mesh_instance", "push_off_area")]
 collision_layer = 5
+mass = 10.0
 gravity_scale = 2.0
 linear_damp_mode = 1
 angular_damp_mode = 1
@@ -24,7 +25,7 @@ angular_damp = 0.5
 script = ExtResource("1_ks2v0")
 collider = NodePath("CollisionShape3D")
 mesh_instance = NodePath("MeshInstance3D")
-push_off_area = NodePath("Area3D/CollisionShape3D")
+push_off_area = NodePath("Area3D")
 auto_weight = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=207438645]
@@ -35,11 +36,12 @@ material_override = SubResource("StandardMaterial3D_v45ci")
 mesh = SubResource("BoxMesh_c2ln5")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=2111868940]
+transform = Transform3D(0.95, 0, 0, 0, 0.95, 0, 0, 0, 0.95, 0, 0, 0)
 collision_layer = 0
-collision_mask = 12
+collision_mask = 6
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1581666562]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
+transform = Transform3D(0.95, 0, 0, 0, 0.95, 0, 0, 0, 0.95, 0, 0, 0)
 shape = SubResource("BoxShape3D_ks2v0")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

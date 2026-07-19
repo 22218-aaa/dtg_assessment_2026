@@ -38,7 +38,7 @@ size = Vector3(11, 1, 32)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="terrain" unique_id=727914451]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.0219727, -7)
-size = Vector3(11, 6.9560547, 2)
+size = Vector3(11, 6.98, 2)
 
 [node name="interactables" type="Node" parent="." unique_id=2136838379]
 
@@ -55,12 +55,13 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 6
 sizing = Vector3(1, 12, 11)
 
 [node name="player" parent="interactables" unique_id=1512140399 instance=ExtResource("1_6iamk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9423361, 2.3000002, -2.3733273)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9423361, 2.3000002, 4.6212225)
 MAXIMUM_HOLDING_DISTANCE = 6.0
 MAXIMUM_HELD_OBJECTS = 1
 
 [node name="box" parent="interactables" unique_id=2073704069 instance=ExtResource("2_nsrm0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.18614, 0.9999981, 5.081418)
+mass = 1.0
 auto_weight = true
 
 [node name="box2" parent="interactables" unique_id=2084637898 instance=ExtResource("2_nsrm0")]

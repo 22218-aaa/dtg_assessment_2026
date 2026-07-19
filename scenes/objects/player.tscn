@@ -15,7 +15,7 @@ radius = 0.45
 font_size = 32
 
 [node name="player" type="RigidBody3D" unique_id=1512140399 node_paths=PackedStringArray("camera", "object_detector", "held_object_point", "flat_rotation", "label", "debug_label")]
-collision_layer = 10
+collision_layer = 2
 collision_mask = 5
 axis_lock_angular_x = true
 axis_lock_angular_y = true
