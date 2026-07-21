@@ -19,11 +19,8 @@ var state: STATES = STATES.UNHELD
 
 @export var collider: CollisionShape3D
 @export var mesh_instance: MeshInstance3D
-@export var push_off_area: CollisionShape3D
+@export var push_off_area: Area3D
 
-@onready var collider_shape := collider.shape as BoxShape3D
-@onready var mesh_instance_shape := mesh_instance.mesh as BoxMesh
-@onready var push_off_area_shape := push_off_area.shape as BoxShape3D
 
 @export var sizing: Vector3 = Vector3(1, 1, 1)
 @export var auto_weight = true
@@ -31,22 +28,22 @@ var state: STATES = STATES.UNHELD
 
 
 func _ready() -> void:
-	scale = sizing
+	#scale = sizing
 	
-	#collider_shape.size = sizing
-	#mesh_instance_shape.size = sizing
-	#push_off_area_shape.size = sizing * 0.9
+	collider.scale = sizing
+	mesh_instance.scale = sizing
+	push_off_area.scale = sizing * 0.98
 	if auto_weight: mass = sizing.x * sizing.y * sizing.z
 	change_state(STATES.UNHELD, null)
 
 
 func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
-		scale = sizing
+		#scale = sizing
 		
-		#collider_shape.size = sizing
-		#mesh_instance_shape.size = sizing
-		#push_off_area_shape.size = sizing * 0.9
+		collider.scale = sizing
+		mesh_instance.scale = sizing
+		push_off_area.scale = sizing * 0.98
 	else:
 		eject(delta)
 		match state: 
@@ -75,6 +72,8 @@ func change_state(new_state, new_target):
 func eject(delta):
 	if in_body:
 		for item in in_body:
+			if item.name == "player":
+				item.position += (item.global_position - global_position).normalized()
 			item.linear_velocity += (item.global_position - global_position) * 200 * delta
 
 
