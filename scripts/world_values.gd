@@ -1,0 +1,9 @@
+extends Node3D
+
+enum COMPLETION_STATES{
+	UNBEATEN,
+	BEATEN,
+	COMPLETED
+}
+
+var completion_state: COMPLETION_STATES

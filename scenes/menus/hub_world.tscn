@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://gqggds5tu71r"]
 
 [ext_resource type="PackedScene" uid="uid://daewcgbdysr28" path="res://scenes/objects/death_zone.tscn" id="1_6fy4q"]
+[ext_resource type="Script" uid="uid://dkf6dr8hg27wx" path="res://scripts/world_values.gd" id="1_f0qm8"]
 [ext_resource type="PackedScene" uid="uid://bcxprlld78jga" path="res://scenes/objects/player.tscn" id="2_6060s"]
 [ext_resource type="PackedScene" uid="uid://ccpwjdyct6syf" path="res://scenes/objects/box.tscn" id="3_f0qm8"]
 [ext_resource type="PackedScene" uid="uid://cvru3qrdwbht0" path="res://scenes/objects/win_zone.tscn" id="4_6060s"]
@@ -15,6 +16,7 @@ background_mode = 2
 sky = SubResource("Sky_yautc")
 
 [node name="Node3D" type="Node3D" unique_id=110924967]
+script = ExtResource("1_f0qm8")
 
 [node name="lighting" type="Node" parent="." unique_id=233319860]
 
@@ -83,12 +85,12 @@ MAXIMUM_HELD_OBJECTS = 5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.18614, 0.9999981, 5.081418)
 
 [node name="box2" parent="interactables" unique_id=1879063158 instance=ExtResource("3_f0qm8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.508549, 5.1173053, -25.231564)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -17.508549, 5.1173053, -25.231564)
 mass = 8.0
 sizing = Vector3(2, 2, 2)
 
 [node name="box3" parent="interactables" unique_id=1718472720 instance=ExtResource("3_f0qm8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.160003, 3.0142202, -12.192787)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -7.160003, 3.0142202, -12.192787)
 mass = 1000.0
 sizing = Vector3(3, 3, 3)
 auto_weight = false

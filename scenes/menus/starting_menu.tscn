@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://hqyf4yiudppw"]
+
+[ext_resource type="PackedScene" uid="uid://bnvwu4r3spj4w" path="res://scenes/menus/button.tscn" id="1_awdct"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6qpea"]
+font_size = 128
+
+[node name="starting_menu" type="Control" unique_id=689179291]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="." unique_id=1557004156]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.059000004
+anchor_right = 1.0
+anchor_bottom = 0.22100002
+offset_top = 0.27999496
+offset_bottom = 0.32009888
+grow_horizontal = 2
+grow_vertical = 2
+text = "game"
+label_settings = SubResource("LabelSettings_6qpea")
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=926198259]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.416
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -0.27999878
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=935464044]
+custom_minimum_size = Vector2(512, 600)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Button" parent="CenterContainer/VBoxContainer" unique_id=2020999093 instance=ExtResource("1_awdct")]
+layout_mode = 2
+text = "start"
+
+[node name="Button2" parent="CenterContainer/VBoxContainer" unique_id=1153249032 instance=ExtResource("1_awdct")]
+layout_mode = 2
+text = "quit"
+change_scene = "res://scenes/menus/hub_world.tscn"
