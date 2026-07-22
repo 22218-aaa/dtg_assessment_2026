@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bcxprlld78jga" path="res://scenes/objects/player.tscn" id="1_6iamk"]
 [ext_resource type="PackedScene" uid="uid://ccpwjdyct6syf" path="res://scenes/objects/box.tscn" id="2_nsrm0"]
 [ext_resource type="PackedScene" uid="uid://daewcgbdysr28" path="res://scenes/objects/death_zone.tscn" id="2_x42e6"]
-[ext_resource type="PackedScene" uid="uid://cvru3qrdwbht0" path="res://scenes/objects/win_zone.tscn" id="4_x42e6"]
+[ext_resource type="PackedScene" uid="uid://cvru3qrdwbht0" path="res://scenes/objects/scene_changer.tscn" id="4_x42e6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x42e6"]
 

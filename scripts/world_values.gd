@@ -1,9 +1,3 @@
 extends Node3D
 
-enum COMPLETION_STATES{
-	UNBEATEN,
-	BEATEN,
-	COMPLETED
-}
-
-var completion_state: COMPLETION_STATES
+@export var level_information: Dictionary[String, level_data]

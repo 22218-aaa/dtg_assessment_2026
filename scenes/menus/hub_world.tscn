@@ -4,7 +4,8 @@
 [ext_resource type="Script" uid="uid://dkf6dr8hg27wx" path="res://scripts/world_values.gd" id="1_f0qm8"]
 [ext_resource type="PackedScene" uid="uid://bcxprlld78jga" path="res://scenes/objects/player.tscn" id="2_6060s"]
 [ext_resource type="PackedScene" uid="uid://ccpwjdyct6syf" path="res://scenes/objects/box.tscn" id="3_f0qm8"]
-[ext_resource type="PackedScene" uid="uid://cvru3qrdwbht0" path="res://scenes/objects/win_zone.tscn" id="4_6060s"]
+[ext_resource type="PackedScene" uid="uid://cvru3qrdwbht0" path="res://scenes/objects/scene_changer.tscn" id="4_6060s"]
+[ext_resource type="Script" uid="uid://cdg5daaxiqqjq" path="res://scripts/level_entrance.gd" id="5_fi0dp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fi0dp"]
 
@@ -95,31 +96,36 @@ mass = 1000.0
 sizing = Vector3(3, 3, 3)
 auto_weight = false
 
-[node name="win_zone" parent="." unique_id=15871483 instance=ExtResource("4_6060s")]
+[node name="level_entrance" type="Node3D" parent="." unique_id=1712179055]
+script = ExtResource("5_fi0dp")
+level_name = null
+
+[node name="scene_changer" parent="level_entrance" unique_id=15871483 instance=ExtResource("4_6060s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3.5, -39)
 change_scene = "res://scenes/levels/level_1.tscn"
 
-[node name="Label3D" type="Label3D" parent="win_zone" unique_id=1373379973]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
+[node name="Label3D" type="Label3D" parent="level_entrance" unique_id=1373379973]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 8, -39)
 billboard = 1
 text = "LEVEL 1"
 font_size = 256
+vertical_alignment = 2
 
-[node name="win_zone3" parent="." unique_id=2005684401 instance=ExtResource("4_6060s")]
+[node name="scene_changer" parent="." unique_id=2005684401 instance=ExtResource("4_6060s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.512379, 3.5, 4.99763)
-change_scene = "res://scenes/menus/meta_menu.tscn"
+change_scene = "res://scenes/menus/starting_menu.tscn"
 
-[node name="Label3D" type="Label3D" parent="win_zone3" unique_id=1205149096]
+[node name="Label3D" type="Label3D" parent="scene_changer" unique_id=1205149096]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
 billboard = 1
 text = "RETURN"
 font_size = 256
 
-[node name="win_zone2" parent="." unique_id=1992670320 instance=ExtResource("4_6060s")]
+[node name="scene_changer2" parent="." unique_id=1992670320 instance=ExtResource("4_6060s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 17.5, -32)
 change_scene = "res://scenes/levels/level_1.tscn"
 
-[node name="Label3D" type="Label3D" parent="win_zone2" unique_id=1425796073]
+[node name="Label3D" type="Label3D" parent="scene_changer2" unique_id=1425796073]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
 billboard = 1
 text = "LEVEL 1

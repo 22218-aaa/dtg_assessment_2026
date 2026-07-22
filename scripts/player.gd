@@ -37,7 +37,7 @@ func _input(event):
 		camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, -90, 90)
 	if InputEvent:
 		if Input.is_action_just_pressed("escape"):
-			get_tree().reload_current_scene()
+			get_tree().quit()
 		if Input.is_action_just_pressed("select"):
 			if object_detector.is_colliding():
 				var object = object_detector.get_collider()

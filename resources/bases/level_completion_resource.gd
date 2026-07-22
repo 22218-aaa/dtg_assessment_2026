@@ -1,5 +1,7 @@
+class_name level_data
 extends Resource
 
+var current_level: String
 
 
 enum COMPLETION_STATES{
@@ -9,6 +11,5 @@ enum COMPLETION_STATES{
 }
 
 
-var entrance: String
 @export var completion_state: COMPLETION_STATES
 @export var completion_types: Dictionary[String, bool]

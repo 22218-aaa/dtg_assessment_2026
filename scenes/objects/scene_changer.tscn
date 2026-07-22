@@ -12,7 +12,7 @@ albedo_color = Color(0, 0.5882353, 1, 0.63529414)
 [sub_resource type="BoxMesh" id="BoxMesh_nsrm0"]
 material = SubResource("ORMMaterial3D_x42e6")
 
-[node name="win_zone" type="Area3D" unique_id=15871483]
+[node name="scene_changer" type="Area3D" unique_id=15871483]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_6ih67")
@@ -22,6 +22,7 @@ sizing = Vector3(5, 2, 5)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=183014019]
 transform = Transform3D(5, 0, 0, 0, 2, 0, 0, 0, 5, 0, 0, 0)
 shape = SubResource("BoxShape3D_nsrm0")
+debug_color = Color(0.8634087, 0.00062627735, 0.86869925, 0.41960785)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=431626464]
 transform = Transform3D(5, 0, 0, 0, 2, 0, 0, 0, 5, 0, 0, 0)

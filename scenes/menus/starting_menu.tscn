@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://hqyf4yiudppw"]
 
-[ext_resource type="PackedScene" uid="uid://bnvwu4r3spj4w" path="res://scenes/menus/button.tscn" id="1_awdct"]
+[ext_resource type="PackedScene" uid="uid://bnvwu4r3spj4w" path="res://scenes/objects/button.tscn" id="1_awdct"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6qpea"]
 font_size = 128
