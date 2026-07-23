@@ -10,10 +10,19 @@ var level_information: level_data
 
 
 func _ready() -> void:
+	print()
+	print("level entrance script: ")
+	print(global.level_information)
+	print(level_name)
 	level_information = global.level_information[level_name]
 	var label_text = ""
-	label_text = level_name + "\n"
-	for item in level_information
+	label_text = level_name
+	for item in level_information.level_information:
+		if level_information.level_information[item] == true:
+			label_text += "\n" + item + ": [✓]"
+		else:
+			label_text += "\n" + item + ": [ ]"
+	label.text = label_text
 
 
 func _process(_delta: float) -> void:

@@ -10,6 +10,6 @@ enum COMPLETION_STATES{
 	COMPLETED
 }
 
-
+@export var level_name: String = ""
 @export var completion_state: COMPLETION_STATES
-@export var completion_types: Dictionary[String, bool]
+@export var completion_types: Dictionary[String, bool] = {}

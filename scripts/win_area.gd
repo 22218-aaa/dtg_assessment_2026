@@ -22,5 +22,5 @@ func _process(_delta: float) -> void:
 
 
 func _on_body_entered(_body: Node3D) -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	#Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	get_tree().change_scene_to_file(change_scene)

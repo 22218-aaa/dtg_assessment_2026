@@ -81,4 +81,4 @@ auto_weight = false
 
 [node name="win_zone" parent="interactables" unique_id=15871483 instance=ExtResource("4_x42e6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -17)
-change_scene = "res://scenes/menus/meta_menu.tscn"
+change_scene = "res://scenes/menus/hub_world.tscn"
