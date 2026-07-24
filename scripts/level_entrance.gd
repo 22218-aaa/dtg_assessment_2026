@@ -27,4 +27,5 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
-		scene_changer.mesh_instance.set_albedo()
+		label.text = level_name
+		#scene_changer.mesh_instance.mesh.material.set_albedo(level_information.completion_state_colours[level_information.completion_state])
