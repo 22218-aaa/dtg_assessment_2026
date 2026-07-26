@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://gqggds5tu71r"]
 
 [ext_resource type="PackedScene" uid="uid://daewcgbdysr28" path="res://scenes/objects/death_zone.tscn" id="1_6fy4q"]
-[ext_resource type="Script" uid="uid://dkf6dr8hg27wx" path="res://scripts/world_values.gd" id="1_f0qm8"]
+[ext_resource type="Script" uid="uid://shn6vvinj8il" path="res://scripts/level_data_setter.gd" id="1_fi0dp"]
 [ext_resource type="PackedScene" uid="uid://bcxprlld78jga" path="res://scenes/objects/player.tscn" id="2_6060s"]
 [ext_resource type="PackedScene" uid="uid://ccpwjdyct6syf" path="res://scenes/objects/box.tscn" id="3_f0qm8"]
 [ext_resource type="PackedScene" uid="uid://cvru3qrdwbht0" path="res://scenes/objects/scene_changer.tscn" id="4_6060s"]
@@ -16,9 +16,9 @@ sky_material = SubResource("ProceduralSkyMaterial_fi0dp")
 background_mode = 2
 sky = SubResource("Sky_yautc")
 
-[node name="Node3D" type="Node3D" unique_id=110924967]
-script = ExtResource("1_f0qm8")
-level_entries = [true, 15, "bdsvhsdfhsd"]
+[node name="hub_world" type="Node3D" unique_id=110924967]
+process_priority = 1
+script = ExtResource("1_fi0dp")
 
 [node name="lighting" type="Node" parent="." unique_id=233319860]
 
@@ -57,12 +57,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.925867, 0.5071106, -13.34
 size = Vector3(23.343994, 2.0142212, 47.833496)
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="terrain" unique_id=1705707845]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9021358, 0.5, -27.257782)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, -27)
 size = Vector3(7, 2, 14)
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="terrain" unique_id=244531077]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9021358, 1, -39.640694)
-size = Vector3(7, 3, 14)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -40.5)
+size = Vector3(7, 2, 13)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="terrain" unique_id=855578503]
 transform = Transform3D(1, 0, 0, 0, 0.99947256, 0.032474868, 0, -0.032474868, 0.99947256, -4.778101, 9.145889, 13.205484)
@@ -92,22 +92,22 @@ mass = 8.0
 sizing = Vector3(2, 2, 2)
 
 [node name="box3" parent="interactables" unique_id=1718472720 instance=ExtResource("3_f0qm8")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -7.160003, 3.0142202, -12.192787)
+transform = Transform3D(2.718569, 1.268614, 0, -1.268614, 2.718569, 0, 0, 0, 2.9999998, -6.358703, 7.2174616, -12.192787)
 mass = 1000.0
 sizing = Vector3(3, 3, 3)
 auto_weight = false
 
 [node name="level_entrance" type="Node3D" parent="." unique_id=1712179055]
 process_priority = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -42)
 script = ExtResource("5_fi0dp")
 level_name = "wall"
 
 [node name="scene_changer" parent="level_entrance" unique_id=15871483 instance=ExtResource("4_6060s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3.5, -39)
 change_scene = "res://scenes/levels/level_1.tscn"
 
 [node name="Label3D" type="Label3D" parent="level_entrance" unique_id=1373379973]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 8, -39)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
 billboard = 1
 text = "wall"
 font_size = 256
