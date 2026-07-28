@@ -2,10 +2,21 @@
 
 [ext_resource type="PackedScene" uid="uid://daewcgbdysr28" path="res://scenes/objects/death_zone.tscn" id="1_6fy4q"]
 [ext_resource type="Script" uid="uid://shn6vvinj8il" path="res://scripts/level_data_setter.gd" id="1_fi0dp"]
+[ext_resource type="Script" uid="uid://cy6ml2shb4kll" path="res://resources/bases/level_completion_resource.gd" id="2_3l0iv"]
 [ext_resource type="PackedScene" uid="uid://bcxprlld78jga" path="res://scenes/objects/player.tscn" id="2_6060s"]
 [ext_resource type="PackedScene" uid="uid://ccpwjdyct6syf" path="res://scenes/objects/box.tscn" id="3_f0qm8"]
 [ext_resource type="PackedScene" uid="uid://cvru3qrdwbht0" path="res://scenes/objects/scene_changer.tscn" id="4_6060s"]
 [ext_resource type="Script" uid="uid://cdg5daaxiqqjq" path="res://scripts/level_entrance.gd" id="5_fi0dp"]
+
+[sub_resource type="Resource" id="Resource_a2ery"]
+script = ExtResource("2_3l0iv")
+level_name = "wall"
+completion_types = Dictionary[String, bool]({
+"flight!?": false,
+"the normal route": false,
+"wall collision weirdness": false
+})
+metadata/_custom_type_script = "uid://cy6ml2shb4kll"
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fi0dp"]
 
@@ -19,6 +30,7 @@ sky = SubResource("Sky_yautc")
 [node name="hub_world" type="Node3D" unique_id=110924967]
 process_priority = 1
 script = ExtResource("1_fi0dp")
+level_entries = Array[ExtResource("2_3l0iv")]([SubResource("Resource_a2ery")])
 
 [node name="lighting" type="Node" parent="." unique_id=233319860]
 
@@ -41,8 +53,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.404175)
 size = Vector3(11, 1, 32)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="terrain" unique_id=1227381245]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 1.8086548, -21.25778)
-size = Vector3(11, 4.6173096, 32)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 2.5, -21.258)
+size = Vector3(11, 2, 32)
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="terrain" unique_id=2127669599]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.11433, 1.8086548, -21.25778)
@@ -75,8 +87,8 @@ size = Vector3(39.70752, 19.291779, 5.2250824)
 [node name="interactables" type="Node" parent="." unique_id=765402532]
 
 [node name="death_zone3" parent="interactables" unique_id=1153127341 instance=ExtResource("1_6fy4q")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 6, 12)
-sizing = Vector3(1, 12, 11)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -30, 0)
+sizing = Vector3(200, 1, 200)
 
 [node name="player" parent="interactables" unique_id=1512140399 instance=ExtResource("2_6060s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9423361, 2.3000002, 7.7652073)
@@ -87,18 +99,17 @@ MAXIMUM_HELD_OBJECTS = 5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.18614, 0.9999981, 5.081418)
 
 [node name="box2" parent="interactables" unique_id=1879063158 instance=ExtResource("3_f0qm8")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -17.508549, 5.1173053, -25.231564)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.508549, 5.1173053, -25.231564)
 mass = 8.0
 sizing = Vector3(2, 2, 2)
 
 [node name="box3" parent="interactables" unique_id=1718472720 instance=ExtResource("3_f0qm8")]
-transform = Transform3D(2.718569, 1.268614, 0, -1.268614, 2.718569, 0, 0, 0, 2.9999998, -6.358703, 7.2174616, -12.192787)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.276478, 3.5078123, -12.192787)
 mass = 1000.0
 sizing = Vector3(3, 3, 3)
 auto_weight = false
 
 [node name="level_entrance" type="Node3D" parent="." unique_id=1712179055]
-process_priority = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -42)
 script = ExtResource("5_fi0dp")
 level_name = "wall"
@@ -113,23 +124,4 @@ text = "wall"
 font_size = 256
 vertical_alignment = 2
 
-[node name="scene_changer" parent="." unique_id=2005684401 instance=ExtResource("4_6060s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.512379, 3.5, 4.99763)
-change_scene = "res://scenes/menus/starting_menu.tscn"
-
-[node name="Label3D" type="Label3D" parent="scene_changer" unique_id=1205149096]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
-billboard = 1
-text = "RETURN"
-font_size = 256
-
-[node name="scene_changer2" parent="." unique_id=1992670320 instance=ExtResource("4_6060s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 17.5, -32)
-change_scene = "res://scenes/levels/level_1.tscn"
-
-[node name="Label3D" type="Label3D" parent="scene_changer2" unique_id=1425796073]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
-billboard = 1
-text = "LEVEL 1
-AGAIN"
-font_size = 256
+[connection signal="body_entered" from="level_entrance/scene_changer" to="level_entrance" method="_on_scene_changer_body_entered"]

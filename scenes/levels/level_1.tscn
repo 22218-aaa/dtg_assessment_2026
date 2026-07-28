@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://ctxwhxvk4rmvm"]
 
 [ext_resource type="PackedScene" uid="uid://bcxprlld78jga" path="res://scenes/objects/player.tscn" id="1_6iamk"]
+[ext_resource type="Script" uid="uid://do4hukjnifjqc" path="res://scripts/level_1_achievement_tracker.gd" id="1_sk5k4"]
 [ext_resource type="PackedScene" uid="uid://ccpwjdyct6syf" path="res://scenes/objects/box.tscn" id="2_nsrm0"]
+[ext_resource type="Script" uid="uid://yu64w4tpymfd" path="res://scripts/achievement_tracking_helper.gd" id="2_oc4kc"]
 [ext_resource type="PackedScene" uid="uid://daewcgbdysr28" path="res://scenes/objects/death_zone.tscn" id="2_x42e6"]
 [ext_resource type="PackedScene" uid="uid://cvru3qrdwbht0" path="res://scenes/objects/scene_changer.tscn" id="4_x42e6"]
 
@@ -14,7 +16,11 @@ sky_material = SubResource("ProceduralSkyMaterial_x42e6")
 background_mode = 2
 sky = SubResource("Sky_x42e6")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_s8va5"]
+size = Vector3(11, 6, 1)
+
 [node name="Node3D" type="Node3D" unique_id=1250394160]
+script = ExtResource("1_sk5k4")
 
 [node name="lighting" type="Node" parent="." unique_id=1141342394]
 
@@ -39,6 +45,14 @@ size = Vector3(11, 1, 32)
 [node name="CSGBox3D2" type="CSGBox3D" parent="terrain" unique_id=727914451]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.0219727, -7)
 size = Vector3(11, 6.98, 2)
+
+[node name="achievement_tracking_helper" type="Area3D" parent="terrain" unique_id=1351094453]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
+script = ExtResource("2_oc4kc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="terrain/achievement_tracking_helper" unique_id=1544447098]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+shape = SubResource("BoxShape3D_s8va5")
 
 [node name="interactables" type="Node" parent="." unique_id=2136838379]
 
@@ -81,4 +95,3 @@ auto_weight = false
 
 [node name="win_zone" parent="interactables" unique_id=15871483 instance=ExtResource("4_x42e6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -17)
-change_scene = "res://scenes/menus/hub_world.tscn"

@@ -43,7 +43,7 @@ func _process(delta: float) -> void:
 		
 		collider.scale = sizing
 		mesh_instance.scale = sizing
-		push_off_area.scale = sizing * 0.98
+		push_off_area.scale = sizing * 0.92
 	else:
 		eject(delta)
 		match state: 

@@ -2,7 +2,7 @@
 
 extends Area3D
 
-@export var change_scene = "res://scenes/menus/meta_menu.tscn"
+@export var change_scene_to = "res://scenes/menus/meta_menu.tscn"
 
 @onready var collision_shape: CollisionShape3D = $CollisionShape3D
 @onready var mesh_instance: MeshInstance3D = $MeshInstance3D
@@ -23,4 +23,8 @@ func _process(_delta: float) -> void:
 
 func _on_body_entered(_body: Node3D) -> void:
 	#Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	get_tree().change_scene_to_file(change_scene)
+	call_deferred("change_scene") # delayed incase it's being used to go into a level
+
+
+func change_scene():
+	get_tree().change_scene_to_file(change_scene_to)

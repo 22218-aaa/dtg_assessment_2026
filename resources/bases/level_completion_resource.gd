@@ -17,6 +17,6 @@ var completion_state_colours = {
 	
 }
 
-#@export var level_name: String = ""
+@export var level_name: String = ""
 @export var completion_state: COMPLETION_STATES
 @export var completion_types: Dictionary[String, bool] = {}
