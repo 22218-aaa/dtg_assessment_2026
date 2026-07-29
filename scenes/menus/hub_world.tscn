@@ -5,8 +5,7 @@
 [ext_resource type="Script" uid="uid://cy6ml2shb4kll" path="res://resources/bases/level_completion_resource.gd" id="2_3l0iv"]
 [ext_resource type="PackedScene" uid="uid://bcxprlld78jga" path="res://scenes/objects/player.tscn" id="2_6060s"]
 [ext_resource type="PackedScene" uid="uid://ccpwjdyct6syf" path="res://scenes/objects/box.tscn" id="3_f0qm8"]
-[ext_resource type="PackedScene" uid="uid://cvru3qrdwbht0" path="res://scenes/objects/scene_changer.tscn" id="4_6060s"]
-[ext_resource type="Script" uid="uid://cdg5daaxiqqjq" path="res://scripts/level_entrance.gd" id="5_fi0dp"]
+[ext_resource type="PackedScene" uid="uid://fascjv15xl52" path="res://scenes/objects/level_entrance.tscn" id="6_fi0dp"]
 
 [sub_resource type="Resource" id="Resource_a2ery"]
 script = ExtResource("2_3l0iv")
@@ -109,19 +108,5 @@ mass = 1000.0
 sizing = Vector3(3, 3, 3)
 auto_weight = false
 
-[node name="level_entrance" type="Node3D" parent="." unique_id=1712179055]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -42)
-script = ExtResource("5_fi0dp")
-level_name = "wall"
-
-[node name="scene_changer" parent="level_entrance" unique_id=15871483 instance=ExtResource("4_6060s")]
-change_scene = "res://scenes/levels/level_1.tscn"
-
-[node name="Label3D" type="Label3D" parent="level_entrance" unique_id=1373379973]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
-billboard = 1
-text = "wall"
-font_size = 256
-vertical_alignment = 2
-
-[connection signal="body_entered" from="level_entrance/scene_changer" to="level_entrance" method="_on_scene_changer_body_entered"]
+[node name="level_entrance" parent="interactables" unique_id=636574180 instance=ExtResource("6_fi0dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.9999976, -9.0551405)

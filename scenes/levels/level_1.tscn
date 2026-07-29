@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bcxprlld78jga" path="res://scenes/objects/player.tscn" id="1_6iamk"]
 [ext_resource type="Script" uid="uid://do4hukjnifjqc" path="res://scripts/level_1_achievement_tracker.gd" id="1_sk5k4"]
 [ext_resource type="PackedScene" uid="uid://ccpwjdyct6syf" path="res://scenes/objects/box.tscn" id="2_nsrm0"]
-[ext_resource type="Script" uid="uid://yu64w4tpymfd" path="res://scripts/achievement_tracking_helper.gd" id="2_oc4kc"]
+[ext_resource type="PackedScene" uid="uid://e6c2xsjamk0g" path="res://scenes/objects/achievement_tracking_helper.tscn" id="2_sk5k4"]
 [ext_resource type="PackedScene" uid="uid://daewcgbdysr28" path="res://scenes/objects/death_zone.tscn" id="2_x42e6"]
 [ext_resource type="PackedScene" uid="uid://cvru3qrdwbht0" path="res://scenes/objects/scene_changer.tscn" id="4_x42e6"]
 
@@ -16,7 +16,8 @@ sky_material = SubResource("ProceduralSkyMaterial_x42e6")
 background_mode = 2
 sky = SubResource("Sky_x42e6")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_sk5k4"]
+[sub_resource type="LabelSettings" id="LabelSettings_sk5k4"]
+font_size = 48
 
 [node name="Node3D" type="Node3D" unique_id=1250394160]
 script = ExtResource("1_sk5k4")
@@ -45,15 +46,10 @@ size = Vector3(11, 1, 32)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.0219727, -7)
 size = Vector3(11, 6.98, 2)
 
-[node name="achievement_tracking_helper" type="Area3D" parent="terrain" unique_id=1351094453]
+[node name="phasing_tracker" parent="terrain" unique_id=1078506640 instance=ExtResource("2_sk5k4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -7)
-script = ExtResource("2_oc4kc")
-sizing = Vector3(10, 6, 1.5)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="terrain/achievement_tracking_helper" unique_id=1544447098]
-transform = Transform3D(10, 0, 0, 0, 6, 0, 0, 0, 1.5, 0, 0, 0)
-shape = SubResource("BoxShape3D_sk5k4")
-debug_color = Color(1, 1, 0, 0.41960785)
+collision_layer = 0
+collision_mask = 2
 
 [node name="interactables" type="Node" parent="." unique_id=2136838379]
 
@@ -96,3 +92,21 @@ auto_weight = false
 
 [node name="win_zone" parent="interactables" unique_id=15871483 instance=ExtResource("4_x42e6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -17)
+change_scene_to = "res://scenes/menus/hub_world.tscn"
+
+[node name="Label" type="Label" parent="." unique_id=1924621915]
+anchors_preset = -1
+anchor_left = -0.47000003
+anchor_top = 0.41400003
+anchor_right = -0.416
+anchor_bottom = 0.476
+offset_left = 0.4000244
+offset_top = -0.120025635
+offset_right = -0.27996826
+offset_bottom = -0.08001709
+grow_vertical = 0
+text = "yyyy"
+label_settings = SubResource("LabelSettings_sk5k4")
+vertical_alignment = 2
+
+[connection signal="body_entered" from="terrain/phasing_tracker" to="." method="_on_phasing_tracker_body_entered"]

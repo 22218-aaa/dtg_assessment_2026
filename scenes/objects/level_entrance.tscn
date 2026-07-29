@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://fascjv15xl52"]
+
+[ext_resource type="Script" uid="uid://cdg5daaxiqqjq" path="res://scripts/level_entrance.gd" id="1_q2krq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fi0dp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3l0iv"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_a2ery"]
+material = SubResource("StandardMaterial3D_3l0iv")
+
+[node name="level_entrance" type="Node3D" unique_id=636574180]
+script = ExtResource("1_q2krq")
+level_name = "wall"
+level_path = "res://scenes/levels/level_1.tscn"
+sizing = Vector3(5, 1, 5)
+metadata/_edit_group_ = true
+
+[node name="Label3D" type="Label3D" parent="." unique_id=311416660]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
+billboard = 1
+text = "wall"
+font_size = 256
+vertical_alignment = 2
+
+[node name="Area3D" type="Area3D" parent="." unique_id=770010053]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1861747915]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0)
+shape = SubResource("BoxShape3D_fi0dp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D" unique_id=1436165178]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("BoxMesh_a2ery")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
