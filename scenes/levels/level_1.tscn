@@ -16,8 +16,7 @@ sky_material = SubResource("ProceduralSkyMaterial_x42e6")
 background_mode = 2
 sky = SubResource("Sky_x42e6")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_s8va5"]
-size = Vector3(11, 6, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_sk5k4"]
 
 [node name="Node3D" type="Node3D" unique_id=1250394160]
 script = ExtResource("1_sk5k4")
@@ -47,12 +46,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.0219727, -7)
 size = Vector3(11, 6.98, 2)
 
 [node name="achievement_tracking_helper" type="Area3D" parent="terrain" unique_id=1351094453]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -7)
 script = ExtResource("2_oc4kc")
+sizing = Vector3(10, 6, 1.5)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="terrain/achievement_tracking_helper" unique_id=1544447098]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
-shape = SubResource("BoxShape3D_s8va5")
+transform = Transform3D(10, 0, 0, 0, 6, 0, 0, 0, 1.5, 0, 0, 0)
+shape = SubResource("BoxShape3D_sk5k4")
+debug_color = Color(1, 1, 0, 0.41960785)
 
 [node name="interactables" type="Node" parent="." unique_id=2136838379]
 
