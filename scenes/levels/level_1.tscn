@@ -48,8 +48,7 @@ size = Vector3(11, 6.98, 2)
 
 [node name="phasing_tracker" parent="terrain" unique_id=1078506640 instance=ExtResource("2_sk5k4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -7)
-collision_layer = 0
-collision_mask = 2
+sizing = Vector3(10, 6.5, 1.5)
 
 [node name="interactables" type="Node" parent="." unique_id=2136838379]
 
@@ -76,10 +75,14 @@ mass = 1.0
 auto_weight = true
 
 [node name="box2" parent="interactables" unique_id=2084637898 instance=ExtResource("2_nsrm0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0844774, 1.4999989, 5.2973857)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6965952, 1.4999989, 0.76561785)
 mass = 8.0
 sizing = Vector3(2, 2, 2)
 auto_weight = true
+
+[node name="box_2_tracker" parent="interactables/box2" unique_id=739505851 instance=ExtResource("2_sk5k4")]
+collision_mask = 4
+sizing = Vector3(2.2, 2.2, 2.2)
 
 [node name="box3" parent="interactables" unique_id=696765251 instance=ExtResource("2_nsrm0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9177785, 1.9999989, 0.95194006)
@@ -110,3 +113,6 @@ label_settings = SubResource("LabelSettings_sk5k4")
 vertical_alignment = 2
 
 [connection signal="body_entered" from="terrain/phasing_tracker" to="." method="_on_phasing_tracker_body_entered"]
+[connection signal="body_entered" from="interactables/box2/box_2_tracker" to="." method="_on_box_2_tracker_body_entered"]
+[connection signal="body_exited" from="interactables/box2/box_2_tracker" to="." method="_on_box_2_tracker_body_exited"]
+[connection signal="body_entered" from="interactables/win_zone" to="." method="_on_win_zone_body_entered"]

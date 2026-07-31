@@ -5,10 +5,10 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_sk5k4"]
 
 [node name="achievement_tracking_helper" type="Area3D" unique_id=1078506640]
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("1_7ysw2")
-sizing = Vector3(10, 6, 1.5)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1317246265]
-transform = Transform3D(10, 0, 0, 0, 6, 0, 0, 0, 1.5, 0, 0, 0)
 shape = SubResource("BoxShape3D_sk5k4")
 debug_color = Color(1, 1, 0, 0.41960785)

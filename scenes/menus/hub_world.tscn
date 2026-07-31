@@ -11,7 +11,7 @@
 script = ExtResource("2_3l0iv")
 level_name = "wall"
 completion_types = Dictionary[String, bool]({
-"flight!?": false,
+"flight‽": false,
 "the normal route": false,
 "wall collision weirdness": false
 })
@@ -109,4 +109,4 @@ sizing = Vector3(3, 3, 3)
 auto_weight = false
 
 [node name="level_entrance" parent="interactables" unique_id=636574180 instance=ExtResource("6_fi0dp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.9999976, -9.0551405)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.612634, 2.0142207, 0.3947401)
