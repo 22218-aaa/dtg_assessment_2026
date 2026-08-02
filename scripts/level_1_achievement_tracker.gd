@@ -18,7 +18,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	$Label.text = str(completion_type)
+	pass
+	#$Label.text = str(completion_type)
 
 
 func _on_phasing_tracker_body_entered(_body: Node3D) -> void:

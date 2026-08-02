@@ -109,4 +109,10 @@ sizing = Vector3(3, 3, 3)
 auto_weight = false
 
 [node name="level_entrance" parent="interactables" unique_id=636574180 instance=ExtResource("6_fi0dp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.612634, 2.0142207, 0.3947401)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.738438, 2.0142207, -1.8974123)
+
+[node name="Label3D" type="Label3D" parent="." unique_id=630115316]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 5.5898013, -1.8449492)
+billboard = 2
+text = "left click: grab or release boxes
+scroll: move boxes closer or further from you"

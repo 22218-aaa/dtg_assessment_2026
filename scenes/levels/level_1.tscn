@@ -108,7 +108,6 @@ offset_top = -0.120025635
 offset_right = -0.27996826
 offset_bottom = -0.08001709
 grow_vertical = 0
-text = "yyyy"
 label_settings = SubResource("LabelSettings_sk5k4")
 vertical_alignment = 2
 

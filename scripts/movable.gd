@@ -32,7 +32,7 @@ func _ready() -> void:
 	
 	collider.scale = sizing
 	mesh_instance.scale = sizing
-	push_off_area.scale = sizing * 0.90
+	push_off_area.scale = sizing * 0.80
 	if auto_weight: mass = sizing.x * sizing.y * sizing.z
 	change_state(STATES.UNHELD, null)
 
@@ -43,7 +43,7 @@ func _process(delta: float) -> void:
 		
 		collider.scale = sizing
 		mesh_instance.scale = sizing
-		push_off_area.scale = sizing * 0.90
+		push_off_area.scale = sizing * 0.80
 	else:
 		eject(delta)
 		match state: 
