@@ -39,17 +39,20 @@ func _input(event):
 		if Input.is_action_just_pressed("escape"):
 			get_tree().quit()
 		if Input.is_action_just_pressed("select"):
-			if object_detector.is_colliding():
-				var object = object_detector.get_collider()
-				if object_detector.get_collider() in held_objects:
-					held_objects.remove_at(held_objects.find(object))
-					object.change_state(object.STATES.UNHELD, null)
-				else:
-					held_objects.append(object)
-					object.change_state(object.STATES.HELD, held_object_point)
-					if len(held_objects) > MAXIMUM_HELD_OBJECTS:
-						held_objects[0].change_state(object.STATES.UNHELD, null)
-						held_objects.remove_at(0)
+			if not object_detector.is_colliding():
+				return
+			
+			var object = object_detector.get_collider()
+			
+			if object in held_objects:
+				held_objects.remove_at(held_objects.find(object))
+				object.change_state(object.STATES.UNHELD, null)
+			else:
+				held_objects.append(object)
+				object.change_state(object.STATES.HELD, held_object_point)
+				if len(held_objects) > MAXIMUM_HELD_OBJECTS:
+					held_objects[0].change_state(object.STATES.UNHELD, null)
+					held_objects.remove_at(0)
 				
 		if Input.is_action_just_pressed("scroll_down"):
 			held_object_point.position.z = move_toward(held_object_point.position.z, -MINIMUM_HOLDING_DISTANCE, SCROLL_SPEED)

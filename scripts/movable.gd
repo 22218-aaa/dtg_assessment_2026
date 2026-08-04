@@ -25,10 +25,11 @@ var state: STATES = STATES.UNHELD
 @export var sizing: Vector3 = Vector3(1, 1, 1)
 @export var auto_weight = true
 
-
+@onready var material = mesh_instance.get_surface_override_material(0).duplicate()
 
 func _ready() -> void:
 	#scale = sizing
+	mesh_instance.set_surface_override_material(0, material)
 	
 	collider.scale = sizing
 	mesh_instance.scale = sizing
@@ -60,10 +61,12 @@ func change_state(new_state, new_target):
 	target_location = new_target
 	match state:
 		STATES.HELD:
+			material.set_blend_mode(3)
 			old_velocity = linear_velocity
 			set_linear_damp(12)
 			set_gravity_scale(0)
 		STATES.UNHELD:
+			material.set_blend_mode(0)
 			old_velocity = Vector3.ZERO
 			set_linear_damp(0)
 			set_gravity_scale(2)
