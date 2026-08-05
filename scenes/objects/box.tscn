@@ -8,7 +8,6 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tf0hf"]
 transparency = 1
 cull_mode = 2
-depth_draw_mode = 1
 shading_mode = 0
 albedo_color = Color(0, 0, 0, 0.39215687)
 grow = true
@@ -16,6 +15,7 @@ grow_amount = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vfogt"]
 next_pass = SubResource("StandardMaterial3D_tf0hf")
+shading_mode = 0
 
 [sub_resource type="SphereMesh" id="SphereMesh_tf0hf"]
 radial_segments = 32

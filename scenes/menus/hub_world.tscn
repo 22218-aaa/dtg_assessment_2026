@@ -64,8 +64,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 14, -32)
 size = Vector3(11, 5, 10)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="terrain" unique_id=1383826953]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.925867, 0.5071106, -13.341032)
-size = Vector3(23.343994, 2.0142212, 47.833496)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.925867, 1.0177331, -13.341032)
+size = Vector3(23.344, 0.9687549, 47.833)
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="terrain" unique_id=1705707845]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, -27)
@@ -98,12 +98,12 @@ MAXIMUM_HELD_OBJECTS = 5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.18614, 0.9999981, 5.081418)
 
 [node name="box2" parent="interactables" unique_id=1879063158 instance=ExtResource("3_f0qm8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.508549, 5.1173053, -25.231564)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.618732, 5.1173053, 2.7245293)
 mass = 8.0
 sizing = Vector3(2, 2, 2)
 
 [node name="box3" parent="interactables" unique_id=1718472720 instance=ExtResource("3_f0qm8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.276478, 3.5078123, -12.192787)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.276478, 3.5078123, 5.8822155)
 mass = 1000.0
 sizing = Vector3(3, 3, 3)
 auto_weight = false

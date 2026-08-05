@@ -40,29 +40,29 @@ use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="terrain" unique_id=1244463792]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.404175)
-size = Vector3(11, 1, 32)
+size = Vector3(23, 1, 32)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="terrain" unique_id=727914451]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.0219727, -7)
-size = Vector3(11, 6.98, 2)
+size = Vector3(23, 7, 2)
 
 [node name="phasing_tracker" parent="terrain" unique_id=1078506640 instance=ExtResource("2_sk5k4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -7)
-sizing = Vector3(10, 6.5, 1.5)
+sizing = Vector3(22, 6.5, 1.5)
 
 [node name="interactables" type="Node" parent="." unique_id=2136838379]
 
 [node name="death_zone" parent="interactables" unique_id=1153127341 instance=ExtResource("2_x42e6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 6, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 6, 3)
 sizing = Vector3(1, 12, 19)
 
 [node name="death_zone2" parent="interactables" unique_id=1234160283 instance=ExtResource("2_x42e6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 6, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 6, 3)
 sizing = Vector3(1, 12, 19)
 
 [node name="death_zone3" parent="interactables" unique_id=503769702 instance=ExtResource("2_x42e6")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 6, 12)
-sizing = Vector3(1, 12, 11)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 12)
+sizing = Vector3(23, 12, 1)
 
 [node name="player" parent="interactables" unique_id=1512140399 instance=ExtResource("1_6iamk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9423361, 2.3000002, 4.6212225)
@@ -70,22 +70,23 @@ MAXIMUM_HOLDING_DISTANCE = 6.0
 MAXIMUM_HELD_OBJECTS = 1
 
 [node name="box" parent="interactables" unique_id=2073704069 instance=ExtResource("2_nsrm0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.18614, 0.9999981, 5.081418)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1187315, 0.9999981, -1.4282789)
 mass = 1.0
 auto_weight = true
 
 [node name="box2" parent="interactables" unique_id=2084637898 instance=ExtResource("2_nsrm0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6965952, 1.4999989, 0.76561785)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6965952, 1.4999989, -1.9292579)
 mass = 8.0
 sizing = Vector3(2, 2, 2)
 auto_weight = true
+metadata/_edit_group_ = true
 
 [node name="box_2_tracker" parent="interactables/box2" unique_id=739505851 instance=ExtResource("2_sk5k4")]
 collision_mask = 4
 sizing = Vector3(2.2, 2.2, 2.2)
 
 [node name="box3" parent="interactables" unique_id=696765251 instance=ExtResource("2_nsrm0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9177785, 1.9999989, 0.95194006)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4025373, 1.9999989, -2.4755998)
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true

@@ -16,15 +16,12 @@ material = SubResource("ORMMaterial3D_x42e6")
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_womhb")
-sizing = Vector3(1, 12, 20)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1038569584]
-transform = Transform3D(1, 0, 0, 0, 12, 0, 0, 0, 20, 0, 0, 0)
 shape = SubResource("BoxShape3D_nsrm0")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1946732404]
-transform = Transform3D(1, 0, 0, 0, 12, 0, 0, 0, 20, 0, 0, 0)
 mesh = SubResource("BoxMesh_nsrm0")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

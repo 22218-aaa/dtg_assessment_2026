@@ -40,6 +40,9 @@ func _input(event):
 			get_tree().quit()
 		if Input.is_action_just_pressed("select"):
 			if not object_detector.is_colliding():
+				if not held_objects.is_empty():
+					held_objects[0].change_state(held_objects[0].STATES.UNHELD, null)
+					held_objects.remove_at(0)
 				return
 			
 			var object = object_detector.get_collider()
