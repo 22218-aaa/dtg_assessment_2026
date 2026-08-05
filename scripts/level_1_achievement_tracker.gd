@@ -1,7 +1,8 @@
 extends Node3D
 
 
-var level = global.current_level
+var level = global.level_information[global.current_level]
+
 
 var completion_type: String = "flight‽"
 
@@ -11,7 +12,7 @@ var box_togetherness: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	for item in global.level_information[level].completion_types:
+	for item in level.completion_types:
 		acceptable_completion_types.append(item)
 	print(acceptable_completion_types)
 
@@ -46,5 +47,17 @@ func _on_win_zone_body_entered(_body: Node3D) -> void:
 		return
 	
 	print("valid type")
-	global.level_information[level].completion_types[completion_type] = true
+	
+	level.completion_types[completion_type] = true
+	
+	# change level state to beaten
+	if level.completion_state == level.COMPLETION_STATES.UNBEATEN:
+		level.completion_state = level.COMPLETION_STATES.BEATEN
+	
+	#change level state to be completed
+	for item in level.completion_types:
+		if level.completion_types[item] == false:
+			return
+	
+	level.completion_state = level.COMPLETION_STATES.COMPLETED
 	

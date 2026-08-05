@@ -19,20 +19,20 @@ var state: STATES = STATES.UNHELD
 
 @export var collider: CollisionShape3D
 @export var mesh_instance: MeshInstance3D
+@export var held_mesh: MeshInstance3D
 @export var push_off_area: Area3D
 
 
 @export var sizing: Vector3 = Vector3(1, 1, 1)
 @export var auto_weight = true
 
-@onready var material = mesh_instance.get_surface_override_material(0).duplicate()
 
 func _ready() -> void:
 	#scale = sizing
-	mesh_instance.set_surface_override_material(0, material)
 	
 	collider.scale = sizing
 	mesh_instance.scale = sizing
+	held_mesh.scale = sizing
 	push_off_area.scale = sizing * 0.80
 	if auto_weight: mass = sizing.x * sizing.y * sizing.z
 	change_state(STATES.UNHELD, null)
@@ -44,6 +44,7 @@ func _process(delta: float) -> void:
 		
 		collider.scale = sizing
 		mesh_instance.scale = sizing
+		held_mesh.scale = sizing
 		push_off_area.scale = sizing * 0.80
 	else:
 		eject(delta)
@@ -61,12 +62,12 @@ func change_state(new_state, new_target):
 	target_location = new_target
 	match state:
 		STATES.HELD:
-			material.set_blend_mode(3)
+			held_mesh.set_visible(true)
 			old_velocity = linear_velocity
 			set_linear_damp(12)
 			set_gravity_scale(0)
 		STATES.UNHELD:
-			material.set_blend_mode(0)
+			held_mesh.set_visible(false)
 			old_velocity = Vector3.ZERO
 			set_linear_damp(0)
 			set_gravity_scale(2)
@@ -76,7 +77,7 @@ func eject(delta):
 	if in_body:
 		for item in in_body:
 			if item.name == "player":
-				item.position += (item.global_position - global_position).normalized()
+				item.position += (item.global_position - global_position).normalized() / 100
 			item.linear_velocity += (item.global_position - global_position) * 200 * delta
 
 

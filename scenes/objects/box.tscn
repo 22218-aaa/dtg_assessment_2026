@@ -6,18 +6,31 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_fr1um"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tf0hf"]
-albedo_texture = ExtResource("1_3inec")
+transparency = 1
+cull_mode = 2
+depth_draw_mode = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 0.39215687)
+grow = true
+grow_amount = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vfogt"]
+next_pass = SubResource("StandardMaterial3D_tf0hf")
 
-[sub_resource type="BoxMesh" id="BoxMesh_c2ln5"]
-material = SubResource("StandardMaterial3D_vfogt")
+[sub_resource type="SphereMesh" id="SphereMesh_tf0hf"]
+radial_segments = 32
+rings = 16
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fjwrh"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e81tp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_we1rx"]
+albedo_texture = ExtResource("1_3inec")
+
+[sub_resource type="BoxMesh" id="BoxMesh_fjwrh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ks2v0"]
 
-[node name="box" type="RigidBody3D" unique_id=2073704069 node_paths=PackedStringArray("collider", "mesh_instance", "push_off_area")]
+[node name="box" type="RigidBody3D" unique_id=2073704069 node_paths=PackedStringArray("collider", "mesh_instance", "held_mesh", "push_off_area")]
 collision_layer = 5
 mass = 10.0
 gravity_scale = 2.0
@@ -27,16 +40,22 @@ angular_damp = 0.5
 script = ExtResource("1_ks2v0")
 collider = NodePath("CollisionShape3D")
 mesh_instance = NodePath("MeshInstance3D")
+held_mesh = NodePath("held_mesh")
 push_off_area = NodePath("Area3D")
 auto_weight = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=207438645]
 shape = SubResource("BoxShape3D_fr1um")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1300859347]
-material_override = SubResource("StandardMaterial3D_tf0hf")
-mesh = SubResource("BoxMesh_c2ln5")
-surface_material_override/0 = SubResource("StandardMaterial3D_fjwrh")
+[node name="held_mesh" type="MeshInstance3D" parent="." unique_id=1300859347]
+material_override = SubResource("StandardMaterial3D_vfogt")
+mesh = SubResource("SphereMesh_tf0hf")
+surface_material_override/0 = SubResource("StandardMaterial3D_e81tp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1992694782]
+material_override = SubResource("StandardMaterial3D_we1rx")
+mesh = SubResource("BoxMesh_fjwrh")
+surface_material_override/0 = SubResource("StandardMaterial3D_e81tp")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=2111868940]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)

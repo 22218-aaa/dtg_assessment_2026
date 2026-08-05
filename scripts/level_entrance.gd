@@ -37,6 +37,7 @@ func connect_level_data():
 			label_text += "\n" + item + ": [ ]"
 	
 	label.text = label_text
+	print(level_information.completion_state_colours[level_information.completion_state])
 	mesh_instance.mesh.material.set_albedo(level_information.completion_state_colours[level_information.completion_state])
 
 
@@ -49,6 +50,6 @@ func _process(_delta: float) -> void:
 
 
 
-func _on_area_3d_body_entered(body: Node3D) -> void:
+func _on_area_3d_body_entered(_body: Node3D) -> void:
 	global.current_level = level_information.level_name
 	get_tree().change_scene_to_file(level_path)
