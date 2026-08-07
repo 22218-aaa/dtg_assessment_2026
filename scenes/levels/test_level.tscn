@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bkvataxlunlnp"]
 
 [ext_resource type="PackedScene" uid="uid://bcxprlld78jga" path="res://scenes/objects/player.tscn" id="1_fr1um"]
+[ext_resource type="PackedScene" uid="uid://cfibnip85wck6" path="res://scenes/objects/spawner.tscn" id="2_fr1um"]
 [ext_resource type="PackedScene" uid="uid://ccpwjdyct6syf" path="res://scenes/objects/box.tscn" id="3_fr1um"]
-[ext_resource type="Script" uid="uid://doii07v1a33k6" path="res://scripts/spawner.gd" id="4_v45ci"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_fr1um"]
 
@@ -11,12 +11,6 @@
 [sub_resource type="SphereMesh" id="SphereMesh_fr1um"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_v45ci"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_48ne7"]
-size = Vector3(2.2106934, 0.090661615, 2.1669922)
-
-[sub_resource type="BoxMesh" id="BoxMesh_6xh4u"]
-size = Vector3(1.5, 0.2, 1.5)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jbqir"]
 
@@ -158,39 +152,8 @@ mesh = SubResource("BoxMesh_fr1um")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="rigidbodies/RigidBody3D4" unique_id=1588322248]
 shape = SubResource("BoxShape3D_v45ci")
 
-[node name="spawner" type="Node3D" parent="." unique_id=26963375]
+[node name="spawner" parent="." unique_id=614549786 instance=ExtResource("2_fr1um")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35355806, -1.3382299, -5.0066276)
-script = ExtResource("4_v45ci")
-metadata/_edit_group_ = true
-
-[node name="spawning_platform" parent="spawner" unique_id=591347453 instance=ExtResource("3_fr1um")]
-transform = Transform3D(2, 0, 0, 0, 0.8, 0, 0, 0, 2, 0, 0.14799988, -5.0000005)
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true
-angular_damp = 5.0
-
-[node name="spawn_location" type="Marker3D" parent="spawner/spawning_platform" unique_id=908915264]
-transform = Transform3D(0.5, 0, 0, 0, 1.9841272, 0, 0, 0, 0.5, 0, 0.2, 0)
-
-[node name="button_platform" parent="spawner" unique_id=1423995080 instance=ExtResource("3_fr1um")]
-transform = Transform3D(2, 0, 0, 0, 0.8, 0, 0, 0, 2, 0, 0.148, 0)
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true
-angular_damp = 5.0
-
-[node name="pressure_plate" type="Area3D" parent="spawner/button_platform" unique_id=309568755]
-transform = Transform3D(0.49999997, 0, 0, 0, 2.8344674, 0, 0, 0, 0.49999997, 0, 0.5000006, 0)
-collision_layer = 0
-collision_mask = 6
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="spawner/button_platform/pressure_plate" unique_id=1980507292]
-transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1, 0, 0.15466928, 0)
-shape = SubResource("BoxShape3D_48ne7")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="spawner/button_platform/pressure_plate" unique_id=1457962399]
-mesh = SubResource("BoxMesh_6xh4u")
 
 [node name="box2" parent="." unique_id=462683766 instance=ExtResource("3_fr1um")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 12.285889, -0.09023571, -6.3289375)
@@ -216,5 +179,3 @@ omni_attenuation = 10.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="lighting" unique_id=2114126812]
 transform = Transform3D(0.9027806, 0.07255633, -0.42393735, -0.17093791, 0.96500623, -0.19885513, 0.39467397, 0.2519895, 0.8835914, 0, 17.80244, 0)
-
-[connection signal="body_entered" from="spawner/button_platform/pressure_plate" to="spawner" method="_on_pressure_plate_body_entered"]
