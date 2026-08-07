@@ -101,17 +101,18 @@ MAXIMUM_HELD_OBJECTS = 5
 
 [node name="box" parent="interactables" unique_id=2073704069 instance=ExtResource("3_f0qm8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.18614, 0.9999981, 5.081418)
+mass = 1.0
 auto_weight = true
 
 [node name="box2" parent="interactables" unique_id=1879063158 instance=ExtResource("3_f0qm8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.231277, 2.5021074, 2.7245293)
-mass = 2.0
+mass = 8.0
 sizing = Vector3(2, 2, 2)
 auto_weight = true
 
 [node name="box3" parent="interactables" unique_id=1718472720 instance=ExtResource("3_f0qm8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.276478, 3.5078123, 5.8822155)
-mass = 1000.0
+mass = 27.0
 sizing = Vector3(3, 3, 3)
 auto_weight = true
 
@@ -127,3 +128,6 @@ scroll: move boxes closer or further from you"
 
 [node name="spawner" parent="." unique_id=614549786 instance=ExtResource("7_3l0iv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.442179, 1.8541079, -12.008081)
+
+[node name="level_entrance" parent="." unique_id=1994327096 instance=ExtResource("6_fi0dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.82259, 4.6173053, -20.813156)

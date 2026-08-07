@@ -22,7 +22,7 @@ var state: STATES = STATES.UNHELD
 @export var held_mesh: MeshInstance3D
 @export var push_off_area: Area3D
 
-var push_off_gap = 0.3
+var push_off_gap = 0.1
 @export var sizing: Vector3 = Vector3(1, 1, 1)
 @export var auto_weight = true
 
@@ -77,7 +77,7 @@ func eject(delta):
 	if in_body:
 		for item in in_body:
 			#if item.name == "player":
-			item.position += (item.global_position - global_position).normalized() * 0.1 * delta
+			item.position += (item.global_position - global_position).normalized() * 0.5 * delta
 			item.linear_velocity += (item.global_position - global_position) * 200 * delta
 #clamp(mass/item.mass, 0, 0.1) * delta
 
