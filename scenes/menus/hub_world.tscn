@@ -18,6 +18,11 @@ completion_types = Dictionary[String, bool]({
 })
 metadata/_custom_type_script = "uid://cy6ml2shb4kll"
 
+[sub_resource type="Resource" id="Resource_3l0iv"]
+script = ExtResource("2_3l0iv")
+level_name = "level 2: cage"
+metadata/_custom_type_script = "uid://cy6ml2shb4kll"
+
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fi0dp"]
 
 [sub_resource type="Sky" id="Sky_yautc"]
@@ -30,7 +35,7 @@ sky = SubResource("Sky_yautc")
 [node name="hub_world" type="Node3D" unique_id=110924967]
 process_priority = 1
 script = ExtResource("1_fi0dp")
-level_entries = Array[ExtResource("2_3l0iv")]([SubResource("Resource_a2ery")])
+level_entries = Array[ExtResource("2_3l0iv")]([SubResource("Resource_a2ery"), SubResource("Resource_3l0iv")])
 
 [node name="lighting" type="Node" parent="." unique_id=233319860]
 
@@ -101,18 +106,13 @@ MAXIMUM_HELD_OBJECTS = 5
 
 [node name="box" parent="interactables" unique_id=2073704069 instance=ExtResource("3_f0qm8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.18614, 0.9999981, 5.081418)
-mass = 1.0
-auto_weight = true
 
 [node name="box2" parent="interactables" unique_id=1879063158 instance=ExtResource("3_f0qm8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.231277, 2.5021074, 2.7245293)
-mass = 8.0
 sizing = Vector3(2, 2, 2)
-auto_weight = true
 
 [node name="box3" parent="interactables" unique_id=1718472720 instance=ExtResource("3_f0qm8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.276478, 3.5078123, 5.8822155)
-mass = 27.0
 sizing = Vector3(3, 3, 3)
 auto_weight = true
 
@@ -131,3 +131,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.442179, 1.8541079, -12.008
 
 [node name="level_entrance" parent="." unique_id=1994327096 instance=ExtResource("6_fi0dp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.82259, 4.6173053, -20.813156)
+level_name = "level 2: cage"

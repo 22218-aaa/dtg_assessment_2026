@@ -25,10 +25,13 @@ var state: STATES = STATES.UNHELD
 var push_off_gap = 0.1
 @export var sizing: Vector3 = Vector3(1, 1, 1)
 @export var auto_weight = true
+@onready var weight: float
+
 
 
 func _ready() -> void:
 	#scale = sizing
+	weight = mass
 	
 	collider.scale = sizing
 	mesh_instance.scale = sizing
@@ -62,11 +65,13 @@ func change_state(new_state, new_target):
 	target_location = new_target
 	match state:
 		STATES.HELD:
+			mass = weight * 10
 			held_mesh.set_visible(true)
 			old_velocity = linear_velocity
 			set_linear_damp(12)
 			set_gravity_scale(0)
 		STATES.UNHELD:
+			mass = weight
 			held_mesh.set_visible(false)
 			old_velocity = Vector3.ZERO
 			set_linear_damp(0)
@@ -77,9 +82,9 @@ func eject(delta):
 	if in_body:
 		for item in in_body:
 			#if item.name == "player":
-			item.position += (item.global_position - global_position).normalized() * 0.5 * delta
-			item.linear_velocity += (item.global_position - global_position) * 200 * delta
-#clamp(mass/item.mass, 0, 0.1) * delta
+			item.position += (item.global_position - global_position).normalized() * clamp(mass/item.mass, 0, 0.8)
+			item.linear_velocity += (item.global_position - global_position) * 100 * delta
+
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body != self:
