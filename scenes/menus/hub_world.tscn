@@ -70,8 +70,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 14, -32)
 size = Vector3(11, 5, 10)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="terrain" unique_id=1383826953]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.925867, 1.0177331, -13.341032)
-size = Vector3(23.344, 0.9687549, 47.833)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.925867, 1.0177331, -12.338406)
+size = Vector3(23.344, 0.9687549, 49.838253)
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="terrain" unique_id=1705707845]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, -27)
@@ -90,7 +90,7 @@ transform = Transform3D(0.25881907, 0.03136831, -0.9654164, 0, 0.99947256, 0.032
 size = Vector3(39.70752, 19.291779, 5.2250824)
 
 [node name="CSGBox3D10" type="CSGBox3D" parent="terrain" unique_id=585271912]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.379, 2.12, -12.262)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 5.000001, -16)
 size = Vector3(7, 3, 8)
 
 [node name="interactables" type="Node" parent="." unique_id=765402532]
@@ -114,7 +114,6 @@ sizing = Vector3(2, 2, 2)
 [node name="box3" parent="interactables" unique_id=1718472720 instance=ExtResource("3_f0qm8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.276478, 3.5078123, 5.8822155)
 sizing = Vector3(3, 3, 3)
-auto_weight = true
 
 [node name="level_entrance" parent="interactables" unique_id=636574180 instance=ExtResource("6_fi0dp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.738438, 2.0142207, -1.8974123)
@@ -130,5 +129,6 @@ scroll: move boxes closer or further from you"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.442179, 1.8541079, -12.008081)
 
 [node name="level_entrance" parent="." unique_id=1994327096 instance=ExtResource("6_fi0dp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.82259, 4.6173053, -20.813156)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.591633, 7.000005, -16.345463)
 level_name = "level 2: cage"
+level_path = "res://scenes/levels/level_2.tscn"
