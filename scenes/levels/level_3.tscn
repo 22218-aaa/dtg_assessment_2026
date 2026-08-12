@@ -1,0 +1,119 @@
+[gd_scene format=3 uid="uid://bopo2wi0osw30"]
+
+[ext_resource type="PackedScene" uid="uid://bcxprlld78jga" path="res://scenes/objects/player.tscn" id="1_0ljxa"]
+[ext_resource type="PackedScene" uid="uid://cvru3qrdwbht0" path="res://scenes/objects/scene_changer.tscn" id="2_0qepi"]
+[ext_resource type="PackedScene" uid="uid://cfibnip85wck6" path="res://scenes/objects/spawner.tscn" id="3_fmg3e"]
+[ext_resource type="PackedScene" uid="uid://ccpwjdyct6syf" path="res://scenes/objects/box.tscn" id="4_ftfob"]
+[ext_resource type="PackedScene" uid="uid://daewcgbdysr28" path="res://scenes/objects/death_zone.tscn" id="5_fkk1g"]
+[ext_resource type="PackedScene" uid="uid://e6c2xsjamk0g" path="res://scenes/objects/achievement_tracking_helper.tscn" id="6_ugcn1"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ftfob"]
+
+[sub_resource type="Sky" id="Sky_x42e6"]
+sky_material = SubResource("ProceduralSkyMaterial_ftfob")
+
+[sub_resource type="Environment" id="Environment_fkk1g"]
+background_mode = 2
+sky = SubResource("Sky_x42e6")
+
+[node name="Node3D" type="Node3D" unique_id=639335176]
+
+[node name="lighting" type="Node" parent="." unique_id=301176092]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="lighting" unique_id=217722042]
+environment = SubResource("Environment_fkk1g")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="lighting" unique_id=1042475614]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.68399, 0)
+omni_range = 2000.0
+omni_attenuation = 10.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="lighting" unique_id=1346180229]
+transform = Transform3D(0.9027806, 0.07255633, -0.42393735, -0.17093791, 0.96500623, -0.19885513, 0.39467397, 0.2519895, 0.8835914, 0, 17.80244, 0)
+
+[node name="terrain" type="CSGCombiner3D" parent="." unique_id=302398829]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="terrain" unique_id=1351780248]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+size = Vector3(11, 1, 18)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="terrain" unique_id=2043836311]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 17, -2)
+size = Vector3(6, 6, 6)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="terrain" unique_id=261072587]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4.0245724, -22.700533)
+size = Vector3(3, 1, 5)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="terrain" unique_id=1973977448]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 5.5245724, -24.700533)
+size = Vector3(3, 4, 1)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="terrain" unique_id=197729334]
+transform = Transform3D(0.88808835, 0, 0.45967287, 0, 1, 0, -0.45967287, 0, 0.88808835, -9.478008, 4.0245724, -22.812445)
+size = Vector3(5, 1, 5)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="terrain" unique_id=465394358]
+transform = Transform3D(0.88805556, -4.0246396e-05, 0.45973605, 4.9758284e-05, 1, -8.578601e-06, -0.45973605, 3.0491085e-05, 0.88805556, -10.397354, 5.5245724, -24.588621)
+size = Vector3(3, 4, 1)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="terrain" unique_id=1234131203]
+transform = Transform3D(0.97824186, 0, 0.20746778, 0, 1, 0, -0.20746778, 0, 0.97824186, -0.8738662, 8.053209, -30.128687)
+size = Vector3(7, 1, 5)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="terrain" unique_id=8761754]
+transform = Transform3D(0.97824186, 0, 0.20746778, 0, 1, 0, -0.20746778, 0, 0.97824186, -1.288802, 9.553209, -32.085167)
+size = Vector3(7, 4, 1)
+
+[node name="interactables" type="Node" parent="." unique_id=787536240]
+
+[node name="player" parent="interactables" unique_id=1512140399 instance=ExtResource("1_0ljxa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9423361, 2.094067, 4.6212225)
+MAXIMUM_HOLDING_DISTANCE = 12.0
+MINIMUM_HOLDING_DISTANCE = 5.0
+MAXIMUM_HELD_OBJECTS = 1
+
+[node name="win_zone" parent="interactables" unique_id=15871483 instance=ExtResource("2_0qepi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.295919, 17.286707, -2.0298338)
+change_scene_to = "res://scenes/menus/hub_world.tscn"
+
+[node name="spawner" parent="interactables" unique_id=614549786 instance=ExtResource("3_fmg3e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6621838, 1.1020001, 0.74607563)
+
+[node name="Label3D" type="Label3D" parent="." unique_id=2055359024]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -7.6625834, 5.59, -4.519356)
+billboard = 2
+text = "STAY ON THE FLOOR!"
+
+[node name="Label3D2" type="Label3D" parent="." unique_id=1971565541]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.8450594, 14.817778, 4.385811)
+billboard = 2
+text = "first you need to use the new box thing to spawn some
+boxes 
+cusits a box spawner you 
+just need to jump on the thing wiht
+the white then it spawns and
+you can figure it out
+yeah and then throw them onto the platforms
+and once you do that you can win cus the win area 
+is in her, this box, so you can't win until
+you throw the boxes
+gl
+I think this'll be a fun thing gl!PLACEHOLDER TEXT 
+PLACEHOLDER TEXT PLACEHOLDER TEXT 
+PLACEHOLDER TEXT PLACEHOLDER TEXT 
+PLACEHOLDER TEXT PLACEHOLDER TEXT 
+PLACEHOLDER TEXT PLACEHOLDER TEXT "
+font_size = 20
+
+[node name="box" parent="." unique_id=2073704069 instance=ExtResource("4_ftfob")]
+transform = Transform3D(0.9555412, 0, -0.29485762, 0, 1, 0, 0.29485762, 0, 0.9555412, 4.992795, 5.0245743, -21.479053)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=827783295]
+
+[node name="death_zone" parent="AnimationPlayer" unique_id=1153127341 instance=ExtResource("5_fkk1g")]
+
+[node name="achievement_tracking_helper" parent="AnimationPlayer" unique_id=1078506640 instance=ExtResource("6_ugcn1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.8375864)
+sizing = Vector3(10.265, 1.2, 16.91)
