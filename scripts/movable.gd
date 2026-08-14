@@ -65,7 +65,7 @@ func change_state(new_state, new_target):
 	target_location = new_target
 	match state:
 		STATES.HELD:
-			mass = weight * 50
+			mass = weight * 20
 			held_mesh.set_visible(true)
 			old_velocity = linear_velocity
 			set_linear_damp(12)
