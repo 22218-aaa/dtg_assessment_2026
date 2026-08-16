@@ -15,15 +15,6 @@
 [ext_resource type="Script" uid="uid://b4tkplvh7fq40" path="res://addons/sky_3d/src/SkyDome.gd" id="13_sbygb"]
 [ext_resource type="Script" uid="uid://cjmkcj8hwm7ts" path="res://addons/sky_3d/src/TimeOfDay.gd" id="14_5niy6"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fiq81"]
-shading_mode = 0
-albedo_color = Color(0, 1, 1, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_l37oo"]
-material = SubResource("StandardMaterial3D_fiq81")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_qpwj6"]
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wikm6"]
 shader = ExtResource("5_r88tb")
 shader_parameter/sky_visible = true
@@ -53,7 +44,7 @@ shader_parameter/moon_texture_flip_u = false
 shader_parameter/moon_texture_flip_v = false
 shader_parameter/moon_size = 0.07
 shader_parameter/atm_moon_mie_tint = Color(0.137255, 0.184314, 0.292196, 1)
-shader_parameter/atm_moon_mie_intensity = 0.030993462204933157
+shader_parameter/atm_moon_mie_intensity = 0.030993483066558827
 shader_parameter/atm_moon_partial_mie_phase = Vector3(0.36, 1.64, 1.6)
 shader_parameter/starmap_color = Color(0.709804, 0.709804, 0.709804, 0.854902)
 shader_parameter/starmap_texture = ExtResource("11_sibr7")
@@ -77,8 +68,8 @@ shader_parameter/cirrus_absorption = 2.0
 shader_parameter/cirrus_sky_tint_fade = 0.5
 shader_parameter/cirrus_size = 1.0
 shader_parameter/cirrus_uv = Vector2(0.16, 0.11)
-shader_parameter/cirrus_position1 = Vector2(0.004171926, 0.004171926)
-shader_parameter/cirrus_position2 = Vector2(0.004171926, 0.004171926)
+shader_parameter/cirrus_position1 = Vector2(0.19829167, 0.19829167)
+shader_parameter/cirrus_position2 = Vector2(0.19829167, 0.19829167)
 shader_parameter/cirrus_texture = ExtResource("6_1yj8c")
 shader_parameter/cumulus_visible = true
 shader_parameter/cumulus_intensity = 0.6
@@ -88,7 +79,7 @@ shader_parameter/cumulus_absorption = 2.0
 shader_parameter/cumulus_noise_freq = 2.7
 shader_parameter/cumulus_sky_tint_fade = 0.0
 shader_parameter/cumulus_size = 0.5
-shader_parameter/cumulus_position = Vector2(0.020859677, 0.020859677)
+shader_parameter/cumulus_position = Vector2(0.9912866, 0.9912866)
 shader_parameter/cumulus_texture = ExtResource("7_ndlae")
 shader_parameter/cumulus_partial_mie_phase = Vector3(0.957564, 1.042436, 0.412)
 shader_parameter/cumulus_mie_intensity = 1.0
@@ -180,7 +171,7 @@ MAXIMUM_HOLDING_DISTANCE = 12.0
 MAXIMUM_HELD_OBJECTS = 1
 
 [node name="death_zone2" parent="interactables" unique_id=2110125439 instance=ExtResource("2_l37oo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -5.2590637, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -49.259064, 3)
 sizing = Vector3(200, 5, 200)
 
 [node name="box" parent="interactables" unique_id=673736917 instance=ExtResource("3_qpwj6")]
@@ -188,7 +179,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.141571, 0.9999981, -2.8967
 sizing = Vector3(1.2, 1.2, 1.2)
 
 [node name="box2" parent="interactables" unique_id=1764402002 instance=ExtResource("3_qpwj6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1473446, 1.4999989, 3.8440366)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1473446, 1.4999989, -7.0027604)
 sizing = Vector3(2, 2, 2)
 metadata/_edit_group_ = true
 
@@ -202,16 +193,6 @@ sizing = Vector3(3, 3, 3)
 [node name="win_zone" parent="interactables" unique_id=15871483 instance=ExtResource("4_ibugp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.463272, 5.500001, -14)
 change_scene_to = "res://scenes/menus/hub_world.tscn"
-
-[node name="RigidBody3D" type="RigidBody3D" parent="interactables" unique_id=811876633]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 4.241356, 1.5000042, -7.3471074)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="interactables/RigidBody3D" unique_id=546699902]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4518392, 0, 0.42668414)
-mesh = SubResource("BoxMesh_l37oo")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="interactables/RigidBody3D" unique_id=820441235]
-shape = SubResource("BoxShape3D_qpwj6")
 
 [node name="Sky3D" type="WorldEnvironment" parent="." unique_id=145628533]
 environment = SubResource("Environment_1a10c")
