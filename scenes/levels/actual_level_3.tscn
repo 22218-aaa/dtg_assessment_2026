@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://c8notxrb3ltjs"]
+
+[ext_resource type="PackedScene" uid="uid://bcxprlld78jga" path="res://scenes/objects/player.tscn" id="1_7pdpm"]
+[ext_resource type="PackedScene" uid="uid://daewcgbdysr28" path="res://scenes/objects/death_zone.tscn" id="2_mrwwn"]
+[ext_resource type="PackedScene" uid="uid://ccpwjdyct6syf" path="res://scenes/objects/box.tscn" id="3_2w4gg"]
+[ext_resource type="PackedScene" uid="uid://cvru3qrdwbht0" path="res://scenes/objects/scene_changer.tscn" id="4_qthuk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ppetw"]
+font_size = 48
+
+[node name="Node3D" type="Node3D" unique_id=2144968413]
+
+[node name="terrain" type="CSGCombiner3D" parent="." unique_id=155027796]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="terrain" unique_id=512611083]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.904175)
+size = Vector3(23, 1, 47)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="terrain" unique_id=525322932]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11, -32.904175)
+size = Vector3(23, 1, 27)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="terrain" unique_id=1805306863]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5219727, -5.7367287)
+size = Vector3(23, 4, 11)
+
+[node name="interactables" type="Node" parent="." unique_id=2041137789]
+
+[node name="player" parent="interactables" unique_id=1512140399 instance=ExtResource("1_7pdpm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9423361, 2.3000004, 4.6212225)
+MAXIMUM_HOLDING_DISTANCE = 12.0
+MINIMUM_HOLDING_DISTANCE = 5.0
+MAXIMUM_HELD_OBJECTS = 1
+
+[node name="death_zone" parent="interactables" unique_id=1153127341 instance=ExtResource("2_mrwwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.679653, 6, -13)
+sizing = Vector3(1, 12, 51)
+
+[node name="death_zone2" parent="interactables" unique_id=1700281110 instance=ExtResource("2_mrwwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3203464, 6, -13)
+sizing = Vector3(1, 12, 51)
+
+[node name="death_zone3" parent="interactables" unique_id=1689405049 instance=ExtResource("2_mrwwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 6, 12.080862)
+sizing = Vector3(18, 12, 1)
+
+[node name="death_zone4" parent="interactables" unique_id=1765273130 instance=ExtResource("2_mrwwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 6, -35.473297)
+sizing = Vector3(18, 12, 1)
+
+[node name="box2" parent="interactables" unique_id=1051483128 instance=ExtResource("3_2w4gg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.668221, 1.4999989, 2.6487088)
+sizing = Vector3(2, 2, 2)
+metadata/_edit_group_ = true
+
+[node name="win_zone" parent="interactables" unique_id=15871483 instance=ExtResource("4_qthuk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.5, -43)
+change_scene_to = "res://scenes/menus/hub_world.tscn"
+
+[node name="Label" type="Label" parent="." unique_id=1080020276]
+anchors_preset = -1
+anchor_left = -0.47000003
+anchor_top = 0.41400003
+anchor_right = -0.416
+anchor_bottom = 0.476
+offset_left = 0.4000244
+offset_top = -0.120025635
+offset_right = -0.27996826
+offset_bottom = -0.08001709
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_ppetw")
+vertical_alignment = 2
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=667977287]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 62, 0)
+omni_range = 4096.0

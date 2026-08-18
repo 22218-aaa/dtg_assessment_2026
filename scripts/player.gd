@@ -23,7 +23,7 @@ const sensitivity = 0.3
 
 @export_category("variables")
 @export_range(1.0, 100.0) var MAXIMUM_HOLDING_DISTANCE = 10.0
-@export_range(-5.0, 5.0) var MINIMUM_HOLDING_DISTANCE = 0.1
+@export_range(-5.0, 50.0) var MINIMUM_HOLDING_DISTANCE = 0.1
 @export_range(1, 999) var MAXIMUM_HELD_OBJECTS = 2
 
 const SCROLL_SPEED = 0.2
