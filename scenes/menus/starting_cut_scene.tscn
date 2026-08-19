@@ -1,0 +1,129 @@
+[gd_scene format=3 uid="uid://npjr56c26o2"]
+
+[ext_resource type="PackedScene" uid="uid://bnvwu4r3spj4w" path="res://scenes/objects/button.tscn" id="1_n5qqv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_060ow"]
+font_size = 48
+
+[sub_resource type="Animation" id="Animation_4irwj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_my0a3"]
+resource_name = "intro"
+length = 12.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 5.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": ["intro:", "you are a game dev sent into their buggy mess of a game", "you need to abuse your own game's bugs to beat
+ normally impossible levels and possibly escape"]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/Button")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(12),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_pressed"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/ColorRect:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 10, 12),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lc1dk"]
+_data = {
+&"RESET": SubResource("Animation_4irwj"),
+&"intro": SubResource("Animation_my0a3")
+}
+
+[node name="Control" type="Control" unique_id=1914787785]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="." unique_id=13422667]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 232.0
+offset_top = -216.0
+offset_right = -232.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_060ow")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1504689527]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_lc1dk")
+
+[node name="Button" parent="." unique_id=2020999093 instance=ExtResource("1_n5qqv")]
+layout_mode = 0
+offset_left = 1608.0
+offset_top = 64.0
+offset_right = 1864.0
+offset_bottom = 192.0
+text = "skip"
+change_scene = "res://scenes/menus/hub_world.tscn"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=958100144]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
