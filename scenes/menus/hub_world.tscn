@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://bcxprlld78jga" path="res://scenes/objects/player.tscn" id="2_6060s"]
 [ext_resource type="PackedScene" uid="uid://ccpwjdyct6syf" path="res://scenes/objects/box.tscn" id="3_f0qm8"]
 [ext_resource type="PackedScene" uid="uid://fascjv15xl52" path="res://scenes/objects/level_entrance.tscn" id="6_fi0dp"]
-[ext_resource type="PackedScene" uid="uid://cfibnip85wck6" path="res://scenes/objects/spawner.tscn" id="7_3l0iv"]
 
 [sub_resource type="Resource" id="Resource_a2ery"]
 script = ExtResource("2_3l0iv")
@@ -117,9 +116,6 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 5.5898013, -1.8449492)
 billboard = 2
 text = "left click: grab or release boxes
 scroll: move boxes closer or further from you"
-
-[node name="spawner" parent="." unique_id=614549786 instance=ExtResource("7_3l0iv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.442179, 1.8541079, -12.008081)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1556399254]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 62, 0)

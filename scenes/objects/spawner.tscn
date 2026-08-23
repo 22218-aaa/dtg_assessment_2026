@@ -1,41 +1,10 @@
 [gd_scene format=3 uid="uid://cfibnip85wck6"]
 
-[ext_resource type="Script" uid="uid://doii07v1a33k6" path="res://scripts/spawner.gd" id="1_iuj7d"]
-[ext_resource type="PackedScene" uid="uid://ccpwjdyct6syf" path="res://scenes/objects/box.tscn" id="2_jobsr"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_48ne7"]
-size = Vector3(1.5, 0.2, 1.5)
-
-[sub_resource type="BoxMesh" id="BoxMesh_6xh4u"]
-size = Vector3(1.5, 0.2, 1.5)
-
-[node name="spawner" type="Node3D" unique_id=614549786]
-script = ExtResource("1_iuj7d")
-metadata/_edit_group_ = true
-
-[node name="spawning_platform" parent="." unique_id=2073704069 instance=ExtResource("2_jobsr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14799988, -5.0000005)
-angular_damp = 5.0
-sizing = Vector3(2, 1.5, 2)
-
-[node name="spawn_location" type="Marker3D" parent="spawning_platform" unique_id=1602482923]
-transform = Transform3D(0.5, 0, 0, 0, 1.9841272, 0, 0, 0, 0.5, 0, 1.15, 0)
-
-[node name="button_platform" parent="." unique_id=1271556243 instance=ExtResource("2_jobsr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.148, 0)
-angular_damp = 5.0
-sizing = Vector3(2, 0.8, 2)
-
-[node name="pressure_plate" type="Area3D" parent="button_platform" unique_id=1866874626]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5000006, 0)
-collision_layer = 0
-collision_mask = 6
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="button_platform/pressure_plate" unique_id=1194089496]
-transform = Transform3D(0.99999994, 0, 0, 0, 1.0000001, 0, 0, 0, 0.99999994, 0, 0, 0)
-shape = SubResource("BoxShape3D_48ne7")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="button_platform/pressure_plate" unique_id=577711352]
-mesh = SubResource("BoxMesh_6xh4u")
-
-[connection signal="body_entered" from="button_platform/pressure_plate" to="." method="_on_pressure_plate_body_entered"]
+[node name="Control" type="Control" unique_id=1914787785]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true

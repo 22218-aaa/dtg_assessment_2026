@@ -2,22 +2,27 @@
 
 [ext_resource type="PackedScene" uid="uid://bnvwu4r3spj4w" path="res://scenes/objects/button.tscn" id="1_n5qqv"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_060ow"]
+[sub_resource type="LabelSettings" id="LabelSettings_n5qqv"]
 font_size = 48
 
 [sub_resource type="Animation" id="Animation_4irwj"]
-length = 0.001
+length = 20.0
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Control/Label:text")
+tracks/0/path = NodePath("Control/RigidBody2D/Label:text")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 4.9333334, 8, 9, 12),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [""]
+"values": ["I'll stop you!", "... nu uh", "...............", "AAAAAAAAAAAAA
+AAAAAAAAA
+AAAAAAAAAAAAAAA
+AAAAAAAAAAAA
+AAAAAAA", "uhhhhh"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -26,10 +31,106 @@ tracks/1/path = NodePath("Control/ColorRect:color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 14.9, 16.3),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 0)]
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/Camera3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 5, 8, 9, 15),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector3(3.2634583, 1.352495, 1.4618045), Vector3(-4.450506, 5.538774, 1.4199796), Vector3(3.2634583, 1.352495, 1.4618045), Vector3(-0.08705568, 6.0296745, 8.085767), Vector3(2.1892595, 1.88082, 1.3969507)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/Camera3D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 5, 8, 9, 15),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector3(0.020185407, 1.3803351, 0.10431003), Vector3(-0.38705596, -1.097431, -0.26452166), Vector3(0.020185407, 1.3803351, 0.10431003), Vector3(-0.43458694, 0.10732034, -2.3836504e-09), Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control/RigidBody2D/Label:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 9, 12),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(699, 710), Vector2(1325, -197), Vector2(699, 710)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Control/RigidBody2D:linear_velocity")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 9, 12),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(-30, 120), Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Control/RigidBody2D:angular_velocity")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 9, 12),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0.0, 0.25612706773016786, 0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Control/RigidBody2D:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 12),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Control/RigidBody3D3:gravity_scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0.0, 2.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = false
+tracks/9/path = NodePath("Control/RigidBody3D:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
 }
 
 [sub_resource type="Animation" id="Animation_my0a3"]
@@ -39,7 +140,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Control/Label:text")
+tracks/0/path = NodePath("Control/RigidBody2D/Label:text")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -76,11 +177,18 @@ tracks/2/keys = {
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_lc1dk"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_060ow"]
 _data = {
 &"RESET": SubResource("Animation_4irwj"),
 &"intro": SubResource("Animation_my0a3")
 }
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4irwj"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_my0a3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_lc1dk"]
+size = Vector3(0.2, 0.2, 0.6)
 
 [node name="Control" type="Control" unique_id=1914787785]
 layout_mode = 3
@@ -90,25 +198,32 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="." unique_id=13422667]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=958100144]
 layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 232.0
-offset_top = -216.0
-offset_right = -232.0
-offset_bottom = 8.0
 grow_horizontal = 2
-grow_vertical = 0
-label_settings = SubResource("LabelSettings_060ow")
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=1077152798]
+gravity_scale = 0.0
+
+[node name="Label" type="Label" parent="RigidBody2D" unique_id=1727847348]
+offset_left = 699.0
+offset_top = 710.0
+offset_right = 1175.0
+offset_bottom = 1057.0
+text = "I'll stop you!"
+label_settings = SubResource("LabelSettings_n5qqv")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1504689527]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=177479665]
 root_node = NodePath("../..")
-libraries/ = SubResource("AnimationLibrary_lc1dk")
+libraries/ = SubResource("AnimationLibrary_060ow")
+autoplay = &"RESET"
 
 [node name="Button" parent="." unique_id=2020999093 instance=ExtResource("1_n5qqv")]
 layout_mode = 0
@@ -119,11 +234,69 @@ offset_bottom = 192.0
 text = "skip"
 change_scene = "res://scenes/menus/hub_world.tscn"
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=958100144]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0)
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=516274523]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1323876723]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+size = Vector3(13, 1, 10)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1301432085]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 2, 0)
+size = Vector3(6, 3, 10)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=708375886]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3994794, 1.5000007, 0)
+collision_layer = 0
+mass = 0.001
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=61382947]
+shape = SubResource("CapsuleShape3D_4irwj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=1271681728]
+mesh = SubResource("CapsuleMesh_my0a3")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="RigidBody3D" unique_id=883475281]
+transform = Transform3D(0.98404694, 0.1779092, 0, -0.1779092, 0.98404694, 0, 0, 0, 1, -0.37975264, 0.6950631, 0)
+mesh = SubResource("BoxMesh_lc1dk")
+
+[node name="RigidBody3D3" type="RigidBody3D" parent="." unique_id=556801727]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3286052, 16.304636, 0)
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+mass = 1000.0
+gravity_scale = 0.0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D3" unique_id=1623974634]
+shape = SubResource("CapsuleShape3D_4irwj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D3" unique_id=1464521731]
+mesh = SubResource("CapsuleMesh_my0a3")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="RigidBody3D3" unique_id=668983053]
+transform = Transform3D(0.98404694, 0.1779092, 0, -0.1779092, 0.98404694, 0, 0, 0, 1, -0.37975264, 0.6950631, 0)
+mesh = SubResource("BoxMesh_lc1dk")
+
+[node name="RigidBody3D2" type="RigidBody3D" parent="." unique_id=1113359692]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -4.037253, 4.500001, 0)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2" unique_id=262194601]
+shape = SubResource("CapsuleShape3D_4irwj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D2" unique_id=775981692]
+mesh = SubResource("CapsuleMesh_my0a3")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="RigidBody3D2" unique_id=540684912]
+transform = Transform3D(0.98556495, -0.1692979, 1.2619523e-09, 0.1692979, 0.98556495, -1.4800492e-08, 1.2619523e-09, 1.4800492e-08, 1, -0.3792317, 0.58608484, -3.4360994e-09)
+mesh = SubResource("BoxMesh_lc1dk")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2052147896]
+transform = Transform3D(0.1903464, -3.7252903e-09, 0.981717, 0.10409976, 0.99436206, -0.020184036, -0.9761821, 0.106038466, 0.18927324, 3.2634583, 1.352495, 1.4618045)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=609686288]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 62, 0)
+omni_range = 4096.0
