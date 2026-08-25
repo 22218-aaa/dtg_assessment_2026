@@ -53,7 +53,7 @@ func _on_win_zone_body_entered(_body: Node3D) -> void:
 	# change level state to beaten
 	if level.completion_state == level.COMPLETION_STATES.UNBEATEN:
 		level.completion_state = level.COMPLETION_STATES.BEATEN
-	
+	print()
 	#change level state to be completed
 	for item in level.completion_types:
 		if level.completion_types[item] == false:

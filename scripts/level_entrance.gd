@@ -37,7 +37,13 @@ func connect_level_data():
 			label_text += "\n" + item + ": [ ]"
 	
 	label.text = label_text
-	mesh_instance.mesh.material.set_albedo(level_information.completion_state_colours[level_information.completion_state])
+	print(name)
+	print(level_information.completion_state_colours[level_information.completion_state])
+	print(level_information.completion_state)
+	print()
+	mesh_instance.mesh.material.set_albedo(Color(0.0, 1.0, 0.0, 1.0))
+	await get_tree().create_timer(1).timeout
+	mesh_instance.mesh.material.set_albedo(Color(level_information.completion_state_colours[level_information.completion_state]))
 
 
 

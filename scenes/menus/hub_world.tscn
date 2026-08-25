@@ -24,7 +24,12 @@ metadata/_custom_type_script = "uid://cy6ml2shb4kll"
 
 [sub_resource type="Resource" id="Resource_3jehi"]
 script = ExtResource("2_3l0iv")
-level_name = "level 3"
+level_name = "level 3: hill"
+completion_types = Dictionary[String, bool]({
+"over": false,
+"through and under": false,
+"under": false
+})
 metadata/_custom_type_script = "uid://cy6ml2shb4kll"
 
 [node name="hub_world" type="Node3D" unique_id=110924967]
@@ -108,8 +113,8 @@ level_path = "res://scenes/levels/level_2.tscn"
 
 [node name="level_entrance3" parent="interactables" unique_id=1105148949 instance=ExtResource("6_fi0dp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9344311, 0.99999666, -14.148863)
-level_name = "level 3"
-level_path = "res://scenes/levels/actual_level_3.tscn"
+level_name = "level 3: hill"
+level_path = "res://scenes/levels/level_3.tscn"
 
 [node name="Label3D" type="Label3D" parent="." unique_id=630115316]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 5.5898013, -1.8449492)

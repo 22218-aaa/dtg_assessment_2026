@@ -143,6 +143,20 @@ tracks/10/keys = {
 "update": 1,
 "values": [Vector3(0, 0, 0), Vector3(0, 1.5707964, 0)]
 }
+tracks/11/type = "method"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Control/Button")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(20),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_pressed"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_my0a3"]
 resource_name = "intro"
