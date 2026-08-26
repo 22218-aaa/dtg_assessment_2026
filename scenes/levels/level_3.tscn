@@ -5,9 +5,183 @@
 [ext_resource type="PackedScene" uid="uid://cvru3qrdwbht0" path="res://scenes/objects/scene_changer.tscn" id="2_0qepi"]
 [ext_resource type="PackedScene" uid="uid://ccpwjdyct6syf" path="res://scenes/objects/box.tscn" id="4_ftfob"]
 [ext_resource type="PackedScene" uid="uid://daewcgbdysr28" path="res://scenes/objects/death_zone.tscn" id="5_fkk1g"]
+[ext_resource type="Script" uid="uid://c87jo177mfsda" path="res://scripts/hint_giver.gd" id="6_fkk1g"]
 [ext_resource type="PackedScene" uid="uid://e6c2xsjamk0g" path="res://scenes/objects/achievement_tracking_helper.tscn" id="6_ftfob"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ugcn1"]
+albedo_color = Color(0, 0.39215687, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pimnq"]
+material = SubResource("StandardMaterial3D_ugcn1")
+size = Vector3(2, 1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2bnyt"]
+size = Vector3(2, 1, 2)
+
+[sub_resource type="Animation" id="Animation_n6eey"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_qi5uv"]
+resource_name = "pressed"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -0.25]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f6egh"]
+_data = {
+&"RESET": SubResource("Animation_n6eey"),
+&"pressed": SubResource("Animation_qi5uv")
+}
+
 [sub_resource type="LabelSettings" id="LabelSettings_ppetw"]
+font_size = 48
+
+[sub_resource type="Animation" id="Animation_t4txi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(4.2020354, 1.4999981, 4.9217143)]
+}
+
+[sub_resource type="Animation" id="Animation_apo5x"]
+resource_name = "over"
+length = 5.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2.3, 2.9),
+"transitions": PackedFloat32Array(1, 0.51763237, 0, 1, 0.6155722, 1),
+"update": 0,
+"values": [Vector3(4.2020354, 1.4999981, 4.9217143), Vector3(4.2020354, 1.4999981, 4.9217143), Vector3(4.2020354, 3.499998, 4.9217143), Vector3(4.2020354, 3.499998, 4.9217143), Vector3(4.2020354, 10.499998, -4.0782857), Vector3(4.2020354, 5.499998, -6.0782857)]
+}
+
+[sub_resource type="Animation" id="Animation_josfm"]
+resource_name = "through and under"
+length = 3.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.4, 1.8, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(4.2020354, 1.4999981, 4.9217143), Vector3(4.2020354, 1.4999981, 4.9217143), Vector3(4.2020354, 1.4999981, 0.30489135), Vector3(4.2020354, 1.4999981, 0.30489135), Vector3(4.2020354, 1.4999981, -1.923099)]
+}
+
+[sub_resource type="Animation" id="Animation_lgrx1"]
+resource_name = "under"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(4.2020354, 1.4999981, 4.9217143), Vector3(4.2020354, 1.4999981, 4.9217143), Vector3(4.2020354, -9.500002, 4.9217143)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fhpes"]
+_data = {
+&"RESET": SubResource("Animation_t4txi"),
+&"over": SubResource("Animation_apo5x"),
+&"through and under": SubResource("Animation_josfm"),
+&"under": SubResource("Animation_lgrx1")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vmg1d"]
+transparency = 1
+albedo_color = Color(0, 1, 1, 0.39215687)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1nwmf"]
+material = SubResource("StandardMaterial3D_vmg1d")
+
+[sub_resource type="Animation" id="Animation_fkk1g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("text_player/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+
+[sub_resource type="Animation" id="Animation_ugcn1"]
+resource_name = "dialogue"
+length = 15.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("text_player/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 7, 11, 15),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": ["you: what is this level design?", "I can't even move the box towards me to abuse that
+stupid collision issue", "oh wait I can drag it towards me if
+I look at the ground", "I really should've fixed that
+catching on walls and boxes issue, 
+though maybe i can use it here?", ""]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pimnq"]
+_data = {
+&"RESET": SubResource("Animation_fkk1g"),
+&"dialogue": SubResource("Animation_ugcn1")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_2bnyt"]
 font_size = 48
 
 [node name="Node3D" type="Node3D" unique_id=2144968413]
@@ -38,33 +212,45 @@ MAXIMUM_HELD_OBJECTS = 1
 
 [node name="death_zone2" parent="interactables" unique_id=1700281110 instance=ExtResource("5_fkk1g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3203464, 6, -6)
-visible = false
 sizing = Vector3(1, 12, 38)
 
 [node name="death_zone5" parent="interactables" unique_id=1153127341 instance=ExtResource("5_fkk1g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.679653, 6, -6)
-visible = false
 sizing = Vector3(1, 12, 38)
 
 [node name="death_zone3" parent="interactables" unique_id=1689405049 instance=ExtResource("5_fkk1g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 6, 12.080862)
-visible = false
 sizing = Vector3(18, 12, 1)
 
 [node name="death_zone4" parent="interactables" unique_id=1765273130 instance=ExtResource("5_fkk1g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 6, -23.473297)
-visible = false
 sizing = Vector3(18, 12, 1)
 
 [node name="box2" parent="interactables" unique_id=1051483128 instance=ExtResource("4_ftfob")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.668221, 1.4999989, 2.6487088)
-visible = false
 sizing = Vector3(2, 2, 2)
 metadata/_edit_group_ = true
 
 [node name="win_zone" parent="interactables" unique_id=15871483 instance=ExtResource("2_0qepi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.5, -43)
 change_scene_to = "res://scenes/menus/hub_world.tscn"
+
+[node name="hint_giver" type="Area3D" parent="interactables" unique_id=1985852161]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.74238896, 8.674849)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("6_fkk1g")
+dialogue = true
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="interactables/hint_giver" unique_id=407106536]
+mesh = SubResource("BoxMesh_pimnq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="interactables/hint_giver" unique_id=848306064]
+shape = SubResource("BoxShape3D_2bnyt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="interactables/hint_giver" unique_id=203876199]
+libraries/ = SubResource("AnimationLibrary_f6egh")
 
 [node name="Label" type="Label" parent="." unique_id=1080020276]
 anchors_preset = -1
@@ -92,5 +278,34 @@ sizing = Vector3(22, 5, 7)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4629545, -7)
 sizing = Vector3(22, 2, 7)
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1239269312]
+libraries/ = SubResource("AnimationLibrary_fhpes")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AnimationPlayer" unique_id=1852391595]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2020354, 1.4999981, 4.9217143)
+mesh = SubResource("CapsuleMesh_1nwmf")
+
+[node name="text_player" type="AnimationPlayer" parent="." unique_id=752454818]
+libraries/ = SubResource("AnimationLibrary_pimnq")
+autoplay = &"RESET"
+
+[node name="Label" type="Label" parent="text_player" unique_id=805477207]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_top = -888.0
+offset_right = -960.0
+offset_bottom = -751.0
+grow_horizontal = 2
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_2bnyt")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[connection signal="body_entered" from="interactables/win_zone" to="." method="_on_win_zone_body_entered"]
+[connection signal="body_entered" from="interactables/hint_giver" to="interactables/hint_giver" method="_on_body_entered"]
+[connection signal="body_exited" from="interactables/hint_giver" to="interactables/hint_giver" method="_on_body_exited"]
 [connection signal="body_entered" from="over_tracker" to="." method="_on_over_tracker_body_entered"]
 [connection signal="body_entered" from="through_tracker" to="." method="_on_through_tracker_body_entered"]

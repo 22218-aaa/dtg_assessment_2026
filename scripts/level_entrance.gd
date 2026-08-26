@@ -23,10 +23,10 @@ func _ready() -> void:
 
 
 func connect_level_data():
-	#print()
-	#print("level entrance script: ")
+	print()
+	print("level entrance script: ")
 	#print(global.level_information)
-	#print(level_name)
+	print(level_name)
 	level_information = global.level_information[level_name]
 	var label_text = ""
 	label_text = level_name
@@ -37,9 +37,9 @@ func connect_level_data():
 			label_text += "\n" + item + ": [ ]"
 	
 	label.text = label_text
-	print(name)
-	print(level_information.completion_state_colours[level_information.completion_state])
-	print(level_information.completion_state)
+	#print(name)
+	#print(level_information.completion_state_colours[level_information.completion_state])
+	#print(level_information.completion_state)
 	print()
 	mesh_instance.mesh.material.set_albedo(Color(0.0, 1.0, 0.0, 1.0))
 	await get_tree().create_timer(1).timeout
