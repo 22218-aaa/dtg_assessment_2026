@@ -6,8 +6,10 @@ extends RigidBody3D
 @export var object_detector: RayCast3D
 @export var held_object_point: Marker3D
 @export var flat_rotation: Marker3D
-@export var label: Label
-@export var debug_label: Label
+@export var boxes_label: Label
+@export var position_label: Label
+@export var velocity_label: Label
+@export var highest_velocity_label: Label
 
 var held_objects: Array = []
 
@@ -20,6 +22,7 @@ const ACCELLERATION = 50.0
 const FRICTION = 10.0
 const JUMP_VELOCITY = 7
 const sensitivity = 0.3
+var highest_velocity: Vector3 = Vector3(0, 999, 0)
 
 @export_category("variables")
 @export_range(1.0, 100.0) var MAXIMUM_HOLDING_DISTANCE = 10.0
@@ -72,6 +75,9 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if linear_velocity.y > highest_velocity.y:
+		highest_velocity = Vector3(0, linear_velocity.y, 0)
+	
 	# Add the gravity.
 	if not on_floor:
 		linear_velocity += get_gravity() * delta
@@ -79,8 +85,10 @@ func _physics_process(delta: float) -> void:
 	moving(delta)
 	holding_logic(delta)
 	#pushing_logic(delta)
-	label.text = str(len(held_objects)) + "/" + str(MAXIMUM_HELD_OBJECTS)
-	debug_label.text = str(linear_velocity.round())
+	boxes_label.text = "held: " + str(len(held_objects)) + "/" + str(MAXIMUM_HELD_OBJECTS)
+	position_label.text = "position: " + str(global_position.round())
+	velocity_label.text = "velocity: " + str(linear_velocity.round())
+	highest_velocity_label.text = "highest velocity: " + str(highest_velocity.round())
 	# + "\n" + \
 	#str(rotation_degrees) + "\n" + \
 	#str(flat_rotation.rotation_degrees) + "\n" + \

@@ -14,7 +14,7 @@ radius = 0.45
 [sub_resource type="LabelSettings" id="LabelSettings_yautc"]
 font_size = 32
 
-[node name="player" type="RigidBody3D" unique_id=1512140399 node_paths=PackedStringArray("camera", "object_detector", "held_object_point", "flat_rotation", "label", "debug_label")]
+[node name="player" type="RigidBody3D" unique_id=1512140399 node_paths=PackedStringArray("camera", "object_detector", "held_object_point", "flat_rotation", "boxes_label", "position_label", "velocity_label", "highest_velocity_label")]
 collision_layer = 2
 collision_mask = 5
 axis_lock_angular_x = true
@@ -26,8 +26,10 @@ camera = NodePath("flat_rotation/Camera3D")
 object_detector = NodePath("flat_rotation/Camera3D/object_detector")
 held_object_point = NodePath("flat_rotation/Camera3D/held_object_point")
 flat_rotation = NodePath("flat_rotation")
-label = NodePath("Control/VBoxContainer/Label")
-debug_label = NodePath("Control/VBoxContainer/Label2")
+boxes_label = NodePath("Control/VBoxContainer/boxes")
+position_label = NodePath("Control/VBoxContainer/position")
+velocity_label = NodePath("Control/VBoxContainer/velocity")
+highest_velocity_label = NodePath("Control/VBoxContainer/highest_velocity")
 MINIMUM_HOLDING_DISTANCE = 0.0
 metadata/_edit_group_ = true
 
@@ -84,12 +86,22 @@ offset_top = -530.0
 offset_right = -667.0
 offset_bottom = -347.0
 
-[node name="Label" type="Label" parent="Control/VBoxContainer" unique_id=387440607]
+[node name="boxes" type="Label" parent="Control/VBoxContainer" unique_id=387440607]
 layout_mode = 2
 label_settings = SubResource("LabelSettings_yautc")
 metadata/_edit_use_anchors_ = true
 
-[node name="Label2" type="Label" parent="Control/VBoxContainer" unique_id=1321992583]
+[node name="position" type="Label" parent="Control/VBoxContainer" unique_id=1321992583]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_yautc")
+metadata/_edit_use_anchors_ = true
+
+[node name="velocity" type="Label" parent="Control/VBoxContainer" unique_id=1237052254]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_yautc")
+metadata/_edit_use_anchors_ = true
+
+[node name="highest_velocity" type="Label" parent="Control/VBoxContainer" unique_id=457681526]
 layout_mode = 2
 label_settings = SubResource("LabelSettings_yautc")
 metadata/_edit_use_anchors_ = true
