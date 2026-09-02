@@ -48,7 +48,7 @@ fov = 90.0
 
 [node name="object_detector" type="RayCast3D" parent="flat_rotation/Camera3D" unique_id=861695031]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.295)
-target_position = Vector3(0, 0, -10)
+target_position = Vector3(0, 0, -15)
 collision_mask = 4
 
 [node name="held_object_point" type="Marker3D" parent="flat_rotation/Camera3D" unique_id=1334541494]

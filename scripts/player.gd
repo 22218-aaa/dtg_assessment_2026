@@ -22,7 +22,7 @@ const ACCELLERATION = 50.0
 const FRICTION = 10.0
 const JUMP_VELOCITY = 7
 const sensitivity = 0.3
-var highest_velocity: Vector3 = Vector3(0, 999, 0)
+var highest_velocity: Vector3 = Vector3(0, 0, 0)
 
 @export_category("variables")
 @export_range(1.0, 100.0) var MAXIMUM_HOLDING_DISTANCE = 10.0
