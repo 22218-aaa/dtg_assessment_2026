@@ -18,12 +18,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.904175)
 size = Vector3(23, 1, 45)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="terrain" unique_id=2094640801]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14, -0.4041748)
-size = Vector3(23, 5, 24)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.5, 1.0958252)
+size = Vector3(23, 6, 21)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="terrain" unique_id=2135514327]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.422119, -8.404175)
-size = Vector3(23, 11.844238, 8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -6.904175)
+size = Vector3(23, 8.9, 5)
 
 [node name="interactables" type="Node" parent="." unique_id=2000548605]
 
@@ -32,24 +32,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9423361, 2.3000002, 4.6212
 MAXIMUM_HOLDING_DISTANCE = 12.0
 
 [node name="death_zone" parent="interactables" unique_id=1153127341 instance=ExtResource("2_fi56y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 8, -11)
-sizing = Vector3(1, 17, 47)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 7.5, -11)
+sizing = Vector3(1, 16, 47)
 
 [node name="death_zone2" parent="interactables" unique_id=1415534124 instance=ExtResource("2_fi56y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.843508, 8, -11)
-sizing = Vector3(1, 17, 47)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.843508, 7.5, -11)
+sizing = Vector3(1, 16, 47)
 
 [node name="death_zone3" parent="interactables" unique_id=1763427383 instance=ExtResource("2_fi56y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 12)
-sizing = Vector3(23, 17, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.5, 12)
+sizing = Vector3(23, 16, 1)
 
 [node name="death_zone5" parent="interactables" unique_id=5202956 instance=ExtResource("2_fi56y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -34)
-sizing = Vector3(23, 17, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.5, -34)
+sizing = Vector3(23, 16, 1)
 
 [node name="death_zone4" parent="interactables" unique_id=2061383892 instance=ExtResource("2_fi56y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18, -11)
-sizing = Vector3(25, 3, 47)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 3.5)
+sizing = Vector3(25, 1, 18)
+
+[node name="death_zone6" parent="interactables" unique_id=1088141379 instance=ExtResource("2_fi56y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, -21.5)
+sizing = Vector3(25, 1, 26)
 
 [node name="box" parent="interactables" unique_id=2073704069 instance=ExtResource("3_hldbq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1187315, 0.9999981, 0.7122166)
@@ -59,7 +63,83 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1187315, 1.5000033, -24.287
 sizing = Vector3(2, 2, 2)
 
 [node name="win_zone" parent="interactables" unique_id=15871483 instance=ExtResource("4_fsnos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -54)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 34.5, -86)
+change_scene_to = "res://scenes/menus/hub_world.tscn"
+
+[node name="win_zone5" parent="interactables" unique_id=1835783523 instance=ExtResource("4_fsnos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 44.5, -86)
+change_scene_to = "res://scenes/menus/hub_world.tscn"
+
+[node name="win_zone2" parent="interactables" unique_id=79697227 instance=ExtResource("4_fsnos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24.5, -86)
+change_scene_to = "res://scenes/menus/hub_world.tscn"
+
+[node name="win_zone3" parent="interactables" unique_id=1472503838 instance=ExtResource("4_fsnos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.5, -86)
+change_scene_to = "res://scenes/menus/hub_world.tscn"
+
+[node name="win_zone4" parent="interactables" unique_id=1317903491 instance=ExtResource("4_fsnos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, -86)
+change_scene_to = "res://scenes/menus/hub_world.tscn"
+
+[node name="win_zone6" parent="interactables" unique_id=1383307143 instance=ExtResource("4_fsnos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 84.5, -86)
+change_scene_to = "res://scenes/menus/hub_world.tscn"
+
+[node name="win_zone7" parent="interactables" unique_id=1463403735 instance=ExtResource("4_fsnos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 94.5, -86)
+change_scene_to = "res://scenes/menus/hub_world.tscn"
+
+[node name="win_zone8" parent="interactables" unique_id=1523731952 instance=ExtResource("4_fsnos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 74.5, -86)
+change_scene_to = "res://scenes/menus/hub_world.tscn"
+
+[node name="win_zone9" parent="interactables" unique_id=1524016624 instance=ExtResource("4_fsnos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 64.5, -86)
+change_scene_to = "res://scenes/menus/hub_world.tscn"
+
+[node name="win_zone10" parent="interactables" unique_id=1814110283 instance=ExtResource("4_fsnos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 54.5, -86)
+change_scene_to = "res://scenes/menus/hub_world.tscn"
+
+[node name="win_zone11" parent="interactables" unique_id=894124648 instance=ExtResource("4_fsnos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -65.5, -86)
+change_scene_to = "res://scenes/menus/hub_world.tscn"
+
+[node name="win_zone12" parent="interactables" unique_id=1538980142 instance=ExtResource("4_fsnos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -55.5, -86)
+change_scene_to = "res://scenes/menus/hub_world.tscn"
+
+[node name="win_zone13" parent="interactables" unique_id=1384011606 instance=ExtResource("4_fsnos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -75.5, -86)
+change_scene_to = "res://scenes/menus/hub_world.tscn"
+
+[node name="win_zone14" parent="interactables" unique_id=765678283 instance=ExtResource("4_fsnos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -85.5, -86)
+change_scene_to = "res://scenes/menus/hub_world.tscn"
+
+[node name="win_zone15" parent="interactables" unique_id=1534439029 instance=ExtResource("4_fsnos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -95.5, -86)
+change_scene_to = "res://scenes/menus/hub_world.tscn"
+
+[node name="win_zone16" parent="interactables" unique_id=778094160 instance=ExtResource("4_fsnos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15.5, -86)
+change_scene_to = "res://scenes/menus/hub_world.tscn"
+
+[node name="win_zone17" parent="interactables" unique_id=964773857 instance=ExtResource("4_fsnos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.5, -86)
+change_scene_to = "res://scenes/menus/hub_world.tscn"
+
+[node name="win_zone18" parent="interactables" unique_id=1633276851 instance=ExtResource("4_fsnos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -25.5, -86)
+change_scene_to = "res://scenes/menus/hub_world.tscn"
+
+[node name="win_zone19" parent="interactables" unique_id=359432278 instance=ExtResource("4_fsnos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -35.5, -86)
+change_scene_to = "res://scenes/menus/hub_world.tscn"
+
+[node name="win_zone20" parent="interactables" unique_id=714785967 instance=ExtResource("4_fsnos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -45.5, -86)
 change_scene_to = "res://scenes/menus/hub_world.tscn"
 
 [node name="Label" type="Label" parent="." unique_id=505387594]

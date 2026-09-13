@@ -122,7 +122,7 @@ level_name = "level 3: hill"
 level_path = "res://scenes/levels/level_3.tscn"
 
 [node name="level_entrance4" parent="interactables" unique_id=653957253 instance=ExtResource("6_fi0dp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.934431, 4.6173096, -14.148863)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3776989, 0.99999666, -0.8199587)
 level_name = "level 5: get_tree().quit()"
 level_path = "res://scenes/levels/level_5.tscn"
 

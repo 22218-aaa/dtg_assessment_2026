@@ -14,6 +14,10 @@ radius = 0.45
 [sub_resource type="LabelSettings" id="LabelSettings_yautc"]
 font_size = 32
 
+[sub_resource type="LabelSettings" id="LabelSettings_2147m"]
+font_size = 48
+font_color = Color(0, 0, 0, 1)
+
 [node name="player" type="RigidBody3D" unique_id=1512140399 node_paths=PackedStringArray("camera", "object_detector", "held_object_point", "flat_rotation", "boxes_label", "position_label", "velocity_label", "highest_velocity_label")]
 collision_layer = 2
 collision_mask = 5
@@ -85,6 +89,61 @@ offset_left = -950.0
 offset_top = -530.0
 offset_right = -667.0
 offset_bottom = -347.0
+
+[node name="holding_distance_label" type="Label" parent="Control/VBoxContainer" unique_id=1807862464]
+layout_mode = 2
+text = "holding distance:"
+label_settings = SubResource("LabelSettings_yautc")
+metadata/_edit_use_anchors_ = true
+
+[node name="hold_distance_display" type="Control" parent="Control/VBoxContainer" unique_id=1135806823]
+custom_minimum_size = Vector2(0, 102.44)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control/VBoxContainer/hold_distance_display" unique_id=1480327004]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 1.0
+offset_right = 60.0
+offset_bottom = 75.0
+
+[node name="Marker2D" type="Marker2D" parent="Control/VBoxContainer/hold_distance_display/ColorRect" unique_id=2086808006]
+position = Vector2(46, 32)
+
+[node name="distance_display" type="ColorRect" parent="Control/VBoxContainer/hold_distance_display/ColorRect/Marker2D" unique_id=2109268108]
+z_index = 1
+offset_right = 8.0
+offset_bottom = 8.0
+color = Color(0.63375676, 0.6337568, 0.63375676, 1)
+
+[node name="current_distance" type="ColorRect" parent="Control/VBoxContainer/hold_distance_display/ColorRect/Marker2D" unique_id=722615084]
+z_index = 2
+offset_right = 8.0
+offset_bottom = 8.0
+color = Color(0, 1, 0, 1)
+
+[node name="holding_distance_label2" type="Label" parent="Control/VBoxContainer/hold_distance_display/ColorRect" unique_id=2125053978]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.47826087
+anchor_top = 0.7837838
+anchor_right = 0.47826087
+anchor_bottom = 0.7837838
+offset_left = -14.0
+offset_top = -50.0
+offset_right = 269.0
+offset_bottom = -5.0
+text = "U"
+label_settings = SubResource("LabelSettings_yautc")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/hold_distance_display/ColorRect" unique_id=646577184]
+layout_mode = 0
+offset_left = 8.0
+offset_right = 48.0
+offset_bottom = 67.0
+text = "u"
+label_settings = SubResource("LabelSettings_2147m")
 
 [node name="boxes" type="Label" parent="Control/VBoxContainer" unique_id=387440607]
 layout_mode = 2

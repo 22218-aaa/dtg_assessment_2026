@@ -11,6 +11,10 @@ extends RigidBody3D
 @export var velocity_label: Label
 @export var highest_velocity_label: Label
 
+@onready var distance_display: ColorRect = $Control/VBoxContainer/hold_distance_display/ColorRect/Marker2D/distance_display
+@onready var current_distance_display: ColorRect = $Control/VBoxContainer/hold_distance_display/ColorRect/Marker2D/current_distance
+
+
 var held_objects: Array = []
 
 var static_stood_on: Array = []
@@ -62,16 +66,22 @@ func _input(event):
 				
 		if Input.is_action_just_pressed("scroll_down"):
 			held_object_point.position.z = move_toward(held_object_point.position.z, -MINIMUM_HOLDING_DISTANCE, SCROLL_SPEED)
+			set_current_distance_display()
 		
 		if Input.is_action_just_pressed("scroll_up"):
 			held_object_point.position.z = move_toward(held_object_point.position.z,- MAXIMUM_HOLDING_DISTANCE, SCROLL_SPEED)
+			set_current_distance_display()
 
+func set_current_distance_display():
+	current_distance_display.position.x =-held_object_point.position.z * 8
 
 
 func _ready() -> void:
 	held_object_point.position.z = -snappedf((MAXIMUM_HOLDING_DISTANCE + MINIMUM_HOLDING_DISTANCE) / 2, SCROLL_SPEED)
+	set_current_distance_display()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-
+	distance_display.position.x = MINIMUM_HOLDING_DISTANCE * 8
+	distance_display.size.x = MAXIMUM_HOLDING_DISTANCE * 8 + 8 - MINIMUM_HOLDING_DISTANCE * 8
 
 
 func _physics_process(delta: float) -> void:
