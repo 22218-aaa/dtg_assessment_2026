@@ -70,7 +70,12 @@ sizing = Vector3(3, 3, 3)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -17)
 change_scene_to = "res://scenes/menus/hub_world.tscn"
 
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1095944458]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 62, 0)
+omni_range = 4096.0
+
 [node name="Label" type="Label" parent="." unique_id=1924621915]
+visible = false
 anchors_preset = -1
 anchor_left = -0.47000003
 anchor_top = 0.41400003
@@ -83,10 +88,6 @@ offset_bottom = -0.08001709
 grow_vertical = 0
 label_settings = SubResource("LabelSettings_sk5k4")
 vertical_alignment = 2
-
-[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1095944458]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 62, 0)
-omni_range = 4096.0
 
 [connection signal="body_entered" from="terrain/phasing_tracker" to="." method="_on_phasing_tracker_body_entered"]
 [connection signal="body_entered" from="interactables/box2/box_2_tracker" to="." method="_on_box_2_tracker_body_entered"]

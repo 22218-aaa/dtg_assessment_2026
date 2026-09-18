@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://daevprfbxvb00"]
+
+[ext_resource type="Material" uid="uid://62sknwfgnc3k" path="res://assets/materials/yellow.tres" id="1_aybt4"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_vtg5w"]
+material = ExtResource("1_aybt4")
+
+[node name="yellow" type="MeshInstance3D" unique_id=705595669]
+mesh = SubResource("BoxMesh_vtg5w")

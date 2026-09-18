@@ -45,6 +45,8 @@ func _input(event):
 	if InputEvent:
 		if Input.is_action_just_pressed("escape"):
 			get_tree().quit()
+		elif Input.is_action_just_pressed("tab"):
+			get_tree().change_scene_to_file("res://scenes/menus/hub_world.tscn")
 		if Input.is_action_just_pressed("select"):
 			if not object_detector.is_colliding():
 				if not held_objects.is_empty():
@@ -81,7 +83,7 @@ func _ready() -> void:
 	set_current_distance_display()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	distance_display.position.x = MINIMUM_HOLDING_DISTANCE * 8
-	distance_display.size.x = MAXIMUM_HOLDING_DISTANCE * 8 + 8 - MINIMUM_HOLDING_DISTANCE * 8
+	distance_display.size.x = MAXIMUM_HOLDING_DISTANCE * 8 + 16 - MINIMUM_HOLDING_DISTANCE * 8
 
 
 func _physics_process(delta: float) -> void:
@@ -98,7 +100,7 @@ func _physics_process(delta: float) -> void:
 	boxes_label.text = "held: " + str(len(held_objects)) + "/" + str(MAXIMUM_HELD_OBJECTS)
 	position_label.text = "position: " + str(global_position.round())
 	velocity_label.text = "velocity: " + str(linear_velocity.round())
-	highest_velocity_label.text = "highest velocity: " + str(highest_velocity.round())
+	#highest_velocity_label.text = "highest velocity: " + str(highest_velocity.round())
 	# + "\n" + \
 	#str(rotation_degrees) + "\n" + \
 	#str(flat_rotation.rotation_degrees) + "\n" + \

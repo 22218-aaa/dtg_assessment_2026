@@ -35,6 +35,11 @@ metadata/_custom_type_script = "uid://cy6ml2shb4kll"
 [sub_resource type="Resource" id="Resource_fi0dp"]
 script = ExtResource("2_3l0iv")
 level_name = "level 5: get_tree().quit()"
+completion_types = Dictionary[String, bool]({
+"knowledge_check": false,
+"skill_check": false,
+"skip": false
+})
 metadata/_custom_type_script = "uid://cy6ml2shb4kll"
 
 [node name="hub_world" type="Node3D" unique_id=110924967]
@@ -44,6 +49,7 @@ level_entries = Array[ExtResource("2_3l0iv")]([SubResource("Resource_a2ery"), Su
 
 [node name="terrain" type="CSGCombiner3D" parent="." unique_id=1588843043]
 use_collision = true
+metadata/_edit_lock_ = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="terrain" unique_id=601596501]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -4.404175)
@@ -100,16 +106,12 @@ MAXIMUM_HELD_OBJECTS = 5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.18614, 0.9999981, 5.081418)
 
 [node name="box2" parent="interactables" unique_id=1879063158 instance=ExtResource("3_f0qm8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.231277, 2.5021074, 2.7245293)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9757805, 2.5021074, -7.504801)
 sizing = Vector3(2, 2, 2)
 
 [node name="box3" parent="interactables" unique_id=1718472720 instance=ExtResource("3_f0qm8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.276478, 3.5078123, 5.8822155)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.464785, 3.0021124, 5.8822155)
 sizing = Vector3(3, 3, 3)
-
-[node name="level_entrance" parent="interactables" unique_id=636574180 instance=ExtResource("6_fi0dp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.738438, 2.0142207, -1.8974123)
-level_name = "level 1: wall"
 
 [node name="level_entrance2" parent="interactables" unique_id=1994327096 instance=ExtResource("6_fi0dp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.591633, 7.000005, -16.345463)
@@ -117,17 +119,21 @@ level_name = "level 2: cage"
 level_path = "res://scenes/levels/level_2.tscn"
 
 [node name="level_entrance3" parent="interactables" unique_id=1105148949 instance=ExtResource("6_fi0dp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9344311, 0.99999666, -14.148863)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.64078, 16.999996, -31.779137)
 level_name = "level 3: hill"
 level_path = "res://scenes/levels/level_3.tscn"
 
 [node name="level_entrance4" parent="interactables" unique_id=653957253 instance=ExtResource("6_fi0dp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3776989, 0.99999666, -0.8199587)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4982772, 0.99999666, -3.2435822)
 level_name = "level 5: get_tree().quit()"
 level_path = "res://scenes/levels/level_5.tscn"
 
+[node name="level_entrance" parent="interactables" unique_id=636574180 instance=ExtResource("6_fi0dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -46)
+level_name = "level 1: wall"
+
 [node name="Label3D" type="Label3D" parent="." unique_id=630115316]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 5.5898013, -1.8449492)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.8393774, 5.5898013, -5.122287)
 billboard = 2
 text = "left click: grab or release boxes
 scroll: move boxes closer or further from you"

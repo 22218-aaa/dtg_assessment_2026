@@ -33,7 +33,7 @@ flat_rotation = NodePath("flat_rotation")
 boxes_label = NodePath("Control/VBoxContainer/boxes")
 position_label = NodePath("Control/VBoxContainer/position")
 velocity_label = NodePath("Control/VBoxContainer/velocity")
-highest_velocity_label = NodePath("Control/VBoxContainer/highest_velocity")
+highest_velocity_label = NodePath("")
 MINIMUM_HOLDING_DISTANCE = 0.0
 metadata/_edit_group_ = true
 
@@ -108,18 +108,18 @@ offset_right = 60.0
 offset_bottom = 75.0
 
 [node name="Marker2D" type="Marker2D" parent="Control/VBoxContainer/hold_distance_display/ColorRect" unique_id=2086808006]
-position = Vector2(46, 32)
+position = Vector2(46, 24)
 
 [node name="distance_display" type="ColorRect" parent="Control/VBoxContainer/hold_distance_display/ColorRect/Marker2D" unique_id=2109268108]
 z_index = 1
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 17.0
+offset_bottom = 16.0
 color = Color(0.63375676, 0.6337568, 0.63375676, 1)
 
 [node name="current_distance" type="ColorRect" parent="Control/VBoxContainer/hold_distance_display/ColorRect/Marker2D" unique_id=722615084]
 z_index = 2
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 17.0
+offset_bottom = 16.0
 color = Color(0, 1, 0, 1)
 
 [node name="holding_distance_label2" type="Label" parent="Control/VBoxContainer/hold_distance_display/ColorRect" unique_id=2125053978]
@@ -156,11 +156,6 @@ label_settings = SubResource("LabelSettings_yautc")
 metadata/_edit_use_anchors_ = true
 
 [node name="velocity" type="Label" parent="Control/VBoxContainer" unique_id=1237052254]
-layout_mode = 2
-label_settings = SubResource("LabelSettings_yautc")
-metadata/_edit_use_anchors_ = true
-
-[node name="highest_velocity" type="Label" parent="Control/VBoxContainer" unique_id=457681526]
 layout_mode = 2
 label_settings = SubResource("LabelSettings_yautc")
 metadata/_edit_use_anchors_ = true

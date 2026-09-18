@@ -5,11 +5,15 @@ extends Node3D
 @export var level_name: String
 @export var level_path: String
 
+const GREEN = preload("uid://b5k38noernv3v")
+const RED = preload("uid://c6ln2wt331uo8")
+const YELLOW = preload("uid://daevprfbxvb00")
+
 var level_information: level_data
 
 @onready var area_3d: Area3D = $Area3D
 @onready var collision_shape: CollisionShape3D = $Area3D/CollisionShape3D
-@onready var mesh_instance: MeshInstance3D = $Area3D/MeshInstance3D
+@onready var mesh_instance: MeshInstance3D
 @onready var label: Label3D = $Label3D
 
 @export var sizing: Vector3 = Vector3(1, 1, 1)
@@ -19,7 +23,6 @@ func _ready() -> void:
 	if not Engine.is_editor_hint():
 		call_deferred("connect_level_data")
 		collision_shape.scale = sizing
-		mesh_instance.scale = sizing
 
 
 func connect_level_data():
@@ -36,14 +39,20 @@ func connect_level_data():
 		else:
 			label_text += "\n" + item + ": [ ]"
 	
+	
 	label.text = label_text
-	#print(name)
-	#print(level_information.completion_state_colours[level_information.completion_state])
-	#print(level_information.completion_state)
-	print()
-	mesh_instance.mesh.material.set_albedo(Color(0.0, 1.0, 0.0, 1.0))
-	await get_tree().create_timer(1).timeout
-	mesh_instance.mesh.material.set_albedo(Color(level_information.completion_state_colours[level_information.completion_state]))
+	
+	
+	if level_information.completion_state == 0:
+		area_3d.add_child(RED.instantiate())
+	if level_information.completion_state == 1:
+		area_3d.add_child(YELLOW.instantiate())
+	if level_information.completion_state == 2:
+		area_3d.add_child(GREEN.instantiate())
+	
+	mesh_instance = area_3d.get_children()[1]
+	mesh_instance.scale = sizing
+	
 
 
 
@@ -51,7 +60,6 @@ func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
 		label.text = level_name
 		collision_shape.scale = sizing
-		mesh_instance.scale = sizing
 
 
 

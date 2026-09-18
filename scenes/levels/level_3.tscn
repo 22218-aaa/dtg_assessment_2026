@@ -59,86 +59,6 @@ _data = {
 [sub_resource type="LabelSettings" id="LabelSettings_ppetw"]
 font_size = 48
 
-[sub_resource type="Animation" id="Animation_t4txi"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer/MeshInstance3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(4.2020354, 1.4999981, 4.9217143)]
-}
-
-[sub_resource type="Animation" id="Animation_apo5x"]
-resource_name = "over"
-length = 5.0
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer/MeshInstance3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2.3, 2.9),
-"transitions": PackedFloat32Array(1, 0.51763237, 0, 1, 0.6155722, 1),
-"update": 0,
-"values": [Vector3(4.2020354, 1.4999981, 4.9217143), Vector3(4.2020354, 1.4999981, 4.9217143), Vector3(4.2020354, 3.499998, 4.9217143), Vector3(4.2020354, 3.499998, 4.9217143), Vector3(4.2020354, 10.499998, -4.0782857), Vector3(4.2020354, 5.499998, -6.0782857)]
-}
-
-[sub_resource type="Animation" id="Animation_josfm"]
-resource_name = "through and under"
-length = 3.0
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer/MeshInstance3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1.4, 1.8, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(4.2020354, 1.4999981, 4.9217143), Vector3(4.2020354, 1.4999981, 4.9217143), Vector3(4.2020354, 1.4999981, 0.30489135), Vector3(4.2020354, 1.4999981, 0.30489135), Vector3(4.2020354, 1.4999981, -1.923099)]
-}
-
-[sub_resource type="Animation" id="Animation_lgrx1"]
-resource_name = "under"
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer/MeshInstance3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(4.2020354, 1.4999981, 4.9217143), Vector3(4.2020354, 1.4999981, 4.9217143), Vector3(4.2020354, -9.500002, 4.9217143)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_fhpes"]
-_data = {
-&"RESET": SubResource("Animation_t4txi"),
-&"over": SubResource("Animation_apo5x"),
-&"through and under": SubResource("Animation_josfm"),
-&"under": SubResource("Animation_lgrx1")
-}
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vmg1d"]
-transparency = 1
-albedo_color = Color(0, 1, 1, 0.39215687)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_1nwmf"]
-material = SubResource("StandardMaterial3D_vmg1d")
-
 [sub_resource type="Animation" id="Animation_fkk1g"]
 length = 0.001
 tracks/0/type = "value"
@@ -253,6 +173,7 @@ shape = SubResource("BoxShape3D_2bnyt")
 libraries/ = SubResource("AnimationLibrary_f6egh")
 
 [node name="Label" type="Label" parent="." unique_id=1080020276]
+visible = false
 anchors_preset = -1
 anchor_left = -0.47000003
 anchor_top = 0.41400003
@@ -277,13 +198,6 @@ sizing = Vector3(22, 5, 7)
 [node name="through_tracker" parent="." unique_id=949070155 instance=ExtResource("6_ftfob")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4629545, -7)
 sizing = Vector3(22, 2, 7)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1239269312]
-libraries/ = SubResource("AnimationLibrary_fhpes")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AnimationPlayer" unique_id=1852391595]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2020354, 1.4999981, 4.9217143)
-mesh = SubResource("CapsuleMesh_1nwmf")
 
 [node name="text_player" type="AnimationPlayer" parent="." unique_id=752454818]
 libraries/ = SubResource("AnimationLibrary_pimnq")
