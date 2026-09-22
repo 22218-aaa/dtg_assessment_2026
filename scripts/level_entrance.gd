@@ -35,7 +35,7 @@ func connect_level_data():
 	label_text = level_name
 	for item in level_information.completion_types:
 		if level_information.completion_types[item] == true:
-			label_text += "\n" + item + ": [✓]"
+			label_text += "\n" + item + ": [X]"
 		else:
 			label_text += "\n" + item + ": [ ]"
 	

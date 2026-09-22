@@ -11,88 +11,40 @@
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="terrain" unique_id=1088491654]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5093763, 12.5, 2.0950873)
-size = Vector3(14, 26, 19)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 9, 12)
+size = Vector3(20, 21, 20)
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="terrain/CSGBox3D" unique_id=778214669]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4416504, 0)
-operation = 2
-size = Vector3(12, 26.8833, 17)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="terrain/CSGBox3D" unique_id=124062155]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.894897, -9.095825)
-operation = 2
-size = Vector3(12, 0.8010254, 2)
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="terrain/CSGBox3D" unique_id=2057723462]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.6, -9.096)
-operation = 2
-size = Vector3(12, 0.8, 2)
-
-[node name="CSGBox3D8" type="CSGBox3D" parent="terrain" unique_id=1079907705]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -13.904175)
-size = Vector3(35, 1, 13)
-
-[node name="CSGBox3D9" type="CSGBox3D" parent="terrain" unique_id=290725199]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 2, -13.904175)
-size = Vector3(15, 5, 13)
-
-[node name="CSGBox3D10" type="CSGBox3D" parent="terrain" unique_id=506378845]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9520292, 1.000004, -18.623741)
-
-[node name="CSGBox3D11" type="CSGBox3D" parent="terrain" unique_id=205725423]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.952029, 1.7156014, -18.623741)
-
-[node name="CSGBox3D14" type="CSGBox3D" parent="terrain" unique_id=1243742842]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.343354, 2.6862497, -8.623741)
-
-[node name="CSGBox3D15" type="CSGBox3D" parent="terrain" unique_id=2035155239]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.68689, 2.0977826, -11.94648)
-size = Vector3(0.4, 3.1955566, 0.4)
-
-[node name="CSGBox3D12" type="CSGBox3D" parent="terrain" unique_id=293374839]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.952029, 1.7156014, -12.532228)
-size = Vector3(1, 1, 8.211914)
-
-[node name="CSGBox3D13" type="CSGBox3D" parent="terrain" unique_id=361623804]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.952029, 3.2156014, -12.579632)
-size = Vector3(1, 2, 1)
-
-[node name="box" parent="terrain" unique_id=2073704069 instance=ExtResource("3_qpwj6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.033637, 21.917896, 3.9967623)
-sizing = Vector3(6, 6, 6)
-auto_weight = true
+[node name="CSGBox3D2" type="CSGBox3D" parent="terrain" unique_id=1229057986]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 19.5, -9)
+size = Vector3(14, 1, 4)
 
 [node name="interactables" type="Node" parent="." unique_id=1895782639]
 
 [node name="player" parent="interactables" unique_id=1512140399 instance=ExtResource("1_fiq81")]
 transform = Transform3D(0.9999954, -0.0025831712, 0.0016093843, 0.0025852825, 0.9999958, -0.0013146517, -0.0016059908, 0.0013187951, 0.99999785, -0.9423361, 2.3000002, 4.6212225)
-MAXIMUM_HOLDING_DISTANCE = 12.0
-MAXIMUM_HELD_OBJECTS = 1
+MAXIMUM_HOLDING_DISTANCE = 8.0
+MINIMUM_HOLDING_DISTANCE = 1.0
 
 [node name="death_zone2" parent="interactables" unique_id=2110125439 instance=ExtResource("2_l37oo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -49.259064, 3)
 sizing = Vector3(200, 5, 200)
 
 [node name="box" parent="interactables" unique_id=673736917 instance=ExtResource("3_qpwj6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.141571, 0.9999981, -2.8967915)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1636314, 20.6, -9.896791)
 sizing = Vector3(1.2, 1.2, 1.2)
 
 [node name="box2" parent="interactables" unique_id=1764402002 instance=ExtResource("3_qpwj6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1473446, 1.4999989, -7.0027604)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14734459, 0.49999905, 0.8159332)
 sizing = Vector3(2, 2, 2)
 metadata/_edit_group_ = true
 
-[node name="box3" parent="interactables" unique_id=93104719 instance=ExtResource("3_qpwj6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6284723, 1.9999989, -1.212369)
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true
-sizing = Vector3(3, 3, 3)
-
 [node name="win_zone" parent="interactables" unique_id=15871483 instance=ExtResource("4_ibugp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.463272, 5.500001, -14)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.536728, 5.500001, 19)
 change_scene_to = "res://scenes/menus/hub_world.tscn"
+
+[node name="death_zone" parent="interactables" unique_id=1153127341 instance=ExtResource("2_l37oo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 20, 12)
+sizing = Vector3(20, 1, 20)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=732430040]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 62, 0)

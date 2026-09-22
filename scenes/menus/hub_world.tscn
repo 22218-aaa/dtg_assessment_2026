@@ -94,7 +94,7 @@ size = Vector3(7, 3, 8)
 [node name="interactables" type="Node" parent="." unique_id=765402532]
 
 [node name="death_zone3" parent="interactables" unique_id=1153127341 instance=ExtResource("1_6fy4q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -30, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.22140312, -30.20057, -0.17508888)
 sizing = Vector3(200, 1, 200)
 
 [node name="player" parent="interactables" unique_id=1512140399 instance=ExtResource("2_6060s")]
@@ -113,18 +113,13 @@ sizing = Vector3(2, 2, 2)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.464785, 3.0021124, 5.8822155)
 sizing = Vector3(3, 3, 3)
 
-[node name="level_entrance2" parent="interactables" unique_id=1994327096 instance=ExtResource("6_fi0dp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.591633, 7.000005, -16.345463)
-level_name = "level 2: cage"
-level_path = "res://scenes/levels/level_2.tscn"
-
 [node name="level_entrance3" parent="interactables" unique_id=1105148949 instance=ExtResource("6_fi0dp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.64078, 16.999996, -31.779137)
 level_name = "level 3: hill"
 level_path = "res://scenes/levels/level_3.tscn"
 
 [node name="level_entrance4" parent="interactables" unique_id=653957253 instance=ExtResource("6_fi0dp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4982772, 0.99999666, -3.2435822)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.498276, 28.999996, -40.243584)
 level_name = "level 5: get_tree().quit()"
 level_path = "res://scenes/levels/level_5.tscn"
 
@@ -141,3 +136,8 @@ scroll: move boxes closer or further from you"
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1556399254]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 62, 0)
 omni_range = 4096.0
+
+[node name="level_entrance" parent="." unique_id=1103027665 instance=ExtResource("6_fi0dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 2, -1)
+level_name = "level 2: cage"
+level_path = "res://scenes/levels/level_2.tscn"

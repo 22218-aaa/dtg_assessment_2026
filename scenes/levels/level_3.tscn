@@ -160,7 +160,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.74238896, 8.674849)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("6_fkk1g")
-dialogue = true
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="interactables/hint_giver" unique_id=407106536]
@@ -173,7 +172,6 @@ shape = SubResource("BoxShape3D_2bnyt")
 libraries/ = SubResource("AnimationLibrary_f6egh")
 
 [node name="Label" type="Label" parent="." unique_id=1080020276]
-visible = false
 anchors_preset = -1
 anchor_left = -0.47000003
 anchor_top = 0.41400003
