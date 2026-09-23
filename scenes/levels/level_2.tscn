@@ -15,7 +15,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -2.1136532, 4)
 size = Vector3(20, 1, 36)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="terrain" unique_id=625377115]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 5.978874, 9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 6, 9)
 size = Vector3(20, 15, 10)
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="terrain" unique_id=723156445]
@@ -30,8 +30,8 @@ size = Vector3(20, 1, 8)
 use_collision = true
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="terrain2" unique_id=963677157]
-transform = Transform3D(0.9999097, 0, 0.013438631, 0, 1, 0, -0.013438631, 0, 0.9999097, -14.986562, 5.8966827, 17.973768)
-size = Vector3(20, 14.879883, 8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.987, 6, 17.974)
+size = Vector3(20, 15, 8)
 
 [node name="interactables" type="Node" parent="." unique_id=1895782639]
 
@@ -61,16 +61,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.463272, 9.478874, 27)
 change_scene_to = "res://scenes/menus/hub_world.tscn"
 
 [node name="death_zone7" parent="interactables" unique_id=574561092 instance=ExtResource("2_l37oo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 6, 12)
-sizing = Vector3(2, 15, 55)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.5, 5.5, 12)
+sizing = Vector3(2, 16, 55)
 
 [node name="death_zone8" parent="interactables" unique_id=1948577693 instance=ExtResource("2_l37oo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 6, 12)
-sizing = Vector3(2, 15, 55)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 5.5, 12)
+sizing = Vector3(2, 16, 55)
 
 [node name="death_zone9" parent="interactables" unique_id=741408270 instance=ExtResource("2_l37oo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 14, 12)
-sizing = Vector3(22, 1, 55)
+sizing = Vector3(24, 1, 55)
+
+[node name="death_zone12" parent="interactables" unique_id=1153127341 instance=ExtResource("2_l37oo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 5.5, 40)
+sizing = Vector3(24, 18, 1)
+
+[node name="death_zone13" parent="interactables" unique_id=367375161 instance=ExtResource("2_l37oo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 5.5, -15)
+sizing = Vector3(24, 18, 1)
 
 [node name="death_zone11" parent="interactables" unique_id=1659408633 instance=ExtResource("2_l37oo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -3, 12)
