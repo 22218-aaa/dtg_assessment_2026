@@ -128,7 +128,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -46)
 level_name = "level 1: wall"
 
 [node name="level_entrance5" parent="interactables" unique_id=522198203 instance=ExtResource("6_fi0dp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 2, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 4.6173096, -14)
 level_name = "level 2: blank"
 level_path = "res://scenes/levels/level_2.tscn"
 
