@@ -17,9 +17,9 @@ completion_types = Dictionary[String, bool]({
 })
 metadata/_custom_type_script = "uid://cy6ml2shb4kll"
 
-[sub_resource type="Resource" id="Resource_3l0iv"]
+[sub_resource type="Resource" id="Resource_e2l5s"]
 script = ExtResource("2_3l0iv")
-level_name = "level 2: cage"
+level_name = "level 2: blank"
 metadata/_custom_type_script = "uid://cy6ml2shb4kll"
 
 [sub_resource type="Resource" id="Resource_3jehi"]
@@ -29,6 +29,16 @@ completion_types = Dictionary[String, bool]({
 "over": false,
 "through and under": false,
 "under": false
+})
+metadata/_custom_type_script = "uid://cy6ml2shb4kll"
+
+[sub_resource type="Resource" id="Resource_3l0iv"]
+script = ExtResource("2_3l0iv")
+level_name = "level 4: walls in walls"
+completion_types = Dictionary[String, bool]({
+"1": false,
+"2": false,
+"3": false
 })
 metadata/_custom_type_script = "uid://cy6ml2shb4kll"
 
@@ -45,7 +55,7 @@ metadata/_custom_type_script = "uid://cy6ml2shb4kll"
 [node name="hub_world" type="Node3D" unique_id=110924967]
 process_priority = 1
 script = ExtResource("1_fi0dp")
-level_entries = Array[ExtResource("2_3l0iv")]([SubResource("Resource_a2ery"), SubResource("Resource_3l0iv"), SubResource("Resource_3jehi"), SubResource("Resource_fi0dp")])
+level_entries = Array[ExtResource("2_3l0iv")]([SubResource("Resource_a2ery"), SubResource("Resource_e2l5s"), SubResource("Resource_3jehi"), SubResource("Resource_3l0iv"), SubResource("Resource_fi0dp")])
 
 [node name="terrain" type="CSGCombiner3D" parent="." unique_id=1588843043]
 use_collision = true
@@ -94,7 +104,7 @@ size = Vector3(7, 3, 8)
 [node name="interactables" type="Node" parent="." unique_id=765402532]
 
 [node name="death_zone3" parent="interactables" unique_id=1153127341 instance=ExtResource("1_6fy4q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.22140312, -30.20057, -0.17508888)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18335915, -30.273094, -0.1531241)
 sizing = Vector3(200, 1, 200)
 
 [node name="player" parent="interactables" unique_id=1512140399 instance=ExtResource("2_6060s")]
@@ -113,19 +123,29 @@ sizing = Vector3(2, 2, 2)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.464785, 3.0021124, 5.8822155)
 sizing = Vector3(3, 3, 3)
 
+[node name="level_entrance" parent="interactables" unique_id=636574180 instance=ExtResource("6_fi0dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -46)
+level_name = "level 1: wall"
+
+[node name="level_entrance5" parent="interactables" unique_id=522198203 instance=ExtResource("6_fi0dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 2, -1)
+level_name = "level 2: blank"
+level_path = "res://scenes/levels/level_2.tscn"
+
 [node name="level_entrance3" parent="interactables" unique_id=1105148949 instance=ExtResource("6_fi0dp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.64078, 16.999996, -31.779137)
 level_name = "level 3: hill"
 level_path = "res://scenes/levels/level_3.tscn"
 
+[node name="level_entrance2" parent="interactables" unique_id=1103027665 instance=ExtResource("6_fi0dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 7.0000057, -16)
+level_name = "level 4: walls in walls"
+level_path = "res://scenes/levels/level_4.tscn"
+
 [node name="level_entrance4" parent="interactables" unique_id=653957253 instance=ExtResource("6_fi0dp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.498276, 28.999996, -40.243584)
 level_name = "level 5: get_tree().quit()"
 level_path = "res://scenes/levels/level_5.tscn"
-
-[node name="level_entrance" parent="interactables" unique_id=636574180 instance=ExtResource("6_fi0dp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -46)
-level_name = "level 1: wall"
 
 [node name="Label3D" type="Label3D" parent="." unique_id=630115316]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.8393774, 5.5898013, -5.122287)
@@ -136,8 +156,3 @@ scroll: move boxes closer or further from you"
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1556399254]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 62, 0)
 omni_range = 4096.0
-
-[node name="level_entrance" parent="." unique_id=1103027665 instance=ExtResource("6_fi0dp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 2, -1)
-level_name = "level 2: cage"
-level_path = "res://scenes/levels/level_2.tscn"
