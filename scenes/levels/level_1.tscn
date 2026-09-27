@@ -6,8 +6,99 @@
 [ext_resource type="PackedScene" uid="uid://e6c2xsjamk0g" path="res://scenes/objects/achievement_tracking_helper.tscn" id="2_sk5k4"]
 [ext_resource type="PackedScene" uid="uid://daewcgbdysr28" path="res://scenes/objects/death_zone.tscn" id="2_x42e6"]
 [ext_resource type="PackedScene" uid="uid://cvru3qrdwbht0" path="res://scenes/objects/scene_changer.tscn" id="4_x42e6"]
+[ext_resource type="Script" uid="uid://c87jo177mfsda" path="res://scripts/hint_giver.gd" id="7_oc4kc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_sk5k4"]
+font_size = 48
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ugcn1"]
+albedo_color = Color(0, 0.39215687, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_s8va5"]
+material = SubResource("StandardMaterial3D_ugcn1")
+size = Vector3(2, 1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dga24"]
+size = Vector3(2, 1, 2)
+
+[sub_resource type="Animation" id="Animation_n6eey"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_qi5uv"]
+resource_name = "pressed"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -0.25]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qxy0u"]
+_data = {
+&"RESET": SubResource("Animation_n6eey"),
+&"pressed": SubResource("Animation_qi5uv")
+}
+
+[sub_resource type="Animation" id="Animation_oc4kc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("text_player/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+
+[sub_resource type="Animation" id="Animation_s8va5"]
+resource_name = "dialogue"
+length = 20.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("text_player/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.06666667, 7.3, 12.3, 20),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": ["ok so I'm in my game..", "somehow..", "okay.. maybe if I try beating
+the levels, that will do something??", ""]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dga24"]
+_data = {
+&"RESET": SubResource("Animation_oc4kc"),
+&"dialogue": SubResource("Animation_s8va5")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_iav0o"]
 font_size = 48
 
 [node name="Node3D" type="Node3D" unique_id=1250394160]
@@ -89,7 +180,43 @@ grow_vertical = 0
 label_settings = SubResource("LabelSettings_sk5k4")
 vertical_alignment = 2
 
+[node name="hint_giver" type="Area3D" parent="." unique_id=345356532]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.74238896, 3.6748486)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("7_oc4kc")
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="hint_giver" unique_id=1364118865]
+mesh = SubResource("BoxMesh_s8va5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hint_giver" unique_id=1887891531]
+shape = SubResource("BoxShape3D_dga24")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="hint_giver" unique_id=1046573555]
+libraries/ = SubResource("AnimationLibrary_qxy0u")
+
+[node name="text_player" type="AnimationPlayer" parent="hint_giver" unique_id=870966943]
+libraries/ = SubResource("AnimationLibrary_dga24")
+
+[node name="Label" type="Label" parent="hint_giver/text_player" unique_id=1969569977]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_top = -888.0
+offset_right = -960.0
+offset_bottom = -751.0
+grow_horizontal = 2
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_iav0o")
+horizontal_alignment = 1
+vertical_alignment = 2
+
 [connection signal="body_entered" from="terrain/phasing_tracker" to="." method="_on_phasing_tracker_body_entered"]
 [connection signal="body_entered" from="interactables/box2/box_2_tracker" to="." method="_on_box_2_tracker_body_entered"]
 [connection signal="body_exited" from="interactables/box2/box_2_tracker" to="." method="_on_box_2_tracker_body_exited"]
 [connection signal="body_entered" from="interactables/win_zone" to="." method="_on_win_zone_body_entered"]
+[connection signal="body_entered" from="hint_giver" to="hint_giver" method="_on_body_entered"]
+[connection signal="body_exited" from="hint_giver" to="hint_giver" method="_on_body_exited"]

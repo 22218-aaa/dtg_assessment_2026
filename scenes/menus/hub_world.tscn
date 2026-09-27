@@ -20,6 +20,11 @@ metadata/_custom_type_script = "uid://cy6ml2shb4kll"
 [sub_resource type="Resource" id="Resource_e2l5s"]
 script = ExtResource("2_3l0iv")
 level_name = "level 2: blank"
+completion_types = Dictionary[String, bool]({
+"boxes together forever": false,
+"poke hole": false,
+"through and catch": false
+})
 metadata/_custom_type_script = "uid://cy6ml2shb4kll"
 
 [sub_resource type="Resource" id="Resource_3jehi"]

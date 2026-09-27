@@ -8,11 +8,11 @@
 [ext_resource type="Script" uid="uid://c87jo177mfsda" path="res://scripts/hint_giver.gd" id="6_fkk1g"]
 [ext_resource type="PackedScene" uid="uid://e6c2xsjamk0g" path="res://scenes/objects/achievement_tracking_helper.tscn" id="6_ftfob"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ugcn1"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fkk1g"]
 albedo_color = Color(0, 0.39215687, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_pimnq"]
-material = SubResource("StandardMaterial3D_ugcn1")
+material = SubResource("StandardMaterial3D_fkk1g")
 size = Vector3(2, 1, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2bnyt"]
@@ -56,15 +56,12 @@ _data = {
 &"pressed": SubResource("Animation_qi5uv")
 }
 
-[sub_resource type="LabelSettings" id="LabelSettings_ppetw"]
-font_size = 48
-
 [sub_resource type="Animation" id="Animation_fkk1g"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("text_player/Label:text")
+tracks/0/path = NodePath("interactables/hint_giver/text_player/Label:text")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -81,7 +78,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("text_player/Label:text")
+tracks/0/path = NodePath("interactables/hint_giver/text_player/Label:text")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -102,6 +99,9 @@ _data = {
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_2bnyt"]
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_ppetw"]
 font_size = 48
 
 [node name="Node3D" type="Node3D" unique_id=2144968413]
@@ -171,6 +171,26 @@ shape = SubResource("BoxShape3D_2bnyt")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="interactables/hint_giver" unique_id=203876199]
 libraries/ = SubResource("AnimationLibrary_f6egh")
 
+[node name="text_player" type="AnimationPlayer" parent="interactables/hint_giver" unique_id=752454818]
+root_node = NodePath("../../..")
+libraries/ = SubResource("AnimationLibrary_pimnq")
+autoplay = &"RESET"
+
+[node name="Label" type="Label" parent="interactables/hint_giver/text_player" unique_id=805477207]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_top = -888.0
+offset_right = -960.0
+offset_bottom = -751.0
+grow_horizontal = 2
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_2bnyt")
+horizontal_alignment = 1
+vertical_alignment = 2
+
 [node name="Label" type="Label" parent="." unique_id=1080020276]
 anchors_preset = -1
 anchor_left = -0.47000003
@@ -196,25 +216,6 @@ sizing = Vector3(22, 5, 7)
 [node name="through_tracker" parent="." unique_id=949070155 instance=ExtResource("6_ftfob")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4629545, -7)
 sizing = Vector3(22, 2, 7)
-
-[node name="text_player" type="AnimationPlayer" parent="." unique_id=752454818]
-libraries/ = SubResource("AnimationLibrary_pimnq")
-autoplay = &"RESET"
-
-[node name="Label" type="Label" parent="text_player" unique_id=805477207]
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -960.0
-offset_top = -888.0
-offset_right = -960.0
-offset_bottom = -751.0
-grow_horizontal = 2
-grow_vertical = 0
-label_settings = SubResource("LabelSettings_2bnyt")
-horizontal_alignment = 1
-vertical_alignment = 2
 
 [connection signal="body_entered" from="interactables/win_zone" to="." method="_on_win_zone_body_entered"]
 [connection signal="body_entered" from="interactables/hint_giver" to="interactables/hint_giver" method="_on_body_entered"]

@@ -2,8 +2,7 @@ extends Area3D
 
 var level = global.level_information[global.current_level]
 @onready var button_player: AnimationPlayer = $AnimationPlayer
-@onready var hint_player: AnimationPlayer = $"../../AnimationPlayer"
-@onready var text_player: AnimationPlayer = $"../../text_player"
+@onready var text_player: AnimationPlayer = $text_player
 
 var level_route: String = ""
 
