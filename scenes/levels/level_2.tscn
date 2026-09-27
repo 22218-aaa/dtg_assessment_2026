@@ -73,8 +73,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_8qukl"]
 resource_name = "dialogue"
-length = 15.0
-step = 1.0
+length = 20.0
+step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -82,10 +82,10 @@ tracks/0/path = NodePath("text_player/Label:text")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 5, 10, 13, 14, 15),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 3, 6.5, 8, 11, 16, 20),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": ["gotta love the catching on walls..", "I TRIED TO FIX IT OKAY!?", "who am I even talking to?", "bill, If you can hear me, I was lying when I said your game was bad", "this feels a bit too extreme of a response though..", ""]
+"values": ["gotta love the catching on walls..", "maybe I can use that here?", "I TRIED TO FIX IT OKAY!?", "who am I even talking to?", "bill, If you can hear me, I was lying when I said your game was bad", "this feels a bit too extreme of a response though..", ""]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3p04p"]

@@ -91,8 +91,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, -27)
 size = Vector3(7, 2, 14)
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="terrain" unique_id=244531077]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -40.5)
-size = Vector3(7, 2, 13)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -38)
+size = Vector3(7, 2, 8)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="terrain" unique_id=855578503]
 transform = Transform3D(1, 0, 0, 0, 0.99947256, 0.032474868, 0, -0.032474868, 0.99947256, -4.778101, 9.145889, 13.205484)
@@ -129,7 +129,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.464785, 3.0021124, 5.8822
 sizing = Vector3(3, 3, 3)
 
 [node name="level_entrance" parent="interactables" unique_id=636574180 instance=ExtResource("6_fi0dp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -46)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -38.5)
 level_name = "level 1: wall"
 
 [node name="level_entrance5" parent="interactables" unique_id=522198203 instance=ExtResource("6_fi0dp")]
@@ -138,12 +138,12 @@ level_name = "level 2: blank"
 level_path = "res://scenes/levels/level_2.tscn"
 
 [node name="level_entrance3" parent="interactables" unique_id=1105148949 instance=ExtResource("6_fi0dp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.64078, 16.999996, -31.779137)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.64078, 12.499996, -31.779137)
 level_name = "level 3: hill"
 level_path = "res://scenes/levels/level_3.tscn"
 
 [node name="level_entrance2" parent="interactables" unique_id=1103027665 instance=ExtResource("6_fi0dp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 7.0000057, -16)
+transform = Transform3D(-0.75000006, -0.43301272, 0.49999997, -0.49999997, 0.86602545, -2.2886669e-08, -0.43301263, -0.24999999, -0.86602545, -15.5, 6.0000057, -15.5)
 level_name = "level 4: walls in walls"
 level_path = "res://scenes/levels/level_4.tscn"
 

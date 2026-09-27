@@ -6,6 +6,100 @@
 [ext_resource type="PackedScene" uid="uid://ccpwjdyct6syf" path="res://scenes/objects/box.tscn" id="3_hldbq"]
 [ext_resource type="PackedScene" uid="uid://cvru3qrdwbht0" path="res://scenes/objects/scene_changer.tscn" id="4_fsnos"]
 [ext_resource type="PackedScene" uid="uid://e6c2xsjamk0g" path="res://scenes/objects/achievement_tracking_helper.tscn" id="6_hldbq"]
+[ext_resource type="Script" uid="uid://c87jo177mfsda" path="res://scripts/hint_giver.gd" id="7_fsnos"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8qukl"]
+albedo_color = Color(0, 0.39215687, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mxx4w"]
+material = SubResource("StandardMaterial3D_8qukl")
+size = Vector3(2, 1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vvoq0"]
+size = Vector3(2, 1, 2)
+
+[sub_resource type="Animation" id="Animation_n6eey"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_qi5uv"]
+resource_name = "pressed"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -0.25]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tqnj0"]
+_data = {
+&"RESET": SubResource("Animation_n6eey"),
+&"pressed": SubResource("Animation_qi5uv")
+}
+
+[sub_resource type="Animation" id="Animation_4wsov"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("text_player/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+
+[sub_resource type="Animation" id="Animation_qvnao"]
+resource_name = "dialogue"
+length = 6.0
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("text_player/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": ["...............", "........................", "...........
+.................
+....................................", "well there are three diferent
+areas not covered by the insta
+death walls...", ""]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dwyms"]
+_data = {
+&"RESET": SubResource("Animation_4wsov"),
+&"dialogue": SubResource("Animation_qvnao")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_6xwso"]
+font_size = 48
 
 [sub_resource type="LabelSettings" id="LabelSettings_mxx4w"]
 font_size = 48
@@ -89,6 +183,40 @@ sizing = Vector3(22, 0.2, 22)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
 sizing = Vector3(22, 0.2, 4)
 
+[node name="hint_giver" type="Area3D" parent="interactables" unique_id=657970643]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1.0000029, -22.637579)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("7_fsnos")
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="interactables/hint_giver" unique_id=1245415287]
+mesh = SubResource("BoxMesh_mxx4w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="interactables/hint_giver" unique_id=1385579513]
+shape = SubResource("BoxShape3D_vvoq0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="interactables/hint_giver" unique_id=1205587797]
+libraries/ = SubResource("AnimationLibrary_tqnj0")
+
+[node name="text_player" type="AnimationPlayer" parent="interactables/hint_giver" unique_id=1969819093]
+libraries/ = SubResource("AnimationLibrary_dwyms")
+
+[node name="Label" type="Label" parent="interactables/hint_giver/text_player" unique_id=2056779759]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_top = -888.0
+offset_right = -960.0
+offset_bottom = -751.0
+grow_horizontal = 2
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_6xwso")
+horizontal_alignment = 1
+vertical_alignment = 2
+
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=354457013]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 62, 0)
 omni_range = 4096.0
@@ -111,3 +239,5 @@ vertical_alignment = 2
 [connection signal="body_entered" from="interactables/knowledge_check_tracker" to="." method="_on_knowledge_check_tracker_body_entered"]
 [connection signal="body_entered" from="interactables/skill_check_tracker" to="." method="_on_skill_check_tracker_body_entered"]
 [connection signal="body_entered" from="interactables/skip_tracker" to="." method="_on_cheese_tracker_body_entered"]
+[connection signal="body_entered" from="interactables/hint_giver" to="interactables/hint_giver" method="_on_body_entered"]
+[connection signal="body_exited" from="interactables/hint_giver" to="interactables/hint_giver" method="_on_body_exited"]
