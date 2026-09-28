@@ -33,7 +33,7 @@ var highest_velocity: Vector3 = Vector3(0, 0, 0)
 @export_range(-5.0, 50.0) var MINIMUM_HOLDING_DISTANCE = 0.1
 @export_range(1, 999) var MAXIMUM_HELD_OBJECTS = 2
 
-const SCROLL_SPEED = 0.2
+var scroll_speed = 0.2
 
 # add player eject
 
@@ -44,7 +44,8 @@ func _input(event):
 		camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, -90, 90)
 	if InputEvent:
 		if Input.is_action_just_pressed("escape"):
-			get_tree().quit()
+			get_tree().change_scene_to_file("res://scenes/menus/starting_menu.tscn")
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		elif Input.is_action_just_pressed("tab"):
 			get_tree().change_scene_to_file("res://scenes/menus/hub_world.tscn")
 		if Input.is_action_just_pressed("select"):
@@ -67,11 +68,11 @@ func _input(event):
 					held_objects.remove_at(0)
 				
 		if Input.is_action_just_pressed("scroll_down"):
-			held_object_point.position.z = move_toward(held_object_point.position.z, -MINIMUM_HOLDING_DISTANCE, SCROLL_SPEED)
+			held_object_point.position.z = move_toward(held_object_point.position.z, -MINIMUM_HOLDING_DISTANCE, scroll_speed)
 			set_current_distance_display()
 		
 		if Input.is_action_just_pressed("scroll_up"):
-			held_object_point.position.z = move_toward(held_object_point.position.z,- MAXIMUM_HOLDING_DISTANCE, SCROLL_SPEED)
+			held_object_point.position.z = move_toward(held_object_point.position.z,- MAXIMUM_HOLDING_DISTANCE, scroll_speed)
 			set_current_distance_display()
 
 func set_current_distance_display():
@@ -79,8 +80,9 @@ func set_current_distance_display():
 
 
 func _ready() -> void:
-	held_object_point.position.z = -snappedf((MAXIMUM_HOLDING_DISTANCE + MINIMUM_HOLDING_DISTANCE) / 2, SCROLL_SPEED)
+	held_object_point.position.z = -snappedf((MAXIMUM_HOLDING_DISTANCE + MINIMUM_HOLDING_DISTANCE) / 2, scroll_speed)
 	set_current_distance_display()
+	scroll_speed = global.scroll_speed
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	distance_display.position.x = MINIMUM_HOLDING_DISTANCE * 8
 	distance_display.size.x = MAXIMUM_HOLDING_DISTANCE * 8 + 16 - MINIMUM_HOLDING_DISTANCE * 8

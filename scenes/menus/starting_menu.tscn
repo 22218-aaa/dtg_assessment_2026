@@ -1,9 +1,14 @@
 [gd_scene format=3 uid="uid://hqyf4yiudppw"]
 
 [ext_resource type="PackedScene" uid="uid://bnvwu4r3spj4w" path="res://scenes/objects/button.tscn" id="1_awdct"]
+[ext_resource type="Script" uid="uid://dh651egukeyya" path="res://scripts/main_menu.gd" id="1_pd0ss"]
+[ext_resource type="Script" uid="uid://bxv12x7a8k6kd" path="res://scripts/quit_button.gd" id="2_gys7h"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6qpea"]
 font_size = 128
+
+[sub_resource type="LabelSettings" id="LabelSettings_pd0ss"]
+font_size = 48
 
 [node name="starting_menu" type="Control" unique_id=689179291]
 layout_mode = 3
@@ -12,6 +17,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_pd0ss")
 
 [node name="Label" type="Label" parent="." unique_id=1557004156]
 layout_mode = 1
@@ -45,8 +51,37 @@ theme_override_constants/separation = 16
 [node name="Button" parent="CenterContainer/VBoxContainer" unique_id=2020999093 instance=ExtResource("1_awdct")]
 layout_mode = 2
 text = "start"
+script = null
 
 [node name="Button2" parent="CenterContainer/VBoxContainer" unique_id=1153249032 instance=ExtResource("1_awdct")]
 layout_mode = 2
 text = "quit"
-change_scene = "res://scenes/menus/hub_world.tscn"
+script = ExtResource("2_gys7h")
+
+[node name="CenterContainer2" type="CenterContainer" parent="." unique_id=1920949066]
+layout_mode = 0
+offset_top = 770.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer2" unique_id=16438560]
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer2/VBoxContainer" unique_id=1483932549]
+layout_mode = 2
+text = "scroll speed: "
+label_settings = SubResource("LabelSettings_pd0ss")
+horizontal_alignment = 1
+
+[node name="HScrollBar" type="HScrollBar" parent="CenterContainer2/VBoxContainer" unique_id=819339637]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+min_value = 0.01
+max_value = 0.51
+step = 0.01
+page = 0.01
+value = 0.01
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="value_changed" from="CenterContainer2/VBoxContainer/HScrollBar" to="." method="_on_scroll_bar_value_changed"]

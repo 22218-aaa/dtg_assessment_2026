@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bcxprlld78jga" path="res://scenes/objects/player.tscn" id="2_6060s"]
 [ext_resource type="PackedScene" uid="uid://ccpwjdyct6syf" path="res://scenes/objects/box.tscn" id="3_f0qm8"]
 [ext_resource type="PackedScene" uid="uid://fascjv15xl52" path="res://scenes/objects/level_entrance.tscn" id="6_fi0dp"]
+[ext_resource type="Script" uid="uid://c87jo177mfsda" path="res://scripts/hint_giver.gd" id="7_3l0iv"]
 
 [sub_resource type="Resource" id="Resource_a2ery"]
 script = ExtResource("2_3l0iv")
@@ -57,10 +58,144 @@ completion_types = Dictionary[String, bool]({
 })
 metadata/_custom_type_script = "uid://cy6ml2shb4kll"
 
-[node name="hub_world" type="Node3D" unique_id=110924967]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ugcn1"]
+albedo_color = Color(0, 0.39215687, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_a2ery"]
+material = SubResource("StandardMaterial3D_ugcn1")
+size = Vector3(2, 1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3jehi"]
+size = Vector3(2, 1, 2)
+
+[sub_resource type="Animation" id="Animation_n6eey"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../hint_giver/MeshInstance3D:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_qi5uv"]
+resource_name = "pressed"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../hint_giver/MeshInstance3D:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -0.25]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e2l5s"]
+_data = {
+&"RESET": SubResource("Animation_n6eey"),
+&"pressed": SubResource("Animation_qi5uv")
+}
+
+[sub_resource type="Animation" id="Animation_qmc5g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../hint_giver/text_player/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+
+[sub_resource type="Animation" id="Animation_jk4p7"]
+resource_name = "dialogue"
+length = 22.0
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../hint_giver/text_player/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4.5, 7, 10, 13, 19, 22),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["ohh noo", "ohhh nooooooooooooooooooooo
+oooooooooooooooo
+oooooooooooooooooooo", "HOW DID THIS HAPPEN??", "MY GAME?????", "okay how does this work again??", "I left click the boxes- or how
+if I don't have a keyboard?", "maybe just..", ""]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6x77t"]
+_data = {
+&"RESET": SubResource("Animation_qmc5g"),
+&"dialogue": SubResource("Animation_jk4p7")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_gfrna"]
+font_size = 48
+
+[sub_resource type="Animation" id="Animation_3l0iv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("text_player/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+
+[sub_resource type="Animation" id="Animation_a2ery"]
+resource_name = "dialogue"
+length = 16.0
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("text_player/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 6, 9, 13, 16),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["oh that worked.. somehow", "I think I can also
+change it's distance to me?", "maybe scrolling", "oh and I can press escape
+to go to the menu..", "if there even is one", ""]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3jehi"]
+_data = {
+&"RESET": SubResource("Animation_3l0iv"),
+&"dialogue": SubResource("Animation_a2ery")
+}
+
+[node name="hub_world" type="Node3D" unique_id=110924967 node_paths=PackedStringArray("player", "main_spawn_point")]
 process_priority = 1
 script = ExtResource("1_fi0dp")
 level_entries = Array[ExtResource("2_3l0iv")]([SubResource("Resource_a2ery"), SubResource("Resource_e2l5s"), SubResource("Resource_3jehi"), SubResource("Resource_3l0iv"), SubResource("Resource_fi0dp")])
+player = NodePath("interactables/player")
+main_spawn_point = NodePath("main_spawn_point")
 
 [node name="terrain" type="CSGCombiner3D" parent="." unique_id=1588843043]
 use_collision = true
@@ -79,7 +214,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.11433, 1.8086548, -21.2577
 size = Vector3(11, 4.6173096, 32)
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="terrain" unique_id=1857173555]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 14, -32)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 14, -17)
 size = Vector3(11, 5, 10)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="terrain" unique_id=1383826953]
@@ -94,10 +229,6 @@ size = Vector3(7, 2, 14)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -38)
 size = Vector3(7, 2, 8)
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="terrain" unique_id=855578503]
-transform = Transform3D(1, 0, 0, 0, 0.99947256, 0.032474868, 0, -0.032474868, 0.99947256, -4.778101, 9.145889, 13.205484)
-size = Vector3(35.944946, 19.291779, 5.2250824)
-
 [node name="CSGBox3D5" type="CSGBox3D" parent="terrain" unique_id=1698413953]
 transform = Transform3D(0.25881907, 0.03136831, -0.9654164, 0, 0.99947256, 0.032474868, 0.9659258, -0.008405115, 0.25868255, -26.00444, 9.145889, -4.0109673)
 size = Vector3(39.70752, 19.291779, 5.2250824)
@@ -106,6 +237,70 @@ size = Vector3(39.70752, 19.291779, 5.2250824)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 5.000001, -16)
 size = Vector3(7, 3, 8)
 
+[node name="CSGBox3D12" type="CSGBox3D" parent="terrain" unique_id=1111349200]
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, -2.2500005, 14.5)
+size = Vector3(7, 4, 8)
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="terrain" unique_id=1188879357]
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, -7.325001, 19.75)
+size = Vector3(20, 11.5, 4.5)
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="terrain" unique_id=1383915697]
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, -7.325001, 56.5)
+size = Vector3(20, 11.5, 2)
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="terrain" unique_id=1393533033]
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, -12.075001, 37.5)
+size = Vector3(20, 2, 40)
+
+[node name="CSGBox3D21" type="CSGBox3D" parent="terrain" unique_id=101715968]
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, -11.075001, 24.249998)
+size = Vector3(20, 4, 13.5)
+
+[node name="CSGBox3D22" type="CSGBox3D" parent="terrain" unique_id=1381083284]
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, -5.25, -10.075001, 21.999998)
+size = Vector3(9.5, 6, 9)
+
+[node name="CSGBox3D23" type="CSGBox3D" parent="terrain" unique_id=669077432]
+transform = Transform3D(3.953879e-09, -5.2756334e-08, -1.0000001, -0.8660253, 0.49999994, 0, 0.49999985, 0.86602545, -4.3711392e-08, -7.6161165, -4.4411173, 30.665062)
+size = Vector3(1, 13.5, 1)
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="terrain" unique_id=922946978]
+transform = Transform3D(0.8660254, 0.48296297, -0.12940955, 0, 0.2588191, 0.96592593, 0.5, -0.8365164, 0.2241439, 4.5, -11.249444, 43)
+size = Vector3(1, 3, 1)
+
+[node name="CSGBox3D19" type="CSGBox3D" parent="terrain" unique_id=1803317320]
+transform = Transform3D(0.6906502, -0.59077555, 0.4171169, -0.12940954, 0.46650645, 0.87500006, -0.71151626, -0.6582979, 0.24574074, -3, -11.075001, 42.5)
+size = Vector3(1, 3, 1)
+
+[node name="CSGBox3D20" type="CSGBox3D" parent="terrain" unique_id=1748591639]
+transform = Transform3D(-0.8512706, 0.4002654, -0.33930174, -0.12940952, 0.46650645, 0.87500006, 0.5085188, 0.78877103, -0.34532493, 3.6486256, -11.196693, 52.80482)
+size = Vector3(2.5, 3, 1.5)
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="terrain" unique_id=926795361]
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, -9, -7.3250003, 37.5)
+size = Vector3(2, 11.5, 40)
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="terrain" unique_id=371465453]
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 9, -7.3250003, 37.5)
+size = Vector3(2, 11.5, 40)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="terrain" unique_id=855578503]
+transform = Transform3D(1, 0, 0, 0, 0.99947286, 0.032474816, 0, -0.032474816, 0.99947286, -4.778101, 9.145889, 13.205484)
+size = Vector3(35.944946, 19.291779, 5.2250824)
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="terrain" unique_id=1638869033]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0, 1.1287087, 16.17274)
+operation = 2
+size = Vector3(4.5, 5, 14)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="terrain" unique_id=1467209003]
+transform = Transform3D(1, 0, 0, 0, 0.2, 0, 0, 0, 1, 0, -10.7, 47.943)
+operation = 2
+radius = 5.173
+radial_segments = 32
+rings = 12
+
 [node name="interactables" type="Node" parent="." unique_id=765402532]
 
 [node name="death_zone3" parent="interactables" unique_id=1153127341 instance=ExtResource("1_6fy4q")]
@@ -113,7 +308,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18335915, -30.273094, -0.1
 sizing = Vector3(200, 1, 200)
 
 [node name="player" parent="interactables" unique_id=1512140399 instance=ExtResource("2_6060s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9423361, 2.3000002, 7.7652073)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.057663918, -10.2167015, 48.265205)
 MAXIMUM_HOLDING_DISTANCE = 6.0
 MAXIMUM_HELD_OBJECTS = 5
 
@@ -138,7 +333,7 @@ level_name = "level 2: blank"
 level_path = "res://scenes/levels/level_2.tscn"
 
 [node name="level_entrance3" parent="interactables" unique_id=1105148949 instance=ExtResource("6_fi0dp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.64078, 12.499996, -31.779137)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.64078, 12.499996, -16.779137)
 level_name = "level 3: hill"
 level_path = "res://scenes/levels/level_3.tscn"
 
@@ -152,12 +347,89 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.498276, 28.999996, -40.24
 level_name = "level 5: get_tree().quit()"
 level_path = "res://scenes/levels/level_5.tscn"
 
-[node name="Label3D" type="Label3D" parent="." unique_id=630115316]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.8393774, 5.5898013, -5.122287)
-billboard = 2
-text = "left click: grab or release boxes
-scroll: move boxes closer or further from you"
+[node name="box4" parent="interactables" unique_id=1888870069 instance=ExtResource("3_f0qm8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3909016, -8.574994, 28.27247)
+
+[node name="box5" parent="interactables" unique_id=269313405 instance=ExtResource("3_f0qm8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0109527, -10.575005, 36.837357)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1556399254]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 62, 0)
 omni_range = 4096.0
+
+[node name="hint_giver" type="Area3D" parent="." unique_id=863508280]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, -10.575005, 37.67485)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("7_3l0iv")
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="hint_giver" unique_id=216484355]
+mesh = SubResource("BoxMesh_a2ery")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hint_giver" unique_id=1337569863]
+shape = SubResource("BoxShape3D_3jehi")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="hint_giver" unique_id=780178993]
+libraries/ = SubResource("AnimationLibrary_e2l5s")
+
+[node name="text_player" type="AnimationPlayer" parent="hint_giver" unique_id=38725722]
+libraries/ = SubResource("AnimationLibrary_6x77t")
+
+[node name="Label" type="Label" parent="hint_giver/text_player" unique_id=766314573]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_top = -888.0
+offset_right = -960.0
+offset_bottom = -751.0
+grow_horizontal = 2
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_gfrna")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="hint_giver2" type="Area3D" parent="." unique_id=488324222]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -8.574994, 23.8497)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("7_3l0iv")
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="hint_giver2" unique_id=284589303]
+mesh = SubResource("BoxMesh_a2ery")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hint_giver2" unique_id=691392184]
+shape = SubResource("BoxShape3D_3jehi")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="hint_giver2" unique_id=606059814]
+root_node = NodePath("../../hint_giver2")
+libraries/ = SubResource("AnimationLibrary_e2l5s")
+
+[node name="text_player" type="AnimationPlayer" parent="hint_giver2" unique_id=2022804245]
+libraries/ = SubResource("AnimationLibrary_3jehi")
+
+[node name="Label" type="Label" parent="hint_giver2/text_player" unique_id=482795577]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_top = -888.0
+offset_right = -960.0
+offset_bottom = -751.0
+grow_horizontal = 2
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_gfrna")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="main_spawn_point" type="Marker3D" parent="." unique_id=1683959732]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 7)
+
+[connection signal="body_entered" from="hint_giver" to="hint_giver" method="_on_body_entered"]
+[connection signal="body_exited" from="hint_giver" to="hint_giver" method="_on_body_exited"]
+[connection signal="body_entered" from="hint_giver2" to="hint_giver2" method="_on_body_entered"]
+[connection signal="body_exited" from="hint_giver2" to="hint_giver2" method="_on_body_exited"]

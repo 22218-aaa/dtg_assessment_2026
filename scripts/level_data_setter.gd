@@ -3,9 +3,13 @@ extends Node3D
 
 @export var level_entries: Array[level_data] = []
 var level_information: Dictionary[String, level_data] = {}
-
+@export var player: RigidBody3D
+@export var main_spawn_point: Marker3D
 
 func _ready() -> void:
+	if global.started == false: global.started = true
+	else: player.position = main_spawn_point.position
+		
 	if level_entries:
 		#print("success")
 		for item in level_entries:
