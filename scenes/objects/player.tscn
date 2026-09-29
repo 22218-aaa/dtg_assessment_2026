@@ -68,10 +68,36 @@ shape = SubResource("CylinderShape3D_v45ci")
 
 [node name="Camera2D" type="Camera2D" parent="Node2D" unique_id=496665856]
 
+[node name="Icon2" type="Sprite2D" parent="Node2D" unique_id=1265426976]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(9, 2.9802322e-08)
+scale = Vector2(0.046874993, 0.015625)
+texture = ExtResource("2_h5uus")
+
+[node name="Icon4" type="Sprite2D" parent="Node2D" unique_id=658845324]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(9.536743e-07, -8.999999)
+rotation = 1.5707964
+scale = Vector2(0.046874993, 0.015625)
+texture = ExtResource("2_h5uus")
+
+[node name="Icon5" type="Sprite2D" parent="Node2D" unique_id=1637471050]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(6.7762636e-21, 9)
+rotation = 1.5707964
+scale = Vector2(0.046874993, 0.015625)
+texture = ExtResource("2_h5uus")
+
+[node name="Icon3" type="Sprite2D" parent="Node2D" unique_id=575527532]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(-8.999998, 6.039613e-14)
+rotation = 3.1415927
+scale = Vector2(0.046874993, 0.015625)
+texture = ExtResource("2_h5uus")
+
 [node name="Icon" type="Sprite2D" parent="Node2D" unique_id=1846367737]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(-2.3841858e-07, 2.3841858e-07)
-scale = Vector2(0.125, 0.125)
+scale = Vector2(0.0625, 0.0625)
 texture = ExtResource("2_h5uus")
 
 [node name="Control" type="Control" parent="." unique_id=676293822]

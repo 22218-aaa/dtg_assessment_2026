@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://npjr56c26o2"]
 
 [ext_resource type="PackedScene" uid="uid://bnvwu4r3spj4w" path="res://scenes/objects/button.tscn" id="1_n5qqv"]
+[ext_resource type="PackedScene" uid="uid://dhm6cq1gn7rea" path="res://scenes/objects/sky.tscn" id="2_060ow"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_n5qqv"]
 font_size = 48
@@ -350,3 +351,5 @@ transform = Transform3D(0.1903464, -3.7252903e-09, 0.981717, 0.10409976, 0.99436
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=609686288]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 62, 0)
 omni_range = 4096.0
+
+[node name="WorldEnvironment" parent="." unique_id=119361356 instance=ExtResource("2_060ow")]

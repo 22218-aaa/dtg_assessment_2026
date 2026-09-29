@@ -5,6 +5,7 @@ var tracker = acheivement_tracker.new()
 var box_togetherness: int = 0
 
 func _ready() -> void:
+	if global.easy_mode: $Label.visible = true
 	tracker.completion_type = "flight‽"
 	tracker.start()
 

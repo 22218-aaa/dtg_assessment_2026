@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dhm6cq1gn7rea"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3l0iv"]
+
+[sub_resource type="Sky" id="Sky_a2ery"]
+sky_material = SubResource("ProceduralSkyMaterial_3l0iv")
+
+[sub_resource type="Environment" id="Environment_3jehi"]
+background_mode = 2
+background_energy_multiplier = 1.5
+sky = SubResource("Sky_a2ery")
+
+[node name="WorldEnvironment" type="WorldEnvironment" unique_id=119361356]
+environment = SubResource("Environment_3jehi")

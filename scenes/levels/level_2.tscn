@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://dfu7834rny34t"]
 
 [ext_resource type="PackedScene" uid="uid://bcxprlld78jga" path="res://scenes/objects/player.tscn" id="1_fiq81"]
-[ext_resource type="Script" uid="uid://7xwpkneinmdg" path="res://scenes/levels/level_2_achievement_tracker.gd" id="1_l37oo"]
+[ext_resource type="Script" uid="uid://7xwpkneinmdg" path="res://scripts/level_2_achievement_tracker.gd" id="1_l37oo"]
 [ext_resource type="PackedScene" uid="uid://daewcgbdysr28" path="res://scenes/objects/death_zone.tscn" id="2_l37oo"]
 [ext_resource type="PackedScene" uid="uid://ccpwjdyct6syf" path="res://scenes/objects/box.tscn" id="3_qpwj6"]
 [ext_resource type="PackedScene" uid="uid://cvru3qrdwbht0" path="res://scenes/objects/scene_changer.tscn" id="4_ibugp"]
 [ext_resource type="PackedScene" uid="uid://e6c2xsjamk0g" path="res://scenes/objects/achievement_tracking_helper.tscn" id="6_qpwj6"]
 [ext_resource type="Script" uid="uid://c87jo177mfsda" path="res://scripts/hint_giver.gd" id="7_ibugp"]
+[ext_resource type="PackedScene" uid="uid://dhm6cq1gn7rea" path="res://scenes/objects/sky.tscn" id="8_8qukl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8qukl"]
 albedo_color = Color(0, 0.39215687, 1, 1)
@@ -85,7 +86,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 3, 6.5, 8, 11, 16, 20),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": ["gotta love the catching on walls..", "maybe I can use that here?", "I TRIED TO FIX IT OKAY!?", "who am I even talking to?", "bill, If you can hear me, I was lying when I said your game was bad", "this feels a bit too extreme of a response though..", ""]
+"values": ["gotta love the catching on walls..", "maybe I can use that here to skip going all the way around?", "I TRIED TO FIX IT OKAY!?", "who am I even talking to?", "bill, If you can hear me, I was lying when I said your game was bad", "this feels a bit too extreme of a response though..", ""]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3p04p"]
@@ -119,8 +120,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25, 0, -33.904175)
 size = Vector3(46.5, 1, 17)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="terrain" unique_id=1647608037]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 8, -24)
-size = Vector3(20, 15, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 8, -24)
+size = Vector3(17, 15, 1)
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="terrain" unique_id=76457696]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 8, -42)
@@ -137,7 +138,7 @@ size = Vector3(1, 15, 29.5)
 [node name="CSGBox3D4" type="CSGBox3D" parent="terrain" unique_id=526895945]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 4, -18.904175)
 operation = 2
-size = Vector3(5, 1.5, 1.5)
+size = Vector3(5, 1.3, 1.5)
 
 [node name="interactables" type="Node" parent="." unique_id=1554166015]
 
@@ -161,6 +162,10 @@ sizing = Vector3(23, 17, 1)
 [node name="death_zone6" parent="interactables" unique_id=2023258287 instance=ExtResource("2_l37oo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 7.5, -40.5)
 sizing = Vector3(21, 17, 1)
+
+[node name="death_zone7" parent="interactables" unique_id=38212456 instance=ExtResource("2_l37oo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 7.5, -24)
+sizing = Vector3(3, 17, 1)
 
 [node name="death_zone2" parent="interactables" unique_id=73367102 instance=ExtResource("2_l37oo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 7.5, -1.5)
@@ -187,7 +192,7 @@ collision_mask = 4
 sizing = Vector3(35, 8, 17)
 
 [node name="hint_giver" type="Area3D" parent="interactables" unique_id=1603834802]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.74238896, -21.825151)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.74238896, -21.325151)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("7_ibugp")
@@ -225,6 +230,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 62, 0)
 omni_range = 4096.0
 
 [node name="Label" type="Label" parent="." unique_id=617762742]
+visible = false
 anchors_preset = -1
 anchor_left = -0.47000003
 anchor_top = 0.41400003
@@ -237,6 +243,8 @@ offset_bottom = -0.08001709
 grow_vertical = 0
 label_settings = SubResource("LabelSettings_qpwj6")
 vertical_alignment = 2
+
+[node name="WorldEnvironment" parent="." unique_id=119361356 instance=ExtResource("8_8qukl")]
 
 [connection signal="body_entered" from="interactables/win_zone" to="." method="_on_win_zone_body_entered"]
 [connection signal="body_entered" from="interactables/achievement_tracking_helper" to="." method="_on_achievement_tracking_helper_body_entered"]

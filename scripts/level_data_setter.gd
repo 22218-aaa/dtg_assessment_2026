@@ -18,6 +18,7 @@ func _ready() -> void:
 	else:
 		#print("delayed")
 		call_deferred("set_values")
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
 func set_values() -> void:

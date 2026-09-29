@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://c8notxrb3ltjs"]
 
 [ext_resource type="PackedScene" uid="uid://bcxprlld78jga" path="res://scenes/objects/player.tscn" id="1_0ljxa"]
-[ext_resource type="Script" uid="uid://bahijp0kmsibb" path="res://scenes/levels/level_3_achievement_tracker.gd" id="1_fmg3e"]
+[ext_resource type="Script" uid="uid://bahijp0kmsibb" path="res://scripts/level_3_achievement_tracker.gd" id="1_fmg3e"]
 [ext_resource type="PackedScene" uid="uid://cvru3qrdwbht0" path="res://scenes/objects/scene_changer.tscn" id="2_0qepi"]
 [ext_resource type="PackedScene" uid="uid://ccpwjdyct6syf" path="res://scenes/objects/box.tscn" id="4_ftfob"]
 [ext_resource type="PackedScene" uid="uid://daewcgbdysr28" path="res://scenes/objects/death_zone.tscn" id="5_fkk1g"]
 [ext_resource type="Script" uid="uid://c87jo177mfsda" path="res://scripts/hint_giver.gd" id="6_fkk1g"]
 [ext_resource type="PackedScene" uid="uid://e6c2xsjamk0g" path="res://scenes/objects/achievement_tracking_helper.tscn" id="6_ftfob"]
+[ext_resource type="PackedScene" uid="uid://dhm6cq1gn7rea" path="res://scenes/objects/sky.tscn" id="8_ugcn1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fkk1g"]
 albedo_color = Color(0, 0.39215687, 1, 1)
@@ -73,7 +74,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_ugcn1"]
 resource_name = "dialogue"
-length = 15.0
+length = 8.0
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -82,12 +83,10 @@ tracks/0/path = NodePath("interactables/hint_giver/text_player/Label:text")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 3, 7, 11, 15),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 4, 8),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": ["you: what is this level design?", "I can't even move the box towards me to abuse that
-stupid collision issue", "oh wait I can drag it towards me if
-I look at the ground", "I really should've fixed that
+"values": ["you: what is this level design?", "I really should've fixed that
 catching on walls and boxes issue, 
 though maybe i can use it here?", ""]
 }
@@ -192,6 +191,7 @@ horizontal_alignment = 1
 vertical_alignment = 2
 
 [node name="Label" type="Label" parent="." unique_id=1080020276]
+visible = false
 anchors_preset = -1
 anchor_left = -0.47000003
 anchor_top = 0.41400003
@@ -210,12 +210,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 62, 0)
 omni_range = 4096.0
 
 [node name="over_tracker" parent="." unique_id=1078506640 instance=ExtResource("6_ftfob")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.642395, -6)
-sizing = Vector3(22, 5, 7)
+transform = Transform3D(1, -1.5999479e-08, 1.5999479e-08, 2.1855694e-08, 0.5, -0.8660254, 5.8562164e-09, 0.8660254, 0.5, 0, 13.642395, 1)
+sizing = Vector3(22, 20, 7)
 
 [node name="through_tracker" parent="." unique_id=949070155 instance=ExtResource("6_ftfob")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4629545, -7)
 sizing = Vector3(22, 2, 7)
+
+[node name="WorldEnvironment" parent="." unique_id=119361356 instance=ExtResource("8_ugcn1")]
 
 [connection signal="body_entered" from="interactables/win_zone" to="." method="_on_win_zone_body_entered"]
 [connection signal="body_entered" from="interactables/hint_giver" to="interactables/hint_giver" method="_on_body_entered"]

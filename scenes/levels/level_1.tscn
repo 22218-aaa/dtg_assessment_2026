@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://daewcgbdysr28" path="res://scenes/objects/death_zone.tscn" id="2_x42e6"]
 [ext_resource type="PackedScene" uid="uid://cvru3qrdwbht0" path="res://scenes/objects/scene_changer.tscn" id="4_x42e6"]
 [ext_resource type="Script" uid="uid://c87jo177mfsda" path="res://scripts/hint_giver.gd" id="7_oc4kc"]
+[ext_resource type="PackedScene" uid="uid://dhm6cq1gn7rea" path="res://scenes/objects/sky.tscn" id="8_s8va5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_sk5k4"]
 font_size = 48
@@ -122,7 +123,7 @@ sizing = Vector3(22, 6.5, 1.5)
 [node name="interactables" type="Node" parent="." unique_id=2136838379]
 
 [node name="player" parent="interactables" unique_id=1512140399 instance=ExtResource("1_6iamk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9423361, 2.3000002, 4.6212225)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9423361, 2.3000002, 7.6212225)
 MAXIMUM_HOLDING_DISTANCE = 12.0
 MAXIMUM_HELD_OBJECTS = 1
 
@@ -155,7 +156,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4025373, 1.9999989, -2.475
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
-sizing = Vector3(3, 3, 3)
+sizing = Vector3(5, 3, 3)
 
 [node name="win_zone" parent="interactables" unique_id=15871483 instance=ExtResource("4_x42e6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -17)
@@ -181,7 +182,7 @@ label_settings = SubResource("LabelSettings_sk5k4")
 vertical_alignment = 2
 
 [node name="hint_giver" type="Area3D" parent="." unique_id=345356532]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.74238896, 3.6748486)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.74238896, 0.67484856)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("7_oc4kc")
@@ -213,6 +214,8 @@ grow_vertical = 0
 label_settings = SubResource("LabelSettings_iav0o")
 horizontal_alignment = 1
 vertical_alignment = 2
+
+[node name="WorldEnvironment" parent="." unique_id=119361356 instance=ExtResource("8_s8va5")]
 
 [connection signal="body_entered" from="terrain/phasing_tracker" to="." method="_on_phasing_tracker_body_entered"]
 [connection signal="body_entered" from="interactables/box2/box_2_tracker" to="." method="_on_box_2_tracker_body_entered"]

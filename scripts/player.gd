@@ -25,7 +25,7 @@ var on_floor: bool = true
 const ACCELLERATION = 50.0
 const FRICTION = 10.0
 const JUMP_VELOCITY = 7
-const sensitivity = 0.3
+var sensitivity = 0.3
 var highest_velocity: Vector3 = Vector3(0, 0, 0)
 
 @export_category("variables")
@@ -83,6 +83,7 @@ func _ready() -> void:
 	held_object_point.position.z = -snappedf((MAXIMUM_HOLDING_DISTANCE + MINIMUM_HOLDING_DISTANCE) / 2, scroll_speed)
 	set_current_distance_display()
 	scroll_speed = global.scroll_speed
+	sensitivity = global.sensitivity
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	distance_display.position.x = MINIMUM_HOLDING_DISTANCE * 8
 	distance_display.size.x = MAXIMUM_HOLDING_DISTANCE * 8 + 16 - MINIMUM_HOLDING_DISTANCE * 8

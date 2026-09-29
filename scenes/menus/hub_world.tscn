@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ccpwjdyct6syf" path="res://scenes/objects/box.tscn" id="3_f0qm8"]
 [ext_resource type="PackedScene" uid="uid://fascjv15xl52" path="res://scenes/objects/level_entrance.tscn" id="6_fi0dp"]
 [ext_resource type="Script" uid="uid://c87jo177mfsda" path="res://scripts/hint_giver.gd" id="7_3l0iv"]
+[ext_resource type="PackedScene" uid="uid://dhm6cq1gn7rea" path="res://scenes/objects/sky.tscn" id="8_a2ery"]
 
 [sub_resource type="Resource" id="Resource_a2ery"]
 script = ExtResource("2_3l0iv")
@@ -22,7 +23,7 @@ metadata/_custom_type_script = "uid://cy6ml2shb4kll"
 script = ExtResource("2_3l0iv")
 level_name = "level 2: blank"
 completion_types = Dictionary[String, bool]({
-"boxes together forever": false,
+"no poke hole": false,
 "poke hole": false,
 "through and catch": false
 })
@@ -181,13 +182,35 @@ tracks/0/keys = {
 "update": 1,
 "values": ["oh that worked.. somehow", "I think I can also
 change it's distance to me?", "maybe scrolling", "oh and I can press escape
-to go to the menu..", "if there even is one", ""]
+to go to the menu..
+and tab to get back here", "if there even is a menu", ""]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3jehi"]
 _data = {
 &"RESET": SubResource("Animation_3l0iv"),
 &"dialogue": SubResource("Animation_a2ery")
+}
+
+[sub_resource type="Animation" id="Animation_3jehi"]
+resource_name = "pressed"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0.0, -0.25]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qmc5g"]
+_data = {
+&"pressed": SubResource("Animation_3jehi")
 }
 
 [node name="hub_world" type="Node3D" unique_id=110924967 node_paths=PackedStringArray("player", "main_spawn_point")]
@@ -348,14 +371,10 @@ level_name = "level 5: get_tree().quit()"
 level_path = "res://scenes/levels/level_5.tscn"
 
 [node name="box4" parent="interactables" unique_id=1888870069 instance=ExtResource("3_f0qm8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3909016, -8.574994, 28.27247)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3909016, -8.574994, 30.27247)
 
 [node name="box5" parent="interactables" unique_id=269313405 instance=ExtResource("3_f0qm8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0109527, -10.575005, 36.837357)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1556399254]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 62, 0)
-omni_range = 4096.0
 
 [node name="hint_giver" type="Area3D" parent="." unique_id=863508280]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, -10.575005, 37.67485)
@@ -392,7 +411,7 @@ horizontal_alignment = 1
 vertical_alignment = 2
 
 [node name="hint_giver2" type="Area3D" parent="." unique_id=488324222]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -8.574994, 23.8497)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.0000048, -5.150299)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("7_3l0iv")
@@ -403,10 +422,6 @@ mesh = SubResource("BoxMesh_a2ery")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="hint_giver2" unique_id=691392184]
 shape = SubResource("BoxShape3D_3jehi")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="hint_giver2" unique_id=606059814]
-root_node = NodePath("../../hint_giver2")
-libraries/ = SubResource("AnimationLibrary_e2l5s")
 
 [node name="text_player" type="AnimationPlayer" parent="hint_giver2" unique_id=2022804245]
 libraries/ = SubResource("AnimationLibrary_3jehi")
@@ -426,8 +441,17 @@ label_settings = SubResource("LabelSettings_gfrna")
 horizontal_alignment = 1
 vertical_alignment = 2
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="hint_giver2" unique_id=983429630]
+libraries/ = SubResource("AnimationLibrary_qmc5g")
+
 [node name="main_spawn_point" type="Marker3D" parent="." unique_id=1683959732]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 7)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1556399254]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 62, 0)
+omni_range = 4096.0
+
+[node name="WorldEnvironment" parent="." unique_id=119361356 instance=ExtResource("8_a2ery")]
 
 [connection signal="body_entered" from="hint_giver" to="hint_giver" method="_on_body_entered"]
 [connection signal="body_exited" from="hint_giver" to="hint_giver" method="_on_body_exited"]

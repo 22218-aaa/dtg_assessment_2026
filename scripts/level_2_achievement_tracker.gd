@@ -5,6 +5,7 @@ var tracker = acheivement_tracker.new()
 var box_num = 0
 
 func _ready() -> void:
+	if global.easy_mode: $Label.visible = true
 	tracker.completion_type = "through and catch"
 	tracker.start()
 
@@ -23,7 +24,7 @@ func _on_achievement_tracking_helper_body_entered(_body: Node3D) -> void:
 	if box_num == 1:
 		tracker.completion_type = "poke hole"
 	if box_num == 2:
-		tracker.completion_type = "boxes together forever"
+		tracker.completion_type = "no poke hole"
 
 
 func _on_achievement_tracking_helper_body_exited(_body: Node3D) -> void:

@@ -5,6 +5,7 @@ var tracker = acheivement_tracker.new()
 
 
 func _ready() -> void:
+	if global.easy_mode: $Label.visible = true
 	tracker.completion_type = "1"
 	tracker.start()
 
