@@ -26,10 +26,10 @@ func _ready() -> void:
 
 
 func connect_level_data():
-	print()
-	print("level entrance script: ")
+	#print()
+	#print("level entrance script: ")
 	#print(global.level_information)
-	print(level_name)
+	#print(level_name)
 	level_information = global.level_information[level_name]
 	var label_text = ""
 	label_text = level_name

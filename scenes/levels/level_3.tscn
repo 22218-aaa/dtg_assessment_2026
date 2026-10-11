@@ -86,8 +86,8 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 4, 8),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": ["you: what is this level design?", "I really should've fixed that
-catching on walls and boxes issue, 
+"values": ["what is this level design?", "I really should've fixed that
+sticking on boxes issue, 
 though maybe i can use it here?", ""]
 }
 
