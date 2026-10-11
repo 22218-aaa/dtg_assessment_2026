@@ -9,7 +9,6 @@ extends RigidBody3D
 @export var boxes_label: Label
 @export var position_label: Label
 @export var velocity_label: Label
-@export var highest_velocity_label: Label
 
 @onready var distance_display: ColorRect = $Control/VBoxContainer/hold_distance_display/ColorRect/Marker2D/distance_display
 @onready var current_distance_display: ColorRect = $Control/VBoxContainer/hold_distance_display/ColorRect/Marker2D/current_distance
@@ -44,10 +43,14 @@ func _input(event):
 		camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, -90, 90)
 	if InputEvent:
 		if Input.is_action_just_pressed("escape"):
-			get_tree().change_scene_to_file("res://scenes/menus/starting_menu.tscn")
-			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+			if global.current_level:
+				get_tree().change_scene_to_file("res://scenes/menus/hub_world.tscn")
+			else:
+				get_tree().change_scene_to_file("res://scenes/menus/starting_menu.tscn")
+				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		elif Input.is_action_just_pressed("tab"):
-			get_tree().change_scene_to_file("res://scenes/menus/hub_world.tscn")
+			get_tree().reload_current_scene()
+		
 		if Input.is_action_just_pressed("select"):
 			if not object_detector.is_colliding():
 				if not held_objects.is_empty():

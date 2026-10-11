@@ -1,22 +1,22 @@
-[gd_scene format=3 uid="uid://dfu7834rny34t"]
+[gd_scene format=3 uid="uid://bmpl5xbf4oi13"]
 
-[ext_resource type="PackedScene" uid="uid://bcxprlld78jga" path="res://scenes/objects/player.tscn" id="1_fiq81"]
-[ext_resource type="Script" uid="uid://7xwpkneinmdg" path="res://scripts/level_2_achievement_tracker.gd" id="1_l37oo"]
-[ext_resource type="PackedScene" uid="uid://daewcgbdysr28" path="res://scenes/objects/death_zone.tscn" id="2_l37oo"]
-[ext_resource type="PackedScene" uid="uid://ccpwjdyct6syf" path="res://scenes/objects/box.tscn" id="3_qpwj6"]
-[ext_resource type="PackedScene" uid="uid://cvru3qrdwbht0" path="res://scenes/objects/scene_changer.tscn" id="4_ibugp"]
-[ext_resource type="PackedScene" uid="uid://e6c2xsjamk0g" path="res://scenes/objects/achievement_tracking_helper.tscn" id="6_qpwj6"]
-[ext_resource type="Script" uid="uid://c87jo177mfsda" path="res://scripts/hint_giver.gd" id="7_ibugp"]
-[ext_resource type="PackedScene" uid="uid://dhm6cq1gn7rea" path="res://scenes/objects/sky.tscn" id="8_8qukl"]
+[ext_resource type="Script" uid="uid://cf67duji55hng" path="res://scripts/level_4_achievement_tracker.gd" id="1_rej77"]
+[ext_resource type="PackedScene" uid="uid://bcxprlld78jga" path="res://scenes/objects/player.tscn" id="2_5vn0v"]
+[ext_resource type="PackedScene" uid="uid://daewcgbdysr28" path="res://scenes/objects/death_zone.tscn" id="3_ts8eg"]
+[ext_resource type="PackedScene" uid="uid://ccpwjdyct6syf" path="res://scenes/objects/box.tscn" id="4_um320"]
+[ext_resource type="PackedScene" uid="uid://cvru3qrdwbht0" path="res://scenes/objects/scene_changer.tscn" id="5_glw47"]
+[ext_resource type="PackedScene" uid="uid://e6c2xsjamk0g" path="res://scenes/objects/achievement_tracking_helper.tscn" id="6_4wsov"]
+[ext_resource type="Script" uid="uid://c87jo177mfsda" path="res://scripts/hint_giver.gd" id="7_5vn0v"]
+[ext_resource type="PackedScene" uid="uid://dhm6cq1gn7rea" path="res://scenes/objects/sky.tscn" id="8_ts8eg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8qukl"]
 albedo_color = Color(0, 0.39215687, 1, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_3p04p"]
+[sub_resource type="BoxMesh" id="BoxMesh_ts8eg"]
 material = SubResource("StandardMaterial3D_8qukl")
 size = Vector3(2, 1, 2)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_qsp8v"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_um320"]
 size = Vector3(2, 1, 2)
 
 [sub_resource type="Animation" id="Animation_n6eey"]
@@ -51,13 +51,13 @@ tracks/0/keys = {
 "values": [0.0, -0.25]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_nt80m"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_glw47"]
 _data = {
 &"RESET": SubResource("Animation_n6eey"),
 &"pressed": SubResource("Animation_qi5uv")
 }
 
-[sub_resource type="Animation" id="Animation_ibugp"]
+[sub_resource type="Animation" id="Animation_4wsov"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -72,9 +72,9 @@ tracks/0/keys = {
 "values": [""]
 }
 
-[sub_resource type="Animation" id="Animation_8qukl"]
+[sub_resource type="Animation" id="Animation_qvnao"]
 resource_name = "dialogue"
-length = 20.0
+length = 6.0
 step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -83,134 +83,141 @@ tracks/0/path = NodePath("text_player/Label:text")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 3, 6.5, 8, 11, 16, 20),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 4, 6),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": ["gotta love the catching on walls..", "maybe I can use that here to skip going all the way around?", "I TRIED TO FIX IT OKAY!?", "who am I even talking to?", "bill, If you can hear me, I was lying when I said your game was bad", "this feels a bit too extreme of a response though..", ""]
+"values": ["I think the boxes I, my character?, are the same type of object", "so maybe they can do the same things?", ""]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_3p04p"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hsvsk"]
 _data = {
-&"RESET": SubResource("Animation_ibugp"),
-&"dialogue": SubResource("Animation_8qukl")
+&"RESET": SubResource("Animation_4wsov"),
+&"dialogue": SubResource("Animation_qvnao")
 }
 
-[sub_resource type="LabelSettings" id="LabelSettings_tv7cl"]
+[sub_resource type="LabelSettings" id="LabelSettings_fcb7b"]
 font_size = 48
 
-[sub_resource type="LabelSettings" id="LabelSettings_qpwj6"]
+[sub_resource type="LabelSettings" id="LabelSettings_ppetw"]
 font_size = 48
 
-[node name="Node3D" type="Node3D" unique_id=1821202503]
-script = ExtResource("1_l37oo")
+[node name="Node3D" type="Node3D" unique_id=255495353]
+script = ExtResource("1_rej77")
 
-[node name="terrain" type="CSGCombiner3D" parent="." unique_id=15767586]
+[node name="terrain" type="CSGCombiner3D" parent="." unique_id=602189523]
 use_collision = true
 
-[node name="CSGBox3D" type="CSGBox3D" parent="terrain" unique_id=1202135817]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5958252)
-size = Vector3(23, 1, 12)
+[node name="CSGBox3D3" type="CSGBox3D" parent="terrain" unique_id=1144768036]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -2, 4)
+size = Vector3(20, 1, 36)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="terrain" unique_id=1518791529]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -19.25)
-size = Vector3(36, 1, 12.5)
+[node name="CSGBox3D5" type="CSGBox3D" parent="terrain" unique_id=625377115]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 6.071087, 9)
+size = Vector3(20, 15, 10)
 
-[node name="CSGBox3D6" type="CSGBox3D" parent="terrain" unique_id=227639217]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25, 0, -33.904175)
-size = Vector3(46.5, 1, 17)
+[node name="CSGBox3D6" type="CSGBox3D" parent="terrain" unique_id=723156445]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 9.886347, 18)
+size = Vector3(20, 5, 8)
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="terrain" unique_id=1647608037]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 8, -24)
-size = Vector3(17, 15, 1)
+[node name="CSGBox3D7" type="CSGBox3D" parent="terrain" unique_id=125606171]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 7.978874, 26)
+size = Vector3(20, 1, 8)
 
-[node name="CSGBox3D7" type="CSGBox3D" parent="terrain" unique_id=76457696]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 8, -42)
-size = Vector3(35, 15, 1)
+[node name="terrain2" type="CSGCombiner3D" parent="." unique_id=1207289936]
+use_collision = true
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="terrain" unique_id=783230451]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 8, -27.75)
-size = Vector3(1, 15, 29.5)
+[node name="CSGBox3D3" type="CSGBox3D" parent="terrain2" unique_id=963677157]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.987, 6.071087, 17.974)
+size = Vector3(20, 15, 8)
 
-[node name="CSGBox3D8" type="CSGBox3D" parent="terrain" unique_id=1088165787]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 8, -27.75)
-size = Vector3(1, 15, 29.5)
+[node name="CSGBox3D4" type="CSGBox3D" parent="terrain2" unique_id=1018866496]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -2.0684404, 4)
+size = Vector3(20, 1, 36)
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="terrain" unique_id=526895945]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 4, -18.904175)
-operation = 2
-size = Vector3(5, 1.3, 1.5)
+[node name="interactables" type="Node" parent="." unique_id=1895782639]
 
-[node name="interactables" type="Node" parent="." unique_id=1554166015]
+[node name="player" parent="interactables" unique_id=1512140399 instance=ExtResource("2_5vn0v")]
+transform = Transform3D(-0.2603691, 0.0019424323, 0.96550715, 0.0025852823, 0.99999577, -0.0013146516, -0.96550566, 0.0021538222, -0.260373, -21.245003, 2.3000002, -5.3787766)
+MAXIMUM_HOLDING_DISTANCE = 8.0
+MINIMUM_HOLDING_DISTANCE = 1.0
 
-[node name="player" parent="interactables" unique_id=1512140399 instance=ExtResource("1_fiq81")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9423361, 2.3000002, 4.6212225)
-MAXIMUM_HOLDING_DISTANCE = 6.0
-MAXIMUM_HELD_OBJECTS = 1
+[node name="death_zone2" parent="interactables" unique_id=2110125439 instance=ExtResource("3_ts8eg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -49.259064, 3)
+sizing = Vector3(200, 5, 200)
 
-[node name="death_zone" parent="interactables" unique_id=1153127341 instance=ExtResource("2_l37oo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 7.5, -16)
-sizing = Vector3(1, 17, 51)
+[node name="box" parent="interactables" unique_id=673736917 instance=ExtResource("4_um320")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.091755, -1.0136542, -8.48617)
+sizing = Vector3(1.2, 1.2, 1.2)
 
-[node name="death_zone4" parent="interactables" unique_id=223634512 instance=ExtResource("2_l37oo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.116830826, -1.3683586, 9.065483)
-sizing = Vector3(100, 1, 200)
+[node name="box3" parent="interactables" unique_id=2073704069 instance=ExtResource("4_um320")]
+transform = Transform3D(0.9994873, -0.026483357, -0.017994901, 0.026121385, 0.9994575, -0.02006032, 0.01851642, 0.019579966, 0.9996369, -17.022175, 0.27356306, -8.478067)
+sizing = Vector3(1.2, 1.2, 1.2)
 
-[node name="death_zone3" parent="interactables" unique_id=1743411185 instance=ExtResource("2_l37oo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.5, 9)
-sizing = Vector3(23, 17, 1)
+[node name="box4" parent="interactables" unique_id=1825735777 instance=ExtResource("4_um320")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.913528, 1.1863458, -8.48617)
+sizing = Vector3(1.2, 1.2, 1.2)
 
-[node name="death_zone6" parent="interactables" unique_id=2023258287 instance=ExtResource("2_l37oo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 7.5, -40.5)
-sizing = Vector3(21, 17, 1)
-
-[node name="death_zone7" parent="interactables" unique_id=38212456 instance=ExtResource("2_l37oo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 7.5, -24)
-sizing = Vector3(3, 17, 1)
-
-[node name="death_zone2" parent="interactables" unique_id=73367102 instance=ExtResource("2_l37oo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 7.5, -1.5)
-sizing = Vector3(1, 17, 22)
-
-[node name="death_zone5" parent="interactables" unique_id=606240929 instance=ExtResource("2_l37oo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07542896, 15.407188, 9.045879)
-sizing = Vector3(100, 1, 200)
-
-[node name="box" parent="interactables" unique_id=2073704069 instance=ExtResource("3_qpwj6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1187315, 0.9999981, -1.4282789)
-
-[node name="box2" parent="interactables" unique_id=350238828 instance=ExtResource("3_qpwj6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6965952, 1, -1.9292579)
-metadata/_edit_group_ = true
-
-[node name="win_zone" parent="interactables" unique_id=15871483 instance=ExtResource("4_ibugp")]
-transform = Transform3D(0.9999942, -0.0019700986, 0.0027683096, 0.001968356, 0.99999785, 0.0006330763, -0.0027695487, -0.0006276333, 0.99999595, -38.5, 6.5, -33)
+[node name="win_zone" parent="interactables" unique_id=15871483 instance=ExtResource("5_glw47")]
+transform = Transform3D(1, 0, 0, 0, 0.98657215, -0.16332597, 0, 0.16332597, 0.98657215, -21.463272, 9.478873, 27)
 change_scene_to = "res://scenes/menus/hub_world.tscn"
+sizing = Vector3(1, 1, 1)
 
-[node name="achievement_tracking_helper" parent="interactables" unique_id=1078506640 instance=ExtResource("6_qpwj6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 4.5, -33)
-collision_mask = 4
-sizing = Vector3(35, 8, 17)
+[node name="death_zone7" parent="interactables" unique_id=574561092 instance=ExtResource("3_ts8eg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 3, 12)
+sizing = Vector3(2, 23, 55)
 
-[node name="hint_giver" type="Area3D" parent="interactables" unique_id=1603834802]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.74238896, -21.325151)
+[node name="death_zone8" parent="interactables" unique_id=1948577693 instance=ExtResource("3_ts8eg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3, 12)
+sizing = Vector3(2, 23, 55)
+
+[node name="death_zone9" parent="interactables" unique_id=741408270 instance=ExtResource("3_ts8eg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 14, 3.5)
+sizing = Vector3(28, 1, 37)
+
+[node name="death_zone12" parent="interactables" unique_id=1153127341 instance=ExtResource("3_ts8eg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 2.5, 40)
+sizing = Vector3(28, 24, 1)
+
+[node name="death_zone13" parent="interactables" unique_id=367375161 instance=ExtResource("3_ts8eg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 2.5, -15)
+sizing = Vector3(28, 24, 1)
+
+[node name="death_zone11" parent="interactables" unique_id=1659408633 instance=ExtResource("3_ts8eg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -9, 12)
+sizing = Vector3(28, 1, 55)
+
+[node name="death_zone10" parent="interactables" unique_id=848758282 instance=ExtResource("3_ts8eg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 8, 9)
+sizing = Vector3(19, 1, 9)
+
+[node name="three_tracker" parent="interactables" unique_id=1078506640 instance=ExtResource("6_4wsov")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 9.338306, 18)
+sizing = Vector3(15, 1, 7)
+
+[node name="two_tracker" parent="interactables" unique_id=28354650 instance=ExtResource("6_4wsov")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0.8383064, 14.74645)
+sizing = Vector3(18, 12, 1)
+
+[node name="hint_giver" type="Area3D" parent="interactables" unique_id=183511041]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -1.000001, -4.8251514)
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("7_ibugp")
+script = ExtResource("7_5vn0v")
 metadata/_edit_group_ = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="interactables/hint_giver" unique_id=1308258451]
-mesh = SubResource("BoxMesh_3p04p")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="interactables/hint_giver" unique_id=1873749584]
+mesh = SubResource("BoxMesh_ts8eg")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="interactables/hint_giver" unique_id=1263185323]
-shape = SubResource("BoxShape3D_qsp8v")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="interactables/hint_giver" unique_id=1046354261]
+shape = SubResource("BoxShape3D_um320")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="interactables/hint_giver" unique_id=1769084317]
-libraries/ = SubResource("AnimationLibrary_nt80m")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="interactables/hint_giver" unique_id=1338792581]
+libraries/ = SubResource("AnimationLibrary_glw47")
 
-[node name="text_player" type="AnimationPlayer" parent="interactables/hint_giver" unique_id=2038816406]
-libraries/ = SubResource("AnimationLibrary_3p04p")
+[node name="text_player" type="AnimationPlayer" parent="interactables/hint_giver" unique_id=131030883]
+libraries/ = SubResource("AnimationLibrary_hsvsk")
 
-[node name="Label" type="Label" parent="interactables/hint_giver/text_player" unique_id=91001434]
+[node name="Label" type="Label" parent="interactables/hint_giver/text_player" unique_id=341716464]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -221,15 +228,15 @@ offset_right = -960.0
 offset_bottom = -751.0
 grow_horizontal = 2
 grow_vertical = 0
-label_settings = SubResource("LabelSettings_tv7cl")
+label_settings = SubResource("LabelSettings_fcb7b")
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1236812382]
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=732430040]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 62, 0)
 omni_range = 4096.0
 
-[node name="Label" type="Label" parent="." unique_id=617762742]
+[node name="Label" type="Label" parent="." unique_id=872443637]
 visible = false
 anchors_preset = -1
 anchor_left = -0.47000003
@@ -241,13 +248,13 @@ offset_top = -0.120025635
 offset_right = -0.27996826
 offset_bottom = -0.08001709
 grow_vertical = 0
-label_settings = SubResource("LabelSettings_qpwj6")
+label_settings = SubResource("LabelSettings_ppetw")
 vertical_alignment = 2
 
-[node name="WorldEnvironment" parent="." unique_id=119361356 instance=ExtResource("8_8qukl")]
+[node name="WorldEnvironment" parent="." unique_id=119361356 instance=ExtResource("8_ts8eg")]
 
 [connection signal="body_entered" from="interactables/win_zone" to="." method="_on_win_zone_body_entered"]
-[connection signal="body_entered" from="interactables/achievement_tracking_helper" to="." method="_on_achievement_tracking_helper_body_entered"]
-[connection signal="body_exited" from="interactables/achievement_tracking_helper" to="." method="_on_achievement_tracking_helper_body_exited"]
+[connection signal="body_entered" from="interactables/three_tracker" to="." method="_on_three_tracker_body_entered"]
+[connection signal="body_entered" from="interactables/two_tracker" to="." method="_on_two_tracker_body_entered"]
 [connection signal="body_entered" from="interactables/hint_giver" to="interactables/hint_giver" method="_on_body_entered"]
 [connection signal="body_exited" from="interactables/hint_giver" to="interactables/hint_giver" method="_on_body_exited"]

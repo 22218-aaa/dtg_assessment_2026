@@ -7,9 +7,12 @@ var level_information: Dictionary[String, level_data] = {}
 @export var main_spawn_point: Marker3D
 
 func _ready() -> void:
+	global.current_level = ""
+	
+	# tutorial spawn point stuff
 	if global.started == false: global.started = true
 	else: player.position = main_spawn_point.position
-		
+	
 	if level_entries:
 		#print("success")
 		for item in level_entries:
