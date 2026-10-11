@@ -34,7 +34,7 @@ func _ready() -> void:
 	weight = mass
 	
 	collider.scale = sizing
-	mesh_instance.scale = sizing
+	mesh_instance.scale = sizing / 2
 	held_mesh.scale = sizing
 	push_off_area.scale = sizing - Vector3(push_off_gap,push_off_gap,push_off_gap)
 	if auto_weight: mass = sizing.x * sizing.y * sizing.z
@@ -46,7 +46,7 @@ func _process(delta: float) -> void:
 		#scale = sizing
 		
 		collider.scale = sizing
-		mesh_instance.scale = sizing
+		mesh_instance.scale = sizing / 2
 		held_mesh.scale = sizing
 		push_off_area.scale = sizing
 	else:

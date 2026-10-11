@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://daewcgbdysr28" path="res://scenes/objects/death_zone.tscn" id="2_x42e6"]
 [ext_resource type="PackedScene" uid="uid://cvru3qrdwbht0" path="res://scenes/objects/scene_changer.tscn" id="4_x42e6"]
 [ext_resource type="Script" uid="uid://c87jo177mfsda" path="res://scripts/hint_giver.gd" id="7_oc4kc"]
+[ext_resource type="PackedScene" uid="uid://dks15o8pfmnw5" path="res://scenes/objects/button_base.tscn" id="8_dga24"]
 [ext_resource type="PackedScene" uid="uid://dhm6cq1gn7rea" path="res://scenes/objects/sky.tscn" id="8_s8va5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_sk5k4"]
@@ -182,7 +183,7 @@ label_settings = SubResource("LabelSettings_sk5k4")
 vertical_alignment = 2
 
 [node name="hint_giver" type="Area3D" parent="." unique_id=345356532]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.74238896, 0.67484856)
+transform = Transform3D(0.9999995, -0.00013771236, 0.0010022639, 0.00013990539, 0.99999756, -0.002204927, -0.00100196, 0.0022050648, 0.9999971, 8, 1, 1)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("7_oc4kc")
@@ -214,6 +215,9 @@ grow_vertical = 0
 label_settings = SubResource("LabelSettings_iav0o")
 horizontal_alignment = 1
 vertical_alignment = 2
+
+[node name="button base" parent="hint_giver" unique_id=145213055 instance=ExtResource("8_dga24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
 
 [node name="WorldEnvironment" parent="." unique_id=119361356 instance=ExtResource("8_s8va5")]
 

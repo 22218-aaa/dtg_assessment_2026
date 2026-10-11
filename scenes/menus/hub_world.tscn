@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ccpwjdyct6syf" path="res://scenes/objects/box.tscn" id="3_f0qm8"]
 [ext_resource type="PackedScene" uid="uid://fascjv15xl52" path="res://scenes/objects/level_entrance.tscn" id="6_fi0dp"]
 [ext_resource type="Script" uid="uid://c87jo177mfsda" path="res://scripts/hint_giver.gd" id="7_3l0iv"]
+[ext_resource type="PackedScene" uid="uid://dks15o8pfmnw5" path="res://scenes/objects/button_base.tscn" id="8_3jehi"]
 [ext_resource type="PackedScene" uid="uid://dhm6cq1gn7rea" path="res://scenes/objects/sky.tscn" id="8_a2ery"]
 
 [sub_resource type="Resource" id="Resource_3l0iv"]
@@ -249,7 +250,7 @@ size = Vector3(7, 2, 14)
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="terrain" unique_id=244531077]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -38)
-size = Vector3(7, 2, 8)
+size = Vector3(10, 2, 8)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="terrain" unique_id=1698413953]
 transform = Transform3D(0.25881907, 0.03136831, -0.9654164, 0, 0.99947256, 0.032474868, 0.9659258, -0.008405115, 0.25868255, -26.00444, 9.145889, -4.0109673)
@@ -346,26 +347,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.464785, 3.0021124, 5.8822
 sizing = Vector3(3, 3, 3)
 
 [node name="level_entrance" parent="interactables" unique_id=636574180 instance=ExtResource("6_fi0dp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -38.5)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2, 2, -38.5)
 level_name = "level 1: wall"
 
 [node name="level_entrance5" parent="interactables" unique_id=522198203 instance=ExtResource("6_fi0dp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 4.6173096, -14)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 4.1173053, -14)
 level_name = "level 4: blank"
 level_path = "res://scenes/levels/level_4.tscn"
 
 [node name="level_entrance3" parent="interactables" unique_id=1105148949 instance=ExtResource("6_fi0dp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.64078, 12.499996, -16.779137)
+transform = Transform3D(0.24999999, -0.9330127, -0.258819, 0.9659259, 0.258819, 0, 0.0669873, -0.25000003, 0.9659258, 45.14078, 13.499996, -17.279137)
 level_name = "level 3: hill"
 level_path = "res://scenes/levels/level_3.tscn"
 
 [node name="level_entrance2" parent="interactables" unique_id=1103027665 instance=ExtResource("6_fi0dp")]
-transform = Transform3D(-0.75000006, -0.43301272, 0.49999997, -0.49999997, 0.86602545, -2.2886669e-08, -0.43301263, -0.24999999, -0.86602545, -15.5, 6.0000057, -15.5)
+transform = Transform3D(-0.75000006, -0.43301272, 0.49999997, -0.49999997, 0.86602545, -2.2886669e-08, -0.43301263, -0.24999999, -0.86602545, -15.5, 6.0000057, -16)
 level_name = "level 2: walls in walls"
 level_path = "res://scenes/levels/level_2.tscn"
 
 [node name="level_entrance4" parent="interactables" unique_id=653957253 instance=ExtResource("6_fi0dp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.498276, 28.999996, -40.243584)
+transform = Transform3D(0.7071067, 8.742278e-08, 0.7071068, 6.181724e-08, -1, 6.181724e-08, 0.7071068, 1.0926798e-14, -0.7071067, -16.498276, 28.999996, -40.243584)
 level_name = "level 5: get_tree().quit()"
 level_path = "res://scenes/levels/level_5.tscn"
 
@@ -409,6 +410,9 @@ label_settings = SubResource("LabelSettings_gfrna")
 horizontal_alignment = 1
 vertical_alignment = 2
 
+[node name="button base" parent="hint_giver" unique_id=145213055 instance=ExtResource("8_3jehi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
+
 [node name="hint_giver2" type="Area3D" parent="." unique_id=488324222]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.0000048, -5.150299)
 collision_layer = 0
@@ -442,6 +446,9 @@ vertical_alignment = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="hint_giver2" unique_id=983429630]
 libraries/ = SubResource("AnimationLibrary_qmc5g")
+
+[node name="button base" parent="hint_giver2" unique_id=842981020 instance=ExtResource("8_3jehi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
 
 [node name="main_spawn_point" type="Marker3D" parent="." unique_id=1683959732]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 7)

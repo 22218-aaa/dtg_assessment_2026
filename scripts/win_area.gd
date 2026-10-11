@@ -5,7 +5,7 @@ extends Area3D
 @export var change_scene_to = "res://scenes/menus/meta_menu.tscn"
 
 @onready var collision_shape: CollisionShape3D = $CollisionShape3D
-@onready var mesh_instance: MeshInstance3D = $MeshInstance3D
+@onready var mesh_instance: MeshInstance3D = $CrystalShape
 
 @export var sizing: Vector3 = Vector3(1, 1, 1)
 

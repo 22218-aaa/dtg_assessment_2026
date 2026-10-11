@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dks15o8pfmnw5"]
+
+[ext_resource type="Texture2D" uid="uid://b1qukm1brg6ts" path="res://assets/2d/texture_07.png" id="1_c0v6g"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qxy0u"]
+albedo_texture = ExtResource("1_c0v6g")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_excbq"]
+top_radius = 2.0
+bottom_radius = 2.0
+height = 0.4
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_iav0o"]
+height = 0.4
+radius = 2.0
+
+[node name="button base" type="StaticBody3D" unique_id=145213055]
+collision_mask = 0
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=2000043809]
+material_override = SubResource("StandardMaterial3D_qxy0u")
+mesh = SubResource("CylinderMesh_excbq")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1847996849]
+shape = SubResource("CylinderShape3D_iav0o")

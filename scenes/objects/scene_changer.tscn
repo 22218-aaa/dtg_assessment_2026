@@ -1,31 +1,126 @@
 [gd_scene format=3 uid="uid://cvru3qrdwbht0"]
 
 [ext_resource type="Script" uid="uid://do0aasp6f3ima" path="res://scripts/win_area.gd" id="1_6ih67"]
+[ext_resource type="ArrayMesh" uid="uid://cv4bpiaoa28sm" path="res://assets/3d/crystal_shape.obj" id="2_nvxmy"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_nsrm0"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_nvxmy"]
+radius = 1.8
 
-[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_x42e6"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lt7hj"]
 transparency = 1
-shading_mode = 0
-albedo_color = Color(0, 0.5882353, 1, 0.63529414)
+cull_mode = 1
+emission_enabled = true
+emission = Color(0, 18.892157, 18.892157, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_nsrm0"]
-material = SubResource("ORMMaterial3D_x42e6")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_brnwt"]
+transparency = 1
+albedo_color = Color(0, 1, 1, 0.39215687)
+
+[sub_resource type="SphereMesh" id="SphereMesh_762t3"]
+material = SubResource("StandardMaterial3D_brnwt")
+radius = 0.05
+height = 0.1
+radial_segments = 16
+rings = 8
+
+[sub_resource type="Animation" id="Animation_7oob2"]
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CrystalShape:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CrystalShape:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_egkek"]
+resource_name = "turning"
+length = 10.0
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CrystalShape:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(6.2831855, 12.566371, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CrystalShape:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.5, 2.0, 1.5, 2.0, 1.5, 2.0, 1.5, 2.0, 1.5, 2.0, 1.5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3dsl7"]
+_data = {
+&"RESET": SubResource("Animation_7oob2"),
+&"turning": SubResource("Animation_egkek")
+}
 
 [node name="scene_changer" type="Area3D" unique_id=15871483]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_6ih67")
-change_scene = null
-sizing = Vector3(5, 2, 5)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=183014019]
-transform = Transform3D(5, 0, 0, 0, 2, 0, 0, 0, 5, 0, 0, 0)
-shape = SubResource("BoxShape3D_nsrm0")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("SphereShape3D_nvxmy")
 debug_color = Color(0.8634087, 0.00062627735, 0.86869925, 0.41960785)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=431626464]
-transform = Transform3D(5, 0, 0, 0, 2, 0, 0, 0, 5, 0, 0, 0)
-mesh = SubResource("BoxMesh_nsrm0")
+[node name="CrystalShape" type="MeshInstance3D" parent="." unique_id=2142399799]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+mesh = ExtResource("2_nvxmy")
+surface_material_override/0 = SubResource("StandardMaterial3D_lt7hj")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=186100232]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+amount = 50
+lifetime = 12.0
+mesh = SubResource("SphereMesh_762t3")
+emission_shape = 1
+emission_sphere_radius = 5.0
+direction = Vector3(0, 0, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.1
+initial_velocity_max = 0.5
+damping_max = 0.1
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=434962091]
+libraries/ = SubResource("AnimationLibrary_3dsl7")
+autoplay = &"RESET"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

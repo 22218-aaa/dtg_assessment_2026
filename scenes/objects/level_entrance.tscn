@@ -1,30 +1,61 @@
 [gd_scene format=3 uid="uid://fascjv15xl52"]
 
 [ext_resource type="Script" uid="uid://cdg5daaxiqqjq" path="res://scripts/level_entrance.gd" id="1_q2krq"]
+[ext_resource type="ArrayMesh" uid="uid://vdr85j472671" path="res://assets/3d/entrance.obj" id="2_hepeg"]
+[ext_resource type="Texture2D" uid="uid://b1qukm1brg6ts" path="res://assets/2d/texture_07.png" id="2_wu4nn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fi0dp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6r4bs"]
+albedo_texture = ExtResource("2_wu4nn")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hepeg"]
+size = Vector3(2, 9, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wu4nn"]
+size = Vector3(2, 1.5, 4)
 
 [node name="level_entrance" type="Node3D" unique_id=636574180]
 script = ExtResource("1_q2krq")
 level_name = "wall"
 level_path = "res://scenes/levels/level_1.tscn"
-sizing = Vector3(5, 1, 5)
+sizing = Vector3(0.3, 8, 5)
 metadata/_edit_group_ = true
 
 [node name="Label3D" type="Label3D" parent="." unique_id=311416660]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.5, 0)
 billboard = 2
 text = "wall"
 font_size = 256
 vertical_alignment = 2
 
 [node name="Area3D" type="Area3D" parent="." unique_id=770010053]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1861747915]
-transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0)
+transform = Transform3D(0.3, 0, 0, 0, 8, 0, 0, 0, 5, 0, 0, 0)
 shape = SubResource("BoxShape3D_fi0dp")
 debug_color = Color(0, 0.6, 0.69803923, 1)
+
+[node name="Entrance" type="MeshInstance3D" parent="." unique_id=142377937]
+material_override = SubResource("StandardMaterial3D_6r4bs")
+mesh = ExtResource("2_hepeg")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=94284414]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1192499076]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 3)
+shape = SubResource("BoxShape3D_hepeg")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=664755066]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, -3)
+shape = SubResource("BoxShape3D_hepeg")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" unique_id=61900911]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.25, 0)
+shape = SubResource("BoxShape3D_wu4nn")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

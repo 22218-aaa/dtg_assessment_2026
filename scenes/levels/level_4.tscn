@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://e6c2xsjamk0g" path="res://scenes/objects/achievement_tracking_helper.tscn" id="6_4wsov"]
 [ext_resource type="Script" uid="uid://c87jo177mfsda" path="res://scripts/hint_giver.gd" id="7_5vn0v"]
 [ext_resource type="PackedScene" uid="uid://dhm6cq1gn7rea" path="res://scenes/objects/sky.tscn" id="8_ts8eg"]
+[ext_resource type="PackedScene" uid="uid://dks15o8pfmnw5" path="res://scenes/objects/button_base.tscn" id="8_um320"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8qukl"]
 albedo_color = Color(0, 0.39215687, 1, 1)
@@ -196,7 +197,7 @@ collision_mask = 4
 sizing = Vector3(35, 8, 17)
 
 [node name="hint_giver" type="Area3D" parent="interactables" unique_id=1603834802]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0.74238896, -21.325151)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 1.0000005, -21.325151)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("7_5vn0v")
@@ -228,6 +229,9 @@ grow_vertical = 0
 label_settings = SubResource("LabelSettings_tv7cl")
 horizontal_alignment = 1
 vertical_alignment = 2
+
+[node name="button base" parent="interactables/hint_giver" unique_id=145213055 instance=ExtResource("8_um320")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1236812382]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 62, 0)
