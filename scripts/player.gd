@@ -9,6 +9,7 @@ extends RigidBody3D
 @export var boxes_label: Label
 @export var position_label: Label
 @export var velocity_label: Label
+@export var screen_colour: ColorRect
 
 @onready var distance_display: ColorRect = $Control/VBoxContainer/hold_distance_display/ColorRect/Marker2D/distance_display
 @onready var current_distance_display: ColorRect = $Control/VBoxContainer/hold_distance_display/ColorRect/Marker2D/current_distance
@@ -79,7 +80,7 @@ func _input(event):
 			set_current_distance_display()
 
 func set_current_distance_display():
-	current_distance_display.position.x =-held_object_point.position.z * 8
+	current_distance_display.position.x =-held_object_point.position.z * 16
 
 
 func _ready() -> void:
@@ -88,8 +89,8 @@ func _ready() -> void:
 	scroll_speed = global.scroll_speed
 	sensitivity = global.sensitivity
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	distance_display.position.x = MINIMUM_HOLDING_DISTANCE * 8
-	distance_display.size.x = MAXIMUM_HOLDING_DISTANCE * 8 + 16 - MINIMUM_HOLDING_DISTANCE * 8
+	distance_display.position.x = MINIMUM_HOLDING_DISTANCE * 16
+	distance_display.size.x = MAXIMUM_HOLDING_DISTANCE * 16 + 32 - MINIMUM_HOLDING_DISTANCE * 16
 
 
 func _physics_process(delta: float) -> void:
@@ -104,8 +105,8 @@ func _physics_process(delta: float) -> void:
 	holding_logic(delta)
 	#pushing_logic(delta)
 	boxes_label.text = "held: " + str(len(held_objects)) + "/" + str(MAXIMUM_HELD_OBJECTS)
-	position_label.text = "position: " + str(global_position.round())
-	velocity_label.text = "velocity: " + str(linear_velocity.round())
+	position_label.text = "position: (" + str(int(global_position.x)) + ", " + str(int(global_position.y)) + ", " + str(int(global_position.z)) + ")"
+	velocity_label.text = "velocity: (" + str(int(linear_velocity.x)) + ", " + str(int(linear_velocity.y)) + ", " + str(int(linear_velocity.z)) + ")"
 	#highest_velocity_label.text = "highest velocity: " + str(highest_velocity.round())
 	# + "\n" + \
 	#str(rotation_degrees) + "\n" + \
