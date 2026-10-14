@@ -60,6 +60,14 @@ completion_types = Dictionary[String, bool]({
 })
 metadata/_custom_type_script = "uid://cy6ml2shb4kll"
 
+[sub_resource type="Resource" id="Resource_qmc5g"]
+script = ExtResource("2_3l0iv")
+level_name = "completion"
+completion_types = Dictionary[String, bool]({
+"...": false
+})
+metadata/_custom_type_script = "uid://cy6ml2shb4kll"
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ugcn1"]
 albedo_color = Color(0, 0.39215687, 1, 1)
 
@@ -213,12 +221,13 @@ _data = {
 &"pressed": SubResource("Animation_3jehi")
 }
 
-[node name="hub_world" type="Node3D" unique_id=110924967 node_paths=PackedStringArray("player", "main_spawn_point")]
+[node name="hub_world" type="Node3D" unique_id=110924967 node_paths=PackedStringArray("player", "main_spawn_point", "final_level")]
 process_priority = 1
 script = ExtResource("1_fi0dp")
-level_entries = Array[ExtResource("2_3l0iv")]([SubResource("Resource_3l0iv"), SubResource("Resource_a2ery"), SubResource("Resource_3jehi"), SubResource("Resource_e2l5s"), SubResource("Resource_fi0dp")])
+level_entries = Array[ExtResource("2_3l0iv")]([SubResource("Resource_3l0iv"), SubResource("Resource_a2ery"), SubResource("Resource_3jehi"), SubResource("Resource_e2l5s"), SubResource("Resource_fi0dp"), SubResource("Resource_qmc5g")])
 player = NodePath("interactables/player")
 main_spawn_point = NodePath("main_spawn_point")
+final_level = NodePath("interactables/level_entrance6")
 
 [node name="terrain" type="CSGCombiner3D" parent="." unique_id=1588843043]
 use_collision = true
@@ -350,25 +359,30 @@ sizing = Vector3(3, 3, 3)
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2, 2, -38.5)
 level_name = "level 1: wall"
 
-[node name="level_entrance5" parent="interactables" unique_id=522198203 instance=ExtResource("6_fi0dp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 4.1173053, -14)
-level_name = "level 4: blank"
-level_path = "res://scenes/levels/level_4.tscn"
+[node name="level_entrance2" parent="interactables" unique_id=1103027665 instance=ExtResource("6_fi0dp")]
+transform = Transform3D(-0.75000006, -0.43301272, 0.49999997, -0.49999997, 0.86602545, -2.2886669e-08, -0.43301263, -0.24999999, -0.86602545, -15.5, 6.0000057, -16)
+level_name = "level 2: walls in walls"
+level_path = "res://scenes/levels/level_2.tscn"
 
 [node name="level_entrance3" parent="interactables" unique_id=1105148949 instance=ExtResource("6_fi0dp")]
 transform = Transform3D(0.24999999, -0.9330127, -0.258819, 0.9659259, 0.258819, 0, 0.0669873, -0.25000003, 0.9659258, 45.14078, 13.499996, -17.279137)
 level_name = "level 3: hill"
 level_path = "res://scenes/levels/level_3.tscn"
 
-[node name="level_entrance2" parent="interactables" unique_id=1103027665 instance=ExtResource("6_fi0dp")]
-transform = Transform3D(-0.75000006, -0.43301272, 0.49999997, -0.49999997, 0.86602545, -2.2886669e-08, -0.43301263, -0.24999999, -0.86602545, -15.5, 6.0000057, -16)
-level_name = "level 2: walls in walls"
-level_path = "res://scenes/levels/level_2.tscn"
-
 [node name="level_entrance4" parent="interactables" unique_id=653957253 instance=ExtResource("6_fi0dp")]
 transform = Transform3D(0.7071067, 8.742278e-08, 0.7071068, 6.181724e-08, -1, 6.181724e-08, 0.7071068, 1.0926798e-14, -0.7071067, -16.498276, 28.999996, -40.243584)
 level_name = "level 5: get_tree().quit()"
 level_path = "res://scenes/levels/level_5.tscn"
+
+[node name="level_entrance5" parent="interactables" unique_id=522198203 instance=ExtResource("6_fi0dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 4.1173053, -14)
+level_name = "level 4: blank"
+level_path = "res://scenes/levels/level_4.tscn"
+
+[node name="level_entrance6" parent="interactables" unique_id=707545956 instance=ExtResource("6_fi0dp")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0.5, 0.5)
+level_name = "completion"
+level_path = "res://scenes/levels/level_6.tscn"
 
 [node name="box4" parent="interactables" unique_id=1888870069 instance=ExtResource("3_f0qm8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3909016, -8.574994, 30.27247)
@@ -458,6 +472,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 62, 0)
 omni_range = 4096.0
 
 [node name="WorldEnvironment" parent="." unique_id=119361356 instance=ExtResource("8_a2ery")]
+
+[node name="Label" type="Label" parent="." unique_id=156327960]
+visible = false
+offset_left = 16.0
+offset_top = 480.0
+offset_right = 96.0
+offset_bottom = 528.0
 
 [connection signal="body_entered" from="hint_giver" to="hint_giver" method="_on_body_entered"]
 [connection signal="body_exited" from="hint_giver" to="hint_giver" method="_on_body_exited"]

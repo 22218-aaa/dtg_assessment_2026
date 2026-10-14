@@ -1,6 +1,7 @@
 extends RigidBody3D
 
 
+@export var purgatory: bool = false
 @export_group("objects")
 @export var camera: Camera3D
 @export var object_detector: RayCast3D
@@ -43,7 +44,7 @@ func _input(event):
 		camera.rotation_degrees.x += -event.relative.y * sensitivity
 		camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, -90, 90)
 	if InputEvent:
-		if Input.is_action_just_pressed("escape"):
+		if Input.is_action_just_pressed("escape") and not purgatory:
 			if global.current_level:
 				get_tree().change_scene_to_file("res://scenes/menus/hub_world.tscn")
 			else:
@@ -94,6 +95,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	print(Engine.get_frames_per_second())
 	if linear_velocity.y > highest_velocity.y:
 		highest_velocity = Vector3(0, linear_velocity.y, 0)
 	

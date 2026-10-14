@@ -1,0 +1,239 @@
+[gd_scene format=3 uid="uid://dy7u2wdesujkp"]
+
+[ext_resource type="Script" uid="uid://dw5640lb43wuu" path="res://scenes/levels/level_6_achievement_tracker.gd" id="1_b6i88"]
+[ext_resource type="PackedScene" uid="uid://bcxprlld78jga" path="res://scenes/objects/player.tscn" id="3_kydov"]
+[ext_resource type="PackedScene" uid="uid://daewcgbdysr28" path="res://scenes/objects/death_zone.tscn" id="4_uwlxl"]
+[ext_resource type="PackedScene" uid="uid://ccpwjdyct6syf" path="res://scenes/objects/box.tscn" id="5_4wfvb"]
+[ext_resource type="PackedScene" uid="uid://cvru3qrdwbht0" path="res://scenes/objects/scene_changer.tscn" id="6_tqv5a"]
+[ext_resource type="Script" uid="uid://c87jo177mfsda" path="res://scripts/hint_giver.gd" id="7_ppjov"]
+[ext_resource type="PackedScene" uid="uid://dks15o8pfmnw5" path="res://scenes/objects/button_base.tscn" id="8_pafwe"]
+[ext_resource type="PackedScene" uid="uid://dhm6cq1gn7rea" path="res://scenes/objects/sky.tscn" id="9_gf2l7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_sk5k4"]
+font_size = 48
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ugcn1"]
+albedo_color = Color(0, 0.39215687, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_s8va5"]
+material = SubResource("StandardMaterial3D_ugcn1")
+size = Vector3(2, 1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dga24"]
+size = Vector3(2, 1, 2)
+
+[sub_resource type="Animation" id="Animation_n6eey"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_qi5uv"]
+resource_name = "pressed"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -0.25]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qxy0u"]
+_data = {
+&"RESET": SubResource("Animation_n6eey"),
+&"pressed": SubResource("Animation_qi5uv")
+}
+
+[sub_resource type="Animation" id="Animation_e18e5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("text_player/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../interactables/death_zone4:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6.0]
+}
+
+[sub_resource type="Animation" id="Animation_m5qie"]
+resource_name = "dialogue"
+length = 85.0
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("text_player/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10, 20, 35, 40, 55.5, 57.5, 60, 70, 80),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [".............", ".......", "..", "so that's it?", "...", "OH", "OOOOOOOOOOOOOO", "FREEEEEEEEEEEEEEEDOM!", "", "(only you remain)"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../interactables/death_zone4:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 80, 83),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [6.0, 6.0, -300.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kydov"]
+_data = {
+&"RESET": SubResource("Animation_e18e5"),
+&"dialogue": SubResource("Animation_m5qie")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_iav0o"]
+font_size = 48
+
+[node name="level_6" type="Node3D" unique_id=1250394160]
+script = ExtResource("1_b6i88")
+
+[node name="terrain" type="CSGCombiner3D" parent="." unique_id=1545069538]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="terrain" unique_id=1244463792]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.404175)
+size = Vector3(23, 1, 32)
+
+[node name="interactables" type="Node" parent="." unique_id=2136838379]
+
+[node name="player" parent="interactables" unique_id=1512140399 instance=ExtResource("3_kydov")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9423361, 2.3000002, 7.6212225)
+MAXIMUM_HOLDING_DISTANCE = 12.0
+MAXIMUM_HELD_OBJECTS = 1
+
+[node name="death_zone" parent="interactables" unique_id=1153127341 instance=ExtResource("4_uwlxl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.010106, 5.9886155, 1.0118761)
+sizing = Vector3(1, 50, 23)
+
+[node name="death_zone2" parent="interactables" unique_id=1234160283 instance=ExtResource("4_uwlxl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 6, 1)
+sizing = Vector3(1, 50, 23)
+
+[node name="death_zone3" parent="interactables" unique_id=503769702 instance=ExtResource("4_uwlxl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 12)
+sizing = Vector3(23, 50, 1)
+
+[node name="death_zone4" parent="interactables" unique_id=1581827943 instance=ExtResource("4_uwlxl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -10)
+sizing = Vector3(23, 50, 1)
+
+[node name="death_zone5" parent="interactables" unique_id=612921572 instance=ExtResource("4_uwlxl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 31.5, 1)
+sizing = Vector3(25, 1, 23)
+
+[node name="death_zone6" parent="interactables" unique_id=1295369612 instance=ExtResource("4_uwlxl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -19.5, 1)
+sizing = Vector3(25, 1, 23)
+
+[node name="box" parent="interactables" unique_id=2073704069 instance=ExtResource("5_4wfvb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1187315, 0.9999981, -1.4282789)
+
+[node name="box2" parent="interactables" unique_id=570967198 instance=ExtResource("5_4wfvb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.3812685, 0.9999981, -1.4282789)
+
+[node name="win_zone" parent="interactables" unique_id=15871483 instance=ExtResource("6_tqv5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -17)
+change_scene_to = "res://scenes/menus/hub_world.tscn"
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1095944458]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 62, 0)
+omni_range = 4096.0
+
+[node name="Label" type="Label" parent="." unique_id=1924621915]
+visible = false
+anchors_preset = -1
+anchor_left = -0.47000003
+anchor_top = 0.41400003
+anchor_right = -0.416
+anchor_bottom = 0.476
+offset_left = 0.4000244
+offset_top = -0.120025635
+offset_right = -0.27996826
+offset_bottom = -0.08001709
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_sk5k4")
+vertical_alignment = 2
+
+[node name="hint_giver" type="Area3D" parent="." unique_id=345356532]
+transform = Transform3D(0.9999995, -0.00013771236, 0.0010022639, 0.00013990539, 0.99999756, -0.002204927, -0.00100196, 0.0022050648, 0.9999971, 6.5, 1, -6.5)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("7_ppjov")
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="hint_giver" unique_id=1364118865]
+mesh = SubResource("BoxMesh_s8va5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hint_giver" unique_id=1887891531]
+shape = SubResource("BoxShape3D_dga24")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="hint_giver" unique_id=1046573555]
+libraries/ = SubResource("AnimationLibrary_qxy0u")
+
+[node name="button base" parent="hint_giver" unique_id=145213055 instance=ExtResource("8_pafwe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
+
+[node name="text_player" type="AnimationPlayer" parent="hint_giver" unique_id=1572177930]
+libraries/ = SubResource("AnimationLibrary_kydov")
+
+[node name="Label" type="Label" parent="hint_giver/text_player" unique_id=1969569977]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_top = -888.0
+offset_right = -960.0
+offset_bottom = -751.0
+grow_horizontal = 2
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_iav0o")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="WorldEnvironment" parent="." unique_id=119361356 instance=ExtResource("9_gf2l7")]
+
+[connection signal="body_entered" from="interactables/win_zone" to="." method="_on_win_zone_body_entered"]
+[connection signal="body_entered" from="hint_giver" to="hint_giver" method="_on_body_entered"]
+[connection signal="body_exited" from="hint_giver" to="hint_giver" method="_on_body_exited"]
