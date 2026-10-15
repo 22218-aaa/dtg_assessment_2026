@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dy7u2wdesujkp"]
 
-[ext_resource type="Script" uid="uid://dw5640lb43wuu" path="res://scenes/levels/level_6_achievement_tracker.gd" id="1_b6i88"]
+[ext_resource type="Script" uid="uid://dw5640lb43wuu" path="res://scripts/level_6_achievement_tracker.gd" id="1_b6i88"]
 [ext_resource type="PackedScene" uid="uid://bcxprlld78jga" path="res://scenes/objects/player.tscn" id="3_kydov"]
 [ext_resource type="PackedScene" uid="uid://daewcgbdysr28" path="res://scenes/objects/death_zone.tscn" id="4_uwlxl"]
 [ext_resource type="PackedScene" uid="uid://ccpwjdyct6syf" path="res://scenes/objects/box.tscn" id="5_4wfvb"]

@@ -161,6 +161,10 @@ sizing = Vector3(25, 1, 18)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -18, 3.5)
 sizing = Vector3(25, 1, 18)
 
+[node name="death_zone8" parent="interactables" unique_id=1271238695 instance=ExtResource("2_fi56y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -100, 3.5)
+sizing = Vector3(300, 1, 300)
+
 [node name="death_zone6" parent="interactables" unique_id=1088141379 instance=ExtResource("2_fi56y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18, -21.5)
 sizing = Vector3(25, 1, 26)
@@ -173,9 +177,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1187315, 1.5000033, -24.287
 sizing = Vector3(2, 2, 2)
 
 [node name="win_zone" parent="interactables" unique_id=1534439029 instance=ExtResource("4_fsnos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4550, -80)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04, 0, -160)
 change_scene_to = "res://scenes/menus/hub_world.tscn"
-sizing = Vector3(3000, 3000, 5)
+sizing = Vector3(50, 50, 50)
+still = false
 
 [node name="knowledge_check_tracker" parent="interactables" unique_id=1078506640 instance=ExtResource("6_hldbq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012142181, 18.035141, -6.958337)

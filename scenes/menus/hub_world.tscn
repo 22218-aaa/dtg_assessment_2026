@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://shn6vvinj8il" path="res://scripts/level_data_setter.gd" id="1_fi0dp"]
 [ext_resource type="Script" uid="uid://cy6ml2shb4kll" path="res://resources/bases/level_completion_resource.gd" id="2_3l0iv"]
 [ext_resource type="PackedScene" uid="uid://bcxprlld78jga" path="res://scenes/objects/player.tscn" id="2_6060s"]
+[ext_resource type="Texture2D" uid="uid://b1qukm1brg6ts" path="res://assets/2d/texture_07.png" id="3_e2l5s"]
 [ext_resource type="PackedScene" uid="uid://ccpwjdyct6syf" path="res://scenes/objects/box.tscn" id="3_f0qm8"]
 [ext_resource type="PackedScene" uid="uid://fascjv15xl52" path="res://scenes/objects/level_entrance.tscn" id="6_fi0dp"]
 [ext_resource type="Script" uid="uid://c87jo177mfsda" path="res://scripts/hint_giver.gd" id="7_3l0iv"]
@@ -67,6 +68,9 @@ completion_types = Dictionary[String, bool]({
 "...": false
 })
 metadata/_custom_type_script = "uid://cy6ml2shb4kll"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qmc5g"]
+albedo_texture = ExtResource("3_e2l5s")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ugcn1"]
 albedo_color = Color(0, 0.39215687, 1, 1)
@@ -311,6 +315,7 @@ size = Vector3(2.5, 3, 1.5)
 
 [node name="CSGBox3D16" type="CSGBox3D" parent="terrain" unique_id=926795361]
 transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, -9, -7.3250003, 37.5)
+material_override = SubResource("StandardMaterial3D_qmc5g")
 size = Vector3(2, 11.5, 40)
 
 [node name="CSGBox3D17" type="CSGBox3D" parent="terrain" unique_id=371465453]

@@ -95,7 +95,6 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	print(Engine.get_frames_per_second())
 	if linear_velocity.y > highest_velocity.y:
 		highest_velocity = Vector3(0, linear_velocity.y, 0)
 	
