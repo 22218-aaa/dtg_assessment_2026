@@ -58,8 +58,9 @@ func check_completion():
 	for level in global.level_information:
 		for item in global.level_information[level].completion_types:
 			if global.level_information[level].completion_types[item] == false:
+				print("aaa")
 				if not x:
 					x = true
-					return
+					continue
 				final_level.position.y -= 200
 				return

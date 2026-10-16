@@ -7,14 +7,14 @@ var level: level_data
 var completion_type: String
 var acceptable_completion_types = []
 
-
+#get completion info
 func start():
 	level = global.level_information[global.current_level]
 	for item in level.completion_types:
 		acceptable_completion_types.append(item)
 		print(acceptable_completion_types)
 
-
+#give new completion info to global
 func completed() -> void:
 	print("achievement check")
 	if not completion_type in acceptable_completion_types:

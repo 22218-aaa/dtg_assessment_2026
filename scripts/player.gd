@@ -39,12 +39,12 @@ var scroll_speed = 0.2
 # add player eject
 
 func _input(event):
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion: #camera
 		flat_rotation.rotation_degrees.y += -event.relative.x * sensitivity
 		camera.rotation_degrees.x += -event.relative.y * sensitivity
 		camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, -90, 90)
 	if InputEvent:
-		if Input.is_action_just_pressed("escape") and not purgatory:
+		if Input.is_action_just_pressed("escape") and not purgatory: #scene change
 			if global.current_level:
 				get_tree().change_scene_to_file("res://scenes/menus/hub_world.tscn")
 			else:
@@ -53,6 +53,7 @@ func _input(event):
 		elif Input.is_action_just_pressed("tab"):
 			get_tree().reload_current_scene()
 		
+		#pickup objects
 		if Input.is_action_just_pressed("select"):
 			if not object_detector.is_colliding():
 				if not held_objects.is_empty():
