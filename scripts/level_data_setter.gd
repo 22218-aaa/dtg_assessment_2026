@@ -54,8 +54,12 @@ func set_values() -> void:
 
 
 func check_completion():
+	var x = false
 	for level in global.level_information:
 		for item in global.level_information[level].completion_types:
 			if global.level_information[level].completion_types[item] == false:
+				if not x:
+					x = true
+					return
 				final_level.position.y -= 200
 				return

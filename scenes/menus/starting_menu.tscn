@@ -37,7 +37,7 @@ offset_top = 0.27999496
 offset_bottom = 0.32009888
 grow_horizontal = 2
 grow_vertical = 2
-text = "game"
+text = "Intentional_game_design"
 label_settings = SubResource("LabelSettings_6qpea")
 horizontal_alignment = 1
 

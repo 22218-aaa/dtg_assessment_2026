@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="intentional_game_design"
-run/main_scene="uid://gqggds5tu71r"
+run/main_scene="uid://hqyf4yiudppw"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://assets/2d/icon.svg"
 
